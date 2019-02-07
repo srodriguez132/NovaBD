@@ -55,6 +55,7 @@ namespace Demo
                     columnDefinition.Type = parts[1];
                     columnDefinitions.Add(columnDefinition);
                     Console.WriteLine(line);
+                    //jpña
                 }
             }
         }
