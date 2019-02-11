@@ -9,7 +9,7 @@ namespace CreateTableTest
     public class UnitTest1
     {
         [TestMethod]
-        public void createTableTest()
+        public void CreateTableTest()
         {
             Match result;
             CreateTable creTab = new CreateTable();
