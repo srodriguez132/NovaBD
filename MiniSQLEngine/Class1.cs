@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 
 /// <summary>
-/// Summary description for Class1
+/// Summary description for InsertIntoUpdate
 /// </summary>
 public class InsertIntoUpdate
 {
