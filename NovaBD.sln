@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo\Demo.cspr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{235BAFF5-57BE-4CD4-BA22-F5AC59ED8246}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateTableTest", "CreateTableTest\CreateTableTest.csproj", "{B586C4EE-208D-470A-A111-1DDD40C9258A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDropTableTest", "UnitTestProject1\CreateDropTableTest.csproj", "{8597F86B-5BAC-42A0-88C0-196FAE8ABE2C}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BackupDatabaseTest", "BackupDatabaseTest\BackupDatabaseTest.csproj", "{8CEE17FE-9A99-429F-A81D-EED554E15C5E}"
 EndProject
 Global
