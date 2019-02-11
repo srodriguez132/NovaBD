@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CreateTable.cs" />
+    <Compile Include="CreateDropTable.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

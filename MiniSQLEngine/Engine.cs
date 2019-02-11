@@ -8,6 +8,11 @@ namespace MiniSQLEngine
 {
     public class Engine
     {
-       
+        public void Query(string v, out string result)
+        {
+            throw new NotImplementedException();
+        }
+
+  
     }
 }
