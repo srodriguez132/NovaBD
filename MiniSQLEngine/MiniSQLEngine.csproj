@@ -41,10 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InsertUpdate.cs" />
     <Compile Include="CreateTable.cs" />
     <Compile Include="CreateDropTable.cs" />
     <Compile Include="BackupDatabase.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="InsertIntoUpdate.cs" />
