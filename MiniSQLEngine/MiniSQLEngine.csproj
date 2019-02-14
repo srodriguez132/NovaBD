@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class2.cs" />
     <Compile Include="InsertUpdate.cs" />
     <Compile Include="CreateTable.cs" />
     <Compile Include="CreateDropTable.cs" />
