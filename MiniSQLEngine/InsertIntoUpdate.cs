@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
+
 namespace MiniSQLEngine
 {
-    class InsertUpdate
+    class InsertIntoUpdate
     {
-
         public Match InsertInto(string query)
         {
             //INSERT INTO table_name (column1,column2) VALUES (value1, value2);
@@ -31,6 +31,4 @@ namespace MiniSQLEngine
             return match;
         }
     }
-
 }
-
