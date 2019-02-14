@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Table.cs" />
     <Compile Include="CreateTable.cs" />
     <Compile Include="CreateDropTable.cs" />
     <Compile Include="BackupDatabase.cs" />
