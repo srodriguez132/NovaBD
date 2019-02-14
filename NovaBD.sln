@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "select", "select\select.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "Consola\Consola.csproj", "{2D34C73F-1AAC-4743-A56F-89806E0F7DEC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsertIntoUpdateTest", "Test\InsertIntoUpdateTest\InsertIntoUpdateTest.csproj", "{4642CF9A-B038-457A-9856-2BEB05B36400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{2D34C73F-1AAC-4743-A56F-89806E0F7DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D34C73F-1AAC-4743-A56F-89806E0F7DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D34C73F-1AAC-4743-A56F-89806E0F7DEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4642CF9A-B038-457A-9856-2BEB05B36400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4642CF9A-B038-457A-9856-2BEB05B36400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4642CF9A-B038-457A-9856-2BEB05B36400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4642CF9A-B038-457A-9856-2BEB05B36400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{8597F86B-5BAC-42A0-88C0-196FAE8ABE2C} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 		{E4769200-A9AD-45A5-BE9B-17985E8715E0} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 		{C4F5D0FA-49E7-463B-8543-DD710D67308C} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
+		{4642CF9A-B038-457A-9856-2BEB05B36400} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {262A21CD-8B3D-4302-9721-BFF145130E31}
