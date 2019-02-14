@@ -22,8 +22,8 @@ namespace MiniSQLEngine
                 string path = @"C:\Users\docencia\Desktop\";
                 using (StreamWriter writer = File.CreateText(path + fileName + ".txt"))
                 {
-                    writer.WriteLine(fileName);
-                    writer.Write(attributes);
+                    writer.WriteLine(fileName + ";");
+                    writer.Write(attributes + ";");
 
                 }
             }
