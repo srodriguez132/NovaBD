@@ -13,9 +13,15 @@ namespace select
         {
             Match result;
             Select s = new Select();
-            result = s.select("SELECT * FROM table;");
-
+            result = s.select("SELECT * FROM table ;");
+            Assert.AreEqual("*", result.Groups[1].Value);
             
+        }
+
+        public void DeleteTest()
+        {
+            Match result;
+
         }
     }
 }
