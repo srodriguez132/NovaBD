@@ -37,5 +37,60 @@ namespace MiniSQLEngine
             }
             datas.Add(a);
         }
+        public void delete(string pCondition)
+        {
+            string regExp = @"(\w+)\s+(<|=|>)\s+(\w+)";
+            Match match = Regex.Match(pCondition, regExp);
+            string column = match.Groups[1].Value;
+            string sign = match.Groups[2].Value;
+            string value = match.Groups[3].Value;
+            int i = 0;
+            Boolean f = false;
+            while(i < columns.Length && f == false)
+            {
+                if (columns[i].Equals(column))
+                {
+                    f = true;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            if (sign.Equals("="))
+            {
+                for (int j = 0; j < datas.Count; j++)
+                {
+                   if(datas.ElementAt(j)[i] == value)
+                    {
+                        datas.RemoveAt(j);
+                        j--;
+                    } 
+                }
+            }
+            else if (sign.Equals("<"))
+            {
+                for (int j = 0; j < datas.Count; j++)
+                {
+                    if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse(value))
+                    {
+                        datas.RemoveAt(j);
+                        j--;
+                    }
+                }
+            }
+            else
+            {
+                for (int j = 0; j < datas.Count; j++)
+                {
+                    if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse(value))
+                    {
+                        datas.RemoveAt(j);
+                        j--;
+                    }
+                }
+            }
+
+        }
     }
 }
