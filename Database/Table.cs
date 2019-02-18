@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace MiniSQLEngine
+namespace Database
 {
     class Table
     {
@@ -46,7 +46,7 @@ namespace MiniSQLEngine
             string value = match.Groups[3].Value;
             int i = 0;
             Boolean f = false;
-            while(i < columns.Length && f == false)
+            while (i < columns.Length && f == false)
             {
                 if (columns[i].Equals(column))
                 {
@@ -61,11 +61,11 @@ namespace MiniSQLEngine
             {
                 for (int j = 0; j < datas.Count; j++)
                 {
-                   if(datas.ElementAt(j)[i] == value)
+                    if (datas.ElementAt(j)[i] == value)
                     {
                         datas.RemoveAt(j);
                         j--;
-                    } 
+                    }
                 }
             }
             else if (sign.Equals("<"))
@@ -118,7 +118,7 @@ namespace MiniSQLEngine
                 {
                     if (datas.ElementAt(j)[i] == value)
                     {
-                        
+
                     }
                 }
             }
@@ -128,7 +128,7 @@ namespace MiniSQLEngine
                 {
                     if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse(value))
                     {
-                        
+
                     }
                 }
             }
@@ -138,7 +138,7 @@ namespace MiniSQLEngine
                 {
                     if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse(value))
                     {
-                        
+
                     }
                 }
             }
