@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    public class Select
+    public class Select : Interface
     {
         public Match delete(string query)
         {
@@ -15,6 +15,11 @@ namespace MiniSQLEngine
             Match match = Regex.Match(query, regExp);
             return match;
             
+        }
+
+        public string execute()
+        {
+            throw new NotImplementedException();
         }
 
         public Match select(string query)
