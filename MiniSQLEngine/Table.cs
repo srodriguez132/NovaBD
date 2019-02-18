@@ -37,5 +37,39 @@ namespace MiniSQLEngine
             }
             datas.Add(a);
         }
+        public List<string[]> select(string pColumns, string pCondition)
+        {
+            string[] at = pColumns.Split(',');
+            string [] array = new string[at.Length - 1];
+            string regExp = @"(\w+)\s+(<|=|>)\s+(\w+)";
+            Match match = Regex.Match(pCondition, regExp);
+            Boolean f = false;
+            int i = 0;
+            while(i<columns.Length && f==false){
+                if (columns[i] == (string)match.Groups[1].Value) { f = true; }
+                else { i++; }
+            }
+            
+               if((string)match.Groups[2].Value=="<")
+                {
+                for (int j = 0; j < datas.Count; j++)
+                    {
+            
+                    }
+                }
+               else if ((string)match.Groups[2].Value == "=")
+                {
+                for (int j = 0; j < datas.Count; j++)
+                    {
+                    }
+                }
+                else
+                {
+                for (int j = 0; j < datas.Count; j++)
+                    {
+                    }
+                }
+            return null;
+        }
     }
 }

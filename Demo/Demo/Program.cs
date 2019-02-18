@@ -6,20 +6,27 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.IO;
 using MiniSQLEngine;
+using Demo;
 
 namespace Demo
 {
-    public class Program
+    public class Program : Interface1
     {
+        //interface method
+        public string execute()
+        {
+            throw new NotImplementedException();
+        }
 
         public class ColumnDefinition
         {
             public string Name { get; set; }
             public string Type { get; set; }
-
+            public string nombre;
 
             static void Main(string[] args)
             {
+              
                 //string input = "kjhflksahflsh SELECT* FROM table1 alkdfsj 34 j wejrl rwekj rwej SELECT column from table1";
 
                 //string regExp = @"SELECT\s + (\*)\s + FROM\s + (\w +)";
@@ -44,6 +51,7 @@ namespace Demo
                     writer.WriteLine("ID PRIMARY_KEY(Int)");
                     writer.Write("Address String");
                 }
+               
 
                 string allFile = File.ReadAllText("test.txt");
                 string[] lines = allFile.Split('\n');

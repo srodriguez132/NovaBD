@@ -10,20 +10,20 @@ namespace MiniSQLEngine
     class Database
     {
         private string name;
-
-        //List<Table> tables = new List<Table>();
+        List<Table> tables = new List<Table>();
 
 
         public Database(string pName)
         {
-            name=pName;
+            name = pName;
+            
         }
 
-        public static void CreateTable(string name, string definition)
+        public void CreateTable(string name, string definition)
         {
-            //Table table = new Table();
-            //tables.Add(table);
-           
+          Table table = new Table(name, definition);
+          tables.Add(table);
         }
+        //parse
     }
 }
