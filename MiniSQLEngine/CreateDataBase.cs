@@ -18,9 +18,10 @@ namespace MiniSQLEngine
             return match;
         }
 
-        public void Execute(Database pDatabase)
+        public string Execute(Database pDatabase)
         {
-
+            pDatabase = new Database(resultado);
+            return Constants.CreateDatabaseMessage;
         }
     }
 }
