@@ -6,10 +6,10 @@ using System.Text.RegularExpressions;
 namespace CreateTableTest
 {
     [TestClass]
-    public class UnitTest1
+    public class CreateTableTest
     {
         [TestMethod]
-        public void CreateTableTest()
+        public void createTableTest()
         {
             Match result;
             CreateTable creTab = new CreateTable();
