@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    public class Delete
+    public class Delete : MiniSQL 
     {
         public Match delete(string query)
         {
