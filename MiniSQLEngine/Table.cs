@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class Table
+    public class Table
     {
         string name;
         string[] columns;

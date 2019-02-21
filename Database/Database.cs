@@ -49,7 +49,7 @@ namespace Databases
             }
             return null;
         }
-    }
+    
 
         }
         public MiniSQLEngine.MiniSQL Parse(string query)
@@ -57,4 +57,3 @@ namespace Databases
             return null;
         }
     }
-}
