@@ -3,13 +3,13 @@ using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniSQLEngine;
 
-namespace InsertIntoUpdateTest
+namespace InsertTest
 {
     [TestClass]
-    public class UnitTest1
+    public class InsertTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void insertTest()
         {
             Match result;
             Insert insert = new Insert();
@@ -21,17 +21,5 @@ namespace InsertIntoUpdateTest
 
         }
 
-        [TestMethod]
-        public void TestMethod2()
-        {
-            Match result;
-            Insert upd = new Insert();
-            result = upd.Update("UPDATE table SET column=value WHERE condition;");
-
-            Assert.AreEqual("table", result.Groups[1].Value);
-            Assert.AreEqual("column=value", result.Groups[2].Value);
-            Assert.AreEqual("condition", result.Groups[3].Value);
-
-        }
     }
 }

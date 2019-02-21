@@ -46,7 +46,7 @@ namespace MiniSQLEngine
             string value = match.Groups[3].Value;
             int i = 0;
             Boolean f = false;
-            while(i < columns.Length && f == false)
+            while (i < columns.Length && f == false)
             {
                 if (columns[i].Equals(column))
                 {
@@ -61,11 +61,11 @@ namespace MiniSQLEngine
             {
                 for (int j = 0; j < datas.Count; j++)
                 {
-                   if(datas.ElementAt(j)[i] == value)
+                    if (datas.ElementAt(j)[i] == value)
                     {
                         datas.RemoveAt(j);
                         j--;
-                    } 
+                    }
                 }
             }
             else if (sign.Equals("<"))
@@ -118,7 +118,7 @@ namespace MiniSQLEngine
                 {
                     if (datas.ElementAt(j)[i] == value)
                     {
-                        
+
                     }
                 }
             }
@@ -128,7 +128,7 @@ namespace MiniSQLEngine
                 {
                     if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse(value))
                     {
-                        
+
                     }
                 }
             }
@@ -138,44 +138,83 @@ namespace MiniSQLEngine
                 {
                     if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse(value))
                     {
-                        
+
                     }
                 }
             }
         }
-        public List<string[]> select(string pColumns, string pCondition)
-        {
-            string[] at = pColumns.Split(',');
-            string [] array = new string[at.Length - 1];
-            string regExp = @"(\w+)\s+(<|=|>)\s+(\w+)";
-            Match match = Regex.Match(pCondition, regExp);
-            Boolean f = false;
-            int i = 0;
-            while(i<columns.Length && f==false){
-                if (columns[i] == (string)match.Groups[1].Value) { f = true; }
-                else { i++; }
-            }
-            
-               if((string)match.Groups[2].Value=="<")
+            public string Select(string pColumns, string pCondition)
+            {
+                string ret= null;
+                string[] at = pColumns.Split(',');
+                string[] array = new string[at.Length - 1];
+                string regExp = @"(\w+)\s+(<|=|>)\s+(\w+)";
+                Match match = Regex.Match(pCondition, regExp);
+                Boolean f = false;
+                int i = 0;
+                while (i < columns.Length && f == false) {
+                    if (columns[i] == (string)match.Groups[1].Value) { f = true; }
+                    else { i++; }
+                }
+                if ((string)match.Groups[2].Value == "<")
                 {
-                for (int j = 0; j < datas.Count; j++)
+                    for (int j = 0; j < datas.Count; j++)
                     {
-            
+                    if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
+                    {
+                        for(int k=0; k < at.Length; k++)
+                        {
+                            for (int z = 0; z < columns.Length; z++)
+                            {
+                                if (at[k].Equals(columns[z]))
+                                {
+                                    ret += datas.ElementAt(j)[z];
+                                }
+                                    }
+                        }                       
                     }
                 }
-               else if ((string)match.Groups[2].Value == "=")
+                }
+                else if ((string)match.Groups[2].Value == "=")
                 {
-                for (int j = 0; j < datas.Count; j++)
+                    for (int j = 0; j < datas.Count; j++)
                     {
+                    if (Double.Parse(datas.ElementAt(j)[i]) == Double.Parse((string)match.Groups[3].Value))
+                    {
+                        for (int k = 0; k < at.Length; k++)
+                        {
+                            for (int z = 0; z < columns.Length; z++)
+                            {
+                                if (at[k].Equals(columns[z]))
+                                {
+                                    ret += datas.ElementAt(j)[z];
+                                }
+                            }
+                        }
                     }
+                }
                 }
                 else
                 {
-                for (int j = 0; j < datas.Count; j++)
+                    for (int j = 0; j < datas.Count; j++)
                     {
+                    if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
+                    {
+                        for (int k = 0; k < at.Length; k++)
+                        {
+                            for (int z = 0; z < columns.Length; z++)
+                            {
+                                if (at[k].Equals(columns[z]))
+                                {
+                                    ret += datas.ElementAt(j)[z];
+                                }
+                            }
+                        }
                     }
                 }
-            return null;
+                }
+                return ret;
+            }
         }
     }
-}
+
