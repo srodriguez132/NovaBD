@@ -2,12 +2,12 @@
 using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MiniSQLEngine;
-namespace UpdateTest
+
+namespace DeleteTest
 {
     [TestClass]
-    public class UpdateTest
+    public class Delete
     {
-
-       
+        
     }
 }

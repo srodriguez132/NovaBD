@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class Update
+   public class Update
     {
         public Match update(String query)
         {
