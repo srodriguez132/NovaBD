@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "Consola\Consola.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsertIntoUpdateTest", "Test\InsertIntoUpdateTest\InsertIntoUpdateTest.csproj", "{4642CF9A-B038-457A-9856-2BEB05B36400}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Database", "Database\Database.csproj", "{04D5B839-149B-4D16-8BF2-E1C98B257080}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases", "Database\Databases.csproj", "{04D5B839-149B-4D16-8BF2-E1C98B257080}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

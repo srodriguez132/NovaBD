@@ -26,6 +26,7 @@ namespace select
         [TestMethod]
         public void DeleteTest()
         {
+            
             Match result;
             Select d = new Select();
             result = d.delete("DELETE FROM table WHERE id=id1;");
