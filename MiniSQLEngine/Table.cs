@@ -37,7 +37,7 @@ namespace MiniSQLEngine
             }
             datas.Add(a);
         }
-        public void delete(string pCondition)
+        public string delete(string pCondition)
         {
             string regExp = @"(\w+)\s+(<|=|>)\s+(\w+)";
             Match match = Regex.Match(pCondition, regExp);
@@ -45,6 +45,7 @@ namespace MiniSQLEngine
             string sign = match.Groups[2].Value;
             string value = match.Groups[3].Value;
             int i = 0;
+            int count = 0;
             Boolean f = false;
             while(i < columns.Length && f == false)
             {
@@ -65,6 +66,7 @@ namespace MiniSQLEngine
                     {
                         datas.RemoveAt(j);
                         j--;
+                        count++;
                     } 
                 }
             }
@@ -76,6 +78,7 @@ namespace MiniSQLEngine
                     {
                         datas.RemoveAt(j);
                         j--;
+                        count++;
                     }
                 }
             }
@@ -87,9 +90,11 @@ namespace MiniSQLEngine
                     {
                         datas.RemoveAt(j);
                         j--;
+                        count++;
                     }
                 }
             }
+            return count + "row(s) have been deleted";
 
         }
         public void update(string pUpdate, string pCondition)
