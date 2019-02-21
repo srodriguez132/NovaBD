@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Collections;
 
 
-namespace Database
+namespace Databases
 {
-    class Database
+    public class Database
     {
         private string name;
         List<Table> tables = new List<Table>();
