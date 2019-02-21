@@ -28,7 +28,17 @@ namespace Database
         public void DeleteTable(string name)
         {
 
+
+            for (int i = 0; i < tables.Count; i++)
+            {
+                if (tables[i].getName().Equals(name))
+                {
+                    tables[i].delete(null);
+                    
+                }
+            }
+
         }
-        //parse
+        
     }
 }
