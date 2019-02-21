@@ -2,19 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace MiniSQLEngine
 {
-    public class Delete
+    public class DropDataBase
     {
-        public Match delete(string query)
+        public Match DropDatabase(string query)
         {
-            string regExp = @"DELETE\s+FROM\s+(\w+)\s+WHERE\s+(\w+)\s+=\s+(\w+);";
+            string regExp = @"DROP\s+DATABASE\s+(\w+);";
             Match match = Regex.Match(query, regExp);
             return match;
-
         }
     }
 }

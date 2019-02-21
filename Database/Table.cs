@@ -25,6 +25,10 @@ namespace Database
             }
             datas = new List<string[]>();
         }
+        public string getName()
+        {
+            return name;
+        }
         public void setData(string pData)
         {
             string[] at = pData.Split(',');
