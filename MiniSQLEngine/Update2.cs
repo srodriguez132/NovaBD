@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    public class Select 
+    public class Select : Interface
     {
         public Match select(string query)
         {
@@ -16,7 +16,10 @@ namespace MiniSQLEngine
             return match;
         }
 
-        
+        public string execute()
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

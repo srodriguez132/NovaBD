@@ -8,6 +8,7 @@ namespace InsertTest
     [TestClass]
     public class InsertTest
     {
+
         [TestMethod]
         public void insertTest()
         {
@@ -20,6 +21,5 @@ namespace InsertTest
             Assert.AreEqual("value", result.Groups[3].Value);
 
         }
-
     }
 }
