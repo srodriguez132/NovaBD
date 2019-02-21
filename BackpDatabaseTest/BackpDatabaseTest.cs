@@ -8,7 +8,7 @@ namespace BackupDatabaseTest
     public class BackpDatabaseTest
     {
         [TestMethod]
-        public void TestBackupDatabase()
+        public void BackupDatabaseTest()
         {
             Match result;
             BackupDatabase bckd = new BackupDatabase();

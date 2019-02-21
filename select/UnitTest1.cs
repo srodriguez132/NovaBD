@@ -22,20 +22,5 @@ namespace select
             Assert.AreEqual("id", result.Groups[6].Value);
             Assert.AreEqual("id1", result.Groups[7].Value);
         }
-
-        [TestMethod]
-        public void DeleteTest()
-        {
-            
-            Match result;
-            Select d = new Select();
-            result = d.delete("DELETE FROM table WHERE id=id1;");
-            Assert.AreEqual("table", result.Groups[1].Value);
-            Assert.AreEqual("id", result.Groups[2].Value);
-            Assert.AreEqual("id1", result.Groups[3].Value);
-
-
-
-        }
     }
 }

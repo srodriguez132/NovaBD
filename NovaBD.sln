@@ -21,9 +21,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "select", "select\select.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Consola", "Consola\Consola.csproj", "{2D34C73F-1AAC-4743-A56F-89806E0F7DEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsertIntoUpdateTest", "Test\InsertIntoUpdateTest\InsertIntoUpdateTest.csproj", "{4642CF9A-B038-457A-9856-2BEB05B36400}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsertTest", "Test\InsertIntoUpdateTest\InsertTest.csproj", "{4642CF9A-B038-457A-9856-2BEB05B36400}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Databases", "Database\Databases.csproj", "{04D5B839-149B-4D16-8BF2-E1C98B257080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeleteTest", "Test\DeleteTest\DeleteTest.csproj", "{8BA4706C-0BAC-4B9C-9A81-705EBE762C7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UpdateTest", "Test\UpdateTest\UpdateTest.csproj", "{EC0024DD-2FDB-462B-ADC7-1622A7C961BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +86,7 @@ Global
 		{E4769200-A9AD-45A5-BE9B-17985E8715E0} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 		{C4F5D0FA-49E7-463B-8543-DD710D67308C} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 		{4642CF9A-B038-457A-9856-2BEB05B36400} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
+		{EC0024DD-2FDB-462B-ADC7-1622A7C961BD} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {262A21CD-8B3D-4302-9721-BFF145130E31}

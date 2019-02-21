@@ -9,7 +9,7 @@ namespace MiniSQLEngine
 {
     class Update
     {
-        public Match update(string query)
+        public Match update(String query)
         {
             //UPDATE table SET column1=value1, column2=value2 WHERE condition;
             //UPDATE table SET column=value WHERE condition;
