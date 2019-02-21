@@ -58,11 +58,5 @@
     <Compile Include="Select.cs" />
     <Compile Include="Update.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Database\Databases.csproj">
-      <Project>{04d5b839-149b-4d16-8bf2-e1c98b257080}</Project>
-      <Name>Databases</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
