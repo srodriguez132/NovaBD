@@ -9,5 +9,7 @@ namespace MiniSQLEngine
     public class Constants
     {
         public const string NotImplementedError = "Not Implemented";
+        public const string CreateDatabaseMessage = "Database created";
+        public const string CreateTableMenssage = "Table created";
     }
 }

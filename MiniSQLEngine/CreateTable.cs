@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Databases;
 
 /// <summary>
 /// Summary description for CreateTable
@@ -10,6 +11,9 @@ namespace MiniSQLEngine
 {
     public class CreateTable
     {
+        public string name;
+        public string atributes;
+
         public Match createTable(string query)
         {
             string regExp = @"CREATE\s+TABLE\s+(\w+)\s+\(([^()]*)\);";
@@ -28,8 +32,16 @@ namespace MiniSQLEngine
                 }
             }
 
-            return match;
+            name = (string)match.Groups[1].Value;
+            atributes = (string)match.Groups[2].Value;
 
+            return match;
+        }
+
+        public string Execute(Database pDatabase)
+        {
+            pDatabase.CreateTable(name, atributes);
+            return Constants.CreateTableMenssage;
         }
     }
 }
