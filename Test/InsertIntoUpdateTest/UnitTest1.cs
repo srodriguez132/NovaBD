@@ -12,7 +12,7 @@ namespace InsertIntoUpdateTest
         public void TestMethod1()
         {
             Match result;
-            InsertIntoUpdate insert = new InsertIntoUpdate();
+            Insert insert = new Insert();
             result = insert.InsertInto("INSERT INTO table (column) VALUES (value);");
 
             Assert.AreEqual("table", result.Groups[1].Value);
@@ -25,7 +25,7 @@ namespace InsertIntoUpdateTest
         public void TestMethod2()
         {
             Match result;
-            InsertIntoUpdate upd = new InsertIntoUpdate();
+            Insert upd = new Insert();
             result = upd.Update("UPDATE table SET column=value WHERE condition;");
 
             Assert.AreEqual("table", result.Groups[1].Value);
