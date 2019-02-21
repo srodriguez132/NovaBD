@@ -13,7 +13,6 @@ namespace MiniSQLEngine
         private string name;
         List<Table> tables = new List<Table>();
 
-
         public Database(string pName)
         {
             name = pName;
@@ -24,6 +23,7 @@ namespace MiniSQLEngine
         {
           Table table = new Table(name, definition);
           tables.Add(table);
+        
         }
         //parse
     }
