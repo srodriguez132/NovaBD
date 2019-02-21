@@ -41,16 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="MiniSQL.cs" />
     <Compile Include="Delete.cs" />
     <Compile Include="CreateDataBase.cs" />
     <Compile Include="DropDataBase.cs" />
     <Compile Include="Interface.cs" />
+    <Compile Include="PruebaNagore.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="CreateTable.cs" />
     <Compile Include="DropTable.cs" />
     <Compile Include="BackupDatabase.cs" />
-    <Compile Include="Database.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Insert.cs" />

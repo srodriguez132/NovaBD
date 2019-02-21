@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class Class1
+    class PruebaNagore
     {
     }
 }
