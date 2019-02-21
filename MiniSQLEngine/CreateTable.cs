@@ -10,6 +10,9 @@ namespace MiniSQLEngine
 {
     public class CreateTable
     {
+        public string name;
+        public string atributes;
+
         public Match createTable(string query)
         {
             string regExp = @"CREATE\s+TABLE\s+(\w+)\s+\(([^()]*)\);";
@@ -28,8 +31,15 @@ namespace MiniSQLEngine
                 }
             }
 
-            return match;
+            name = (string)match.Groups[1].Value;
+            atributes = (string)match.Groups[2].Value;
 
+            return match;
+        }
+
+        public string execute(Database pDatabase)
+        {
+            return name + atributes;
         }
     }
 }
