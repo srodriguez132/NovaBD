@@ -34,9 +34,24 @@ namespace Databases
                 if (tables[i].getName().Equals(name))
                 {
                     tables[i].delete(null);
-                    
+
                 }
             }
+        }
+        public Table SearchTable(string pName)
+            {
+        
+            for (int i = 0; i < tables.Count; i++)
+            {
+                if (tables[i].getName().Equals(name))
+                {
+
+                    return tables[i];
+                }
+            }
+            return null;
+        }
+    }
 
         }
         

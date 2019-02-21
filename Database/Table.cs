@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Databases
 {
-    class Table
+    public class Table
     {
         string name;
         string[] columns;
