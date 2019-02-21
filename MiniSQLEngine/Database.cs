@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections;
-using MiniSQLEngine;
 
-namespace Databases
+namespace MiniSQLEngine
 {
     public class Database
     {
@@ -35,21 +33,6 @@ namespace Databases
 
                 }
             }
-        }
-        public Table SearchTable(string pName)
-            {
-        
-            for (int i = 0; i < tables.Count; i++)
-            {
-                if (tables[i].getName().Equals(name))
-                {
-
-                    return tables[i];
-                }
-            }
-            return null;
-        }
-    }
 
         }
         public MiniSQLEngine.MiniSQL Parse(string query)

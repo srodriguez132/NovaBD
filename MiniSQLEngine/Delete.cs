@@ -8,7 +8,7 @@ using Databases;
 
 namespace MiniSQLEngine
 {
-    public class Delete
+    public class Delete : MiniSQL 
     {
         public string name;
         public string condition;
