@@ -9,12 +9,11 @@ namespace MiniSQLEngine
 {
     public class Select : Interface
     {
-        public Match delete(string query)
+        public Match select(string query)
         {
-            string regExp = @"DELETE\s+FROM\s+(\w+)\s+WHERE\s+(\w+)\s+=\s+(\w+);";
+            string regExp = @"SELECT\s+(\w+|\*)(\s+|\,\s+(\w+)\s+)FROM\s+(\w+)(\s+WHERE\s+(\w+)\s+=\s+(\w+);|;)";
             Match match = Regex.Match(query, regExp);
             return match;
-            
         }
 
         public string execute()
@@ -22,13 +21,6 @@ namespace MiniSQLEngine
             throw new NotImplementedException();
         }
 
-        public Match select(string query)
-        {
-            string regExp = @"SELECT\s+(\w+|\*)(\s+|\,\s+(\w+)\s+)FROM\s+(\w+)(\s+WHERE\s+(\w+)\s+=\s+(\w+);|;)";
-            Match match = Regex.Match(query, regExp);
-            return match;
-        }
-       
     }
 }
     

@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Database
+namespace Databases
 {
     class Table
     {
@@ -24,6 +24,10 @@ namespace Database
                 columns[i] = (string)match.Groups[1].Value;
             }
             datas = new List<string[]>();
+        }
+        public string getName()
+        {
+            return name;
         }
         public void setData(string pData)
         {
@@ -196,6 +200,79 @@ namespace Database
                 }
             }
             return count + "row(s) have been updated";
+        }
+        public string select(string pColumns, string pCondition)
+        {
+            string ret = null;
+            string[] at = pColumns.Split(',');
+            string[] array = new string[at.Length - 1];
+            string regExp = @"(\w+)\s+(<|=|>)\s+(\w+)";
+            Match match = Regex.Match(pCondition, regExp);
+            Boolean f = false;
+            int i = 0;
+            while (i < columns.Length && f == false)
+            {
+                if (columns[i] == (string)match.Groups[1].Value) { f = true; }
+                else { i++; }
+            }
+            if ((string)match.Groups[2].Value == "<")
+            {
+                for (int j = 0; j < datas.Count; j++)
+                {
+                    if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
+                    {
+                        for (int k = 0; k < at.Length; k++)
+                        {
+                            for (int z = 0; z < columns.Length; z++)
+                            {
+                                if (at[k].Equals(columns[z]))
+                                {
+                                    ret += datas.ElementAt(j)[z];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if ((string)match.Groups[2].Value == "=")
+            {
+                for (int j = 0; j < datas.Count; j++)
+                {
+                    if (Double.Parse(datas.ElementAt(j)[i]) == Double.Parse((string)match.Groups[3].Value))
+                    {
+                        for (int k = 0; k < at.Length; k++)
+                        {
+                            for (int z = 0; z < columns.Length; z++)
+                            {
+                                if (at[k].Equals(columns[z]))
+                                {
+                                    ret += datas.ElementAt(j)[z];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int j = 0; j < datas.Count; j++)
+                {
+                    if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
+                    {
+                        for (int k = 0; k < at.Length; k++)
+                        {
+                            for (int z = 0; z < columns.Length; z++)
+                            {
+                                if (at[k].Equals(columns[z]))
+                                {
+                                    ret += datas.ElementAt(j)[z];
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return ret;
         }
     }
 }
