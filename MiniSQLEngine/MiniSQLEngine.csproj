@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Database.cs" />
+    <Compile Include="MiniSQL.cs" />
     <Compile Include="Delete.cs" />
     <Compile Include="CreateDataBase.cs" />
     <Compile Include="DropDataBase.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text.RegularExpressions;
+using Databases;
 
 /// <summary>
 /// Summary description for CreateTable
@@ -37,9 +38,10 @@ namespace MiniSQLEngine
             return match;
         }
 
-        public string execute(Database pDatabase)
+        public string Execute(Database pDatabase)
         {
-            return name + atributes;
+            pDatabase.CreateTable(name, atributes);
+            return Constants.CreateTableMenssage;
         }
     }
 }

@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections;
-using MiniSQLEngine;
 
-namespace Databases
+namespace MiniSQLEngine
 {
     public class Database
     {
@@ -32,7 +30,7 @@ namespace Databases
                 if (tables[i].getName().Equals(name))
                 {
                     tables[i].delete(null);
-                    
+
                 }
             }
 
