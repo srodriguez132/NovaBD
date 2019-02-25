@@ -25,9 +25,10 @@ namespace MiniSQLEngine
             return match;
         }
 
-        public Delete()
+        public Delete(string pName, string pCondition)
         {
-            //FALTA
+            name = pName;
+            condition = pCondition;
         }
 
         public string Execute(Database pDatabase)

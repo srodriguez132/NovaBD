@@ -9,6 +9,9 @@ namespace MiniSQLEngine
 {
     public class BackupDatabase : MiniSQL
     {
+        public string name;
+        public string disk;
+
         public Match BackupDtb(string query)
         {
             string regularExp = @"BACKUP DATABASE\s+(\w+)\s+TO DISK = ('\w+');";
@@ -18,14 +21,15 @@ namespace MiniSQLEngine
             return match;
         }
         
-        public BackupDatabase()
+        public BackupDatabase(string pName, string pDisk)
         {
-            //FALTA
+            name = pName;
+            disk = pDisk;
         }
 
         public string Execute(Database pDatabase)
         {
-
+            //FALTA
             return Constants.BackupDatabaseMessage;
         }
     } 
