@@ -35,7 +35,7 @@ namespace MiniSQLEngine
             }
 
         }
-        public Table SearchTable(string pName)
+        public Table GetTable(string pName)
         {
 
             for (int i = 0; i < tables.Count; i++)

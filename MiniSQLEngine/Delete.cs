@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
+
 namespace MiniSQLEngine
 {
     public class Delete : MiniSQL 
@@ -28,7 +29,8 @@ namespace MiniSQLEngine
 
         public string Execute(Database pDatabase)
         {
-            Table tabla =  
+            //SIN ACABAR
+            Table tabla = Database.GetTable(name);
             tabla.delete(condition);
             return Constants.DeleteMessage;
         }

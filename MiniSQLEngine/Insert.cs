@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 
 namespace MiniSQLEngine
 {
-    public class Insert
+    public class Insert : MiniSQL
     {
         public Match InsertInto(string query)
         {
@@ -21,7 +21,10 @@ namespace MiniSQLEngine
 
         }
 
-       
-       
+        public string Execute(Database pDatabase)
+        {
+            //SIN HACER
+            return Constants.InsertMessage;
+        }
     }
 }

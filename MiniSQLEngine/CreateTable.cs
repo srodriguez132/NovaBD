@@ -9,7 +9,7 @@ using System.Text.RegularExpressions;
 /// 
 namespace MiniSQLEngine
 {
-    public class CreateTable
+    public class CreateTable : MiniSQL
     {
         public string name;
         public string atributes;
