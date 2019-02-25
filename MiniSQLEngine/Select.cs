@@ -20,7 +20,7 @@ namespace MiniSQLEngine
         }
         public Match select(string query)
         {
-            string regExp = @"SELECT\s+(\w+|\*)(\s+|\,\s+(\w+)\s+)FROM\s+(\w+)(\s+WHERE\s+(\w+)\s+=\s+(\w+);|;)";
+            string regExp = @"SELECT\s+(\w+|\*)\s+FROM\s+(\w+);|SELECT\s+(\w+|\*)\s+FROM\s+(\w+)\s+WHERE\s+(\w+[<|=|>]\w+);";
             Match match = Regex.Match(query, regExp);
             return match;
         }
