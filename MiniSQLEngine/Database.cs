@@ -52,5 +52,10 @@ namespace MiniSQLEngine
         {
             return null;
         }
+        public string Query(string phrase)
+        {
+           MiniSQLEngine.MiniSQL q = Parse(phrase);
+           return q.Execute(this);            
+        }
     }
 }
