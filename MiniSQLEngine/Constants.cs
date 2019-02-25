@@ -13,6 +13,6 @@ namespace MiniSQLEngine
         public const string CreateTableMenssage = "Table created";
         public const string DeleteMessage = "Deleted from table";
         public const string InsertMessage = "Inserted in table";
-        public const string BackupDatabaseMessage = ""; //FALTA MESSAGE
+        public const string BackupDatabaseMessage = "";
     }
 }
