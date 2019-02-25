@@ -10,16 +10,8 @@ public class DropTable : MiniSQL
         {
             this.tableName = tableName;
         }
-
-    public Match Drop_Table(string query)
-    {
-        string regExp = @"DROP\s+TABLE\s+(\w+);";
-        Match match = Regex.Match(query, regExp);
-        return match;
-    }
     public string Execute(Database pDatabase)
-    {
-           
+    {      
             pDatabase.DeleteTable(tableName);
             return Constants.DropTableMessage;
     }
