@@ -40,7 +40,7 @@ namespace MiniSQLEngine
         public string Execute(Database pDatabase)
         {
             Table tabla = pDatabase.GetTable(name);
-            tabla.setData(columns, values);
+            tabla.insert(columns, values);
             return Constants.InsertMessage;
         }
     }
