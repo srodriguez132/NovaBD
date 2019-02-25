@@ -23,14 +23,17 @@ namespace MiniSQLEngine
             condition = (string)match.Groups[2].Value;
 
             return match;
-           
+        }
 
+        public Delete(string pName, string pCondition)
+        {
+            name = pName;
+            condition = pCondition;
         }
 
         public string Execute(Database pDatabase)
         {
-            //SIN ACABAR
-            Table tabla = Database.GetTable(name);
+            Table tabla = pDatabase.GetTable(name);
             tabla.delete(condition);
             return Constants.DeleteMessage;
         }
