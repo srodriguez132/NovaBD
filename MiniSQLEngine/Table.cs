@@ -29,17 +29,23 @@ namespace MiniSQLEngine
         {
             return name;
         }
-        public void setData(string pData)
+        public void insert(string pData, string pColumns)
         {
-            string[] at = pData.Split(',');
-            string regExp = @"(\w+)";
-            string[] a = new string[at.Length - 1];
+            string[] at = pColumns.Split(',');           
+            string[] at1 = pData.Split(',');
+            int[] a = new int[at.Length - 1];
+            string[] res = new string[columns.Length - 1];
             for (int i = 0; i < at.Length; i++)
             {
-                Match match = Regex.Match(at[i], regExp);
-                a[i] = (string)match.Groups[1].Value;
+                for(int j = 0; j < columns.Length; j++)
+                {
+                    if (at[i] == columns[j]) { a[i] = j; }
+                }               
             }
-            datas.Add(a);
+            for (int k = 0; k < a.Length; k++){
+                res[a[k]] = at1[k];
+            }
+            datas.Add(res);
         }
         public string delete(string pCondition)
         {

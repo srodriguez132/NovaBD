@@ -4,11 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using Databases;
 namespace MiniSQLEngine
 {
-    public class CreateDataBase
+    public class CreateDataBase:MiniSQL
     {
+        string dbName;
+        public CreateDataBase(string dbName)
+        {
+            this.dbName = dbName;
+        }
+
         public string resultado;
         public Match CreateDatabase(string query)
         {
@@ -18,9 +23,9 @@ namespace MiniSQLEngine
             return match;
         }
 
-        public string Execute(Database pDatabase)
+        public string Execute()
         {
-            pDatabase = new Database(resultado);
+            Database pDatabase = new Database(dbName);
             return Constants.CreateDatabaseMessage;
         }
     }

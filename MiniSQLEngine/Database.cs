@@ -36,7 +36,7 @@ namespace MiniSQLEngine
             }
 
         }
-        public Table SearchTable(string pName)
+        public Table GetTable(string pName)
         {
 
             for (int i = 0; i < tables.Count; i++)
@@ -105,6 +105,11 @@ namespace MiniSQLEngine
                 return new Update(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
             }
             return null;
+        }
+        public string Query(string phrase)
+        {
+           MiniSQLEngine.MiniSQL q = Parse(phrase);
+           return q.Execute(this);            
         }
     }
 }
