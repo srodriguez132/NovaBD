@@ -64,7 +64,7 @@ namespace MiniSQLEngine
             match = Regex.Match(query, RegularExpressions.CreateTable);
             if (match.Success)
             {
-                return new CreateTable(match.Groups[1].Value);
+                return new CreateTable(match.Groups[1].Value, match.Groups[2].Value);
             }
             match = Regex.Match(query, RegularExpressions.Delete);
             if (match.Success)
