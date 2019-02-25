@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace MiniSQLEngine
 { 
-public class DropTable
+public class DropTable : MiniSQL
 {
     public Match Drop_Table(string query)
     {
