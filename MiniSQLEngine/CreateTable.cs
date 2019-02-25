@@ -41,7 +41,7 @@ namespace MiniSQLEngine
         public string Execute(Database pDatabase)
         {
             pDatabase.CreateTable(name, atributes);
-            return Constants.CreateTableMenssage;
+            return Constants.CreateTableMessage;
         }
     }
 }
