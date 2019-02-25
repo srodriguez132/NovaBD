@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    public class BackupDatabase
+    public class BackupDatabase : MiniSQL
     {
         public Match BackupDtb(string query)
         {
@@ -17,6 +17,16 @@ namespace MiniSQLEngine
             
             return match;
         }
+        
+        public BackupDatabase()
+        {
+            //FALTA
+        }
 
-    }
+        public string Execute(Database pDatabase)
+        {
+
+            return Constants.BackupDatabaseMessage;
+        }
+    } 
 }

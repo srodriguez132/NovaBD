@@ -38,6 +38,11 @@ namespace MiniSQLEngine
             return match;
         }
 
+        public CreateTable()
+        {
+            //FALTA
+        }
+
         public string Execute(Database pDatabase)
         {
             pDatabase.CreateTable(name, atributes);
