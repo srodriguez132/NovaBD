@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 
+
 namespace MiniSQLEngine
 {
     public class Delete : MiniSQL 
@@ -22,13 +23,16 @@ namespace MiniSQLEngine
             condition = (string)match.Groups[2].Value;
 
             return match;
-           
+        }
 
+        public Delete()
+        {
+            //FALTA
         }
 
         public string Execute(Database pDatabase)
         {
-            Table tabla =  
+            Table tabla = pDatabase.GetTable(name);
             tabla.delete(condition);
             return Constants.DeleteMessage;
         }
