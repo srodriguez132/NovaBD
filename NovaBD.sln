@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateDataBaseTest", "Test\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DropDataBaseTest", "Test\DropDataBaseTest\DropDataBaseTest.csproj", "{707EC79A-96F7-46F2-AD4A-B990B9ED075D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBaseTest", "Test\DataBaseTest\DataBaseTest.csproj", "{5E4C5793-A01A-42AF-AA4F-E15BB396829D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{707EC79A-96F7-46F2-AD4A-B990B9ED075D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{707EC79A-96F7-46F2-AD4A-B990B9ED075D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{707EC79A-96F7-46F2-AD4A-B990B9ED075D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4C5793-A01A-42AF-AA4F-E15BB396829D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4C5793-A01A-42AF-AA4F-E15BB396829D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4C5793-A01A-42AF-AA4F-E15BB396829D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4C5793-A01A-42AF-AA4F-E15BB396829D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,6 +96,7 @@ Global
 		{A58310BB-EB55-4F58-95B1-6C28D845979B} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 		{D7B54A6E-1E38-468B-81D7-5F8A668470D5} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 		{707EC79A-96F7-46F2-AD4A-B990B9ED075D} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
+		{5E4C5793-A01A-42AF-AA4F-E15BB396829D} = {26D8AFC2-AA8F-4FBB-B78B-AC7822564698}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {262A21CD-8B3D-4302-9721-BFF145130E31}
