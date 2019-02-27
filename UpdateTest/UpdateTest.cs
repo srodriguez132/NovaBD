@@ -18,7 +18,7 @@ namespace UpdateTest
             Assert.AreEqual("table", result.Groups[1].Value);
             Assert.AreEqual("column=value", result.Groups[2].Value);
             Assert.AreEqual("condition", result.Groups[3].Value);
-
+            
         }
     }
 }
