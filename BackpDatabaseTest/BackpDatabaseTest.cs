@@ -11,13 +11,7 @@ namespace BackupDatabaseTest
         [TestMethod]
         public void BackupDatabaseTest()
         {
-            Match result;
-            BackupDatabase bckd = new BackupDatabase();
-
-            result = bckd.BackupDtb("BACKUP DATABASE prueba TO DISK = 'filepath';");
-
-            Assert.AreEqual("prueba", result.Groups[1].Value);
-            Assert.AreEqual("'filepath'", result.Groups[2].Value);
+        
 
 
         }
