@@ -14,17 +14,6 @@ namespace MiniSQLEngine
         public string name;
         public string condition;
 
-        public Match delete(string query)
-        {
-            string regExp = @"DELETE\s+FROM\s+(\w+)\s+WHERE\s+(\w+)\s+=\s+(\w+);";
-            Match match = Regex.Match(query, regExp);
-
-            name = (string)match.Groups[1].Value;
-            condition = (string)match.Groups[2].Value;
-
-            return match;
-        }
-
         public Delete(string pName, string pCondition)
         {
             name = pName;
