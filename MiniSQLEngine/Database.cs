@@ -89,7 +89,7 @@ namespace MiniSQLEngine
             match = Regex.Match(query, RegularExpressions.Select);
             if (match.Success)
             {
-                if(match.Length>2)
+                if(match.Groups[1].Value == null)
                 {
                     return new Select(match.Groups[3].Value, match.Groups[4].Value, match.Groups[5].Value);
                     
