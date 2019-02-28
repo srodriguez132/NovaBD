@@ -38,7 +38,7 @@ namespace DataBaseTest
         public void parseInsertTest()
         {
             Database db = new Database("name");
-            MiniSQLEngine.MiniSQL q1 = db.Parse("INSERT INTO table () VALUES ();");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("INSERT INTO table (column) VALUES (column1);");
             Assert.IsInstanceOfType(q1, typeof(Insert));
         }
         [TestMethod]
@@ -61,6 +61,13 @@ namespace DataBaseTest
             Database db = new Database("name");
             MiniSQLEngine.MiniSQL q1 = db.Parse("DROP DATABASE database;");
             Assert.IsInstanceOfType(q1, typeof(DropDataBase));
+        }
+        [TestMethod]
+        public void parseSelectTest()
+        {
+            Database db = new Database("name");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("SELECT column FROM table;");
+            Assert.IsInstanceOfType(q1, typeof(Select));
         }
     }
 }
