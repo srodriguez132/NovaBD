@@ -12,18 +12,8 @@ namespace MiniSQLEngine
         public CreateDataBase(string dbName)
         {
             this.dbName = dbName;
-        }
-
-        public string resultado;
-        public Match CreateDatabase(string query)
-        {
-            string regExp = @"CREATE\s+DATABASE\s+(\w+);";
-            Match match = Regex.Match(query, regExp);
-            resultado = (string)match.Groups[1].Value;
-            return match;
-        }
-
-        public override string Execute(Database pDatabase)
+        }    
+        public string Execute()
         {
             pDatabase = new Database(dbName);
             return Constants.CreateDatabaseMessage;

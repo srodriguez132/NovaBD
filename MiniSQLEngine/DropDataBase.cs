@@ -13,15 +13,8 @@ namespace MiniSQLEngine
         public DropDataBase(string dbName)
         {
             this.dbName = dbName;
-        }
-        public Match DropDatabase(string query)
-        {
-            string regExp = @"DROP\s+DATABASE\s+(\w+);";
-            Match match = Regex.Match(query, regExp);
-            return match;
-        }
-
-        public override string Execute(Database pDatabase)
+        }    
+        public string Execute(Database pDatabase)
         {
             //pDatabase = new Database(dbName);
             return Constants.DropDatabaseMessage;

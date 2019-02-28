@@ -18,13 +18,7 @@ namespace MiniSQLEngine
             this.table = table;
             this.condition = condition;
         }
-        public Match select(string query)
-        {
-            string regExp = @"SELECT\s+(\w+|\*)\s+FROM\s+(\w+);|SELECT\s+(\w+|\*)\s+FROM\s+(\w+)\s+WHERE\s+(\w+[<|=|>]\w+);";
-            Match match = Regex.Match(query, regExp);
-            return match;
-        }
-        public override string Execute(Database pDatabase)
+        public string Execute (Database pDatabase)
         {
             Table pTable = pDatabase.GetTable(table);
             pTable.select(columns, condition);
