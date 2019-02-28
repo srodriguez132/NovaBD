@@ -15,7 +15,6 @@ namespace CreateTableTest
             CreateTable creTab = new CreateTable();
             result = creTab.createTable("CREATE TABLE table1 (name string, age int);");
             Assert.AreEqual("table1", result.Groups[1].Value);
-            Assert.AreEqual("name string, age int", result.Groups[2].Value);
         }
     }
 }
