@@ -5,12 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 namespace MiniSQLEngine
 {
-  public class MiniSQL
+  public abstract class MiniSQL
     {
-        public string Execute(Database pDatabase)
-        {        
-            return null;
-        }
+        public abstract string Execute(Database pDatabase);
         
     }
 }

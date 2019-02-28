@@ -27,7 +27,7 @@ namespace MiniSQLEngine
             disk = pDisk;
         }
 
-        public string Execute(Database pDatabase)
+        public override string Execute(Database pDatabase)
         {
             //FALTA
             return Constants.BackupDatabaseMessage;

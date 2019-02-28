@@ -10,8 +10,8 @@ public class DropTable : MiniSQL
         {
             this.tableName = tableName;
         }
-    public string Execute(Database pDatabase)
-    {      
+        public override string Execute(Database pDatabase)
+        {      
             pDatabase.DeleteTable(tableName);
             return Constants.DropTableMessage;
     }

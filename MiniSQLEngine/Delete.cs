@@ -20,7 +20,7 @@ namespace MiniSQLEngine
             condition = pCondition;
         }
 
-        public string Execute(Database pDatabase)
+        public override string Execute(Database pDatabase)
         {
             Table tabla = pDatabase.GetTable(name);
             tabla.delete(condition);

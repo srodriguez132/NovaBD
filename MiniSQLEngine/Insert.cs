@@ -37,10 +37,11 @@ namespace MiniSQLEngine
             values = pValues;
         }
 
-        public string Execute(Database pDatabase)
+        public override string Execute(Database pDatabase)
         {
             Table tabla = pDatabase.GetTable(name);
-            tabla.insert(columns, values);
+            
+            tabla.insert(values, columns);
             return Constants.InsertMessage;
         }
     }

@@ -18,8 +18,8 @@ namespace MiniSQLEngine
             this.updateInfo = updateInfo;
             this.condition = condition;
         }
-      
-        public string Execute(Database pDatabase)
+
+        public override string Execute(Database pDatabase)
         {
             Table pTable = pDatabase.GetTable(tableName);
             pTable.update(updateInfo, condition);

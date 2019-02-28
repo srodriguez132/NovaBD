@@ -24,7 +24,7 @@ namespace MiniSQLEngine
             Match match = Regex.Match(query, regExp);
             return match;
         }
-        public string Execute (Database pDatabase)
+        public override string Execute(Database pDatabase)
         {
             Table pTable = pDatabase.GetTable(table);
             pTable.select(columns, condition);

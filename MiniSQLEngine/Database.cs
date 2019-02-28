@@ -38,14 +38,16 @@ namespace MiniSQLEngine
         }
         public Table GetTable(string pName)
         {
-
+            
             for (int i = 0; i < tables.Count; i++)
             {
-                if (tables[i].getName().Equals(name))
+                if (tables[i].getName().Equals(pName))
                 {
-
+                 
                     return tables[i];
+                 
                 }
+               
             }
             return null;
         }

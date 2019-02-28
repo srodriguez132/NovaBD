@@ -20,7 +20,7 @@ namespace MiniSQLEngine
             atributes = pAtributes;
         }
 
-        public string Execute(Database pDatabase)
+        public override string Execute(Database pDatabase)
         {
             pDatabase.CreateTable(name, atributes);
             return Constants.CreateTableMessage;
