@@ -38,7 +38,7 @@ namespace DataBaseTest
         public void parseInsertTest()
         {
             Database db = new Database("name");
-            MiniSQLEngine.MiniSQL q1 = db.Parse("INSERT INTO table () VALUES ();");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("INSERT INTO table (column) VALUES (column1);");
             Assert.IsInstanceOfType(q1, typeof(Insert));
         }
         [TestMethod]
