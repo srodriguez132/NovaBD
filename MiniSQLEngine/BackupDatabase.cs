@@ -10,17 +10,7 @@ namespace MiniSQLEngine
     public class BackupDatabase : MiniSQL
     {
         public string name;
-        public string disk;
-
-        public Match BackupDtb(string query)
-        {
-            string regularExp = @"BACKUP DATABASE\s+(\w+)\s+TO DISK = ('\w+');";
-            
-            Match match = Regex.Match(query, regularExp);
-            
-            return match;
-        }
-        
+        public string disk;       
         public BackupDatabase(string pName, string pDisk)
         {
             name = pName;
