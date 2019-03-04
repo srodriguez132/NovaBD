@@ -17,8 +17,8 @@ namespace MiniSQLEngine
             name = pName;
             string[] at = pColumns.Split(',');
             string regExp = @"(\w+)\s";
-            columns = new string[at.Length - 1];
-            for (int i = 0; i < at.Length-1; i++)
+            columns = new string[at.Length ];
+            for (int i = 0; i < at.Length; i++)
             {
                 Match match = Regex.Match(at[i], regExp);
                 columns[i] = (string)match.Groups[1].Value;

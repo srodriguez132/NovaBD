@@ -18,5 +18,6 @@ namespace MiniSQLEngine
         public const string BackupDatabaseMessage = "";
         public const string SelectMessage = "Selected from table";
         public const string UpdateMessage = "Table updated";
+        public const string ErrorMessage = "ERROR: Table doesn't exist";
     }
 }
