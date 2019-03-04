@@ -23,8 +23,8 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             Table tabla = pDatabase.GetTable(name);
-            tabla.delete(condition);
-            return Constants.DeleteMessage;
+           return tabla.delete(condition);
+            
         }
     }
 

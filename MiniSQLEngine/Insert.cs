@@ -25,8 +25,8 @@ namespace MiniSQLEngine
         {
             Table tabla = pDatabase.GetTable(name);
             
-            tabla.insert(values, columns);
-            return Constants.InsertMessage;
+          return  tabla.insert(values, columns);
+         
         }
     }
 }
