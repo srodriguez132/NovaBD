@@ -24,9 +24,16 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             Table tabla = pDatabase.GetTable(name);
+            if (tabla == null)
+            {
+                return Constants.ErrorMessage;
+            }
+            else
+            {
+                tabla.insert(values, columns);
+                return Constants.InsertMessage;
+            }
             
-            tabla.insert(values, columns);
-            return Constants.InsertMessage;
         }
     }
 }
