@@ -21,8 +21,8 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             Table pTable = pDatabase.GetTable(table);
-            pTable.select(columns, condition);
-            return Constants.SelectMessage;
+            return pTable.select(columns, condition);
+           
         }
         
 
