@@ -29,6 +29,8 @@ namespace MiniSQLEngine
         {
             return this.name;
         }
+
+
         public string insert(string pData, string pColumns)
         {
             string[] at = pColumns.Split(',');           

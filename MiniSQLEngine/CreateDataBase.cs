@@ -12,8 +12,8 @@ namespace MiniSQLEngine
         public CreateDataBase(string dbName)
         {
             this.dbName = dbName;
-        }    
-        public string Execute()
+        }
+        public override string Execute(Database pDatabase)
         {
             pDatabase = new Database(dbName);
             return Constants.CreateDatabaseMessage;

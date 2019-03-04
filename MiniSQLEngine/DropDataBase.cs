@@ -13,8 +13,8 @@ namespace MiniSQLEngine
         public DropDataBase(string dbName)
         {
             this.dbName = dbName;
-        }    
-        public string Execute(Database pDatabase)
+        }
+        public override string Execute(Database pDatabase)
         {
             //pDatabase = new Database(dbName);
             return Constants.DropDatabaseMessage;

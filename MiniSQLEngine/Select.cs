@@ -18,7 +18,7 @@ namespace MiniSQLEngine
             this.table = table;
             this.condition = condition;
         }
-        public string Execute (Database pDatabase)
+        public override string Execute(Database pDatabase)
         {
             Table pTable = pDatabase.GetTable(table);
             pTable.select(columns, condition);
