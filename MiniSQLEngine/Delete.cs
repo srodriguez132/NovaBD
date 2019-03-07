@@ -30,7 +30,7 @@ namespace MiniSQLEngine
             }
             else
             {
-                return tabla.delete(condition) + Messages.TupleDeleteSuccess;
+                return Messages.TupleDeleteSuccess;
                 //return tabla.delete(condition) + Constants.DeleteMessage;
             }
         }

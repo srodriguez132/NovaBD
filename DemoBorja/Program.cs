@@ -41,7 +41,7 @@ namespace DemoBorja
                         stopWatch1.Start();
                         string res = db.Query(lines[i]);
                         stopWatch1.Stop();
-                        writer.WriteLine( res + " (" + stopWatch1.Elapsed.TotalSeconds+"s)");
+                        writer.WriteLine( res + " (" + Convert.ToDecimal(stopWatch1.Elapsed.TotalSeconds) + "s)");
                     }
                     stopWatch.Stop();
                 }
