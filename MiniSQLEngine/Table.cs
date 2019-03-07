@@ -39,17 +39,30 @@ namespace MiniSQLEngine
         {
             string[] at = pColumns.Split(',');           
             string[] at1 = pData.Split(',');
-            int[] a = new int[at.Length];          
             string[] res = new string[columns.Length];
-            for (int i = 0; i < at.Length; i++)
+            if (pColumns != null)
             {
-                for(int j = 0; j < columns.Length; j++)
-                {
-                    if (at[i]==columns[j])
+                int[] a = new int[at.Length];                         
+                    for (int i = 0; i < at.Length; i++)
                     {
-                        a[i] = j;
-                    }
-                }               
+                        for (int j = 0; j < columns.Length; j++)
+                        {
+                            if (at[i] == columns[j])
+                            {
+                                a[i] = j;
+                            }
+                        }
+                    }               
+               }
+            else
+            {
+                int[] a = new int[columns.Length];
+                for (int j = 0; j < columns.Length; j++)
+                {
+
+                    a[j] = j;
+
+                }
             }
             for (int k = 0; k < a.Length; k++){
                 res[a[k]] = at1[k];
