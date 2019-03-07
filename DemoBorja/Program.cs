@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,13 +18,18 @@ namespace DemoBorja
             using (StreamWriter writer = File.CreateText(path + "output.txt"))
             {
                 int c = 1;
+                Stopwatch stopWatch = new Stopwatch();
                 Database db = new Database("database1");
                 writer.WriteLine("# TEST " + c);
                 string[] lines = System.IO.File.ReadAllLines(@"C:\Users\docencia\Downloads\TesterInput-example.txt");
                 for (int i = 0; i < lines.Length; i++)
                 {
+                    stopWatch.Start();
                     if (lines[i] == "")
                     {
+                        stopWatch.Stop();
+                        writer.WriteLine("TOTAL TIME: " + stopWatch.Elapsed.TotalSeconds+"s");
+                        stopWatch = new Stopwatch();
                         c++;
                         db = new Database("database"+i);
                         writer.WriteLine("");
@@ -31,10 +37,13 @@ namespace DemoBorja
                     }
                     else
                     {
+                        Stopwatch stopWatch1 = new Stopwatch();
+                        stopWatch1.Start();
                         string res = db.Query(lines[i]);
-                        writer.WriteLine(res);
+                        stopWatch1.Stop();
+                        writer.WriteLine( res + " (" + stopWatch1.Elapsed.TotalSeconds+"s)");
                     }
-                   
+                    stopWatch.Stop();
                 }
             }
 
