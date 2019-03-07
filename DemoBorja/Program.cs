@@ -28,8 +28,9 @@ namespace DemoBorja
                     if (lines[i] == "")
                     {
                         stopWatch.Stop();
-                        writer.WriteLine("TOTAL TIME: " + stopWatch.Elapsed.TotalSeconds+"s");
+                        writer.WriteLine("TOTAL TIME: " + Convert.ToDecimal(stopWatch.Elapsed.TotalSeconds)+"s");
                         stopWatch = new Stopwatch();
+                        stopWatch.Start();
                         c++;
                         db = new Database("database"+i);
                         writer.WriteLine("");
@@ -43,8 +44,9 @@ namespace DemoBorja
                         stopWatch1.Stop();
                         writer.WriteLine( res + " (" + Convert.ToDecimal(stopWatch1.Elapsed.TotalSeconds) + "s)");
                     }
-                    stopWatch.Stop();
                 }
+                stopWatch.Stop();
+                writer.WriteLine("TOTAL TIME: " + Convert.ToDecimal(stopWatch.Elapsed.TotalSeconds) + "s");
             }
 
         }
