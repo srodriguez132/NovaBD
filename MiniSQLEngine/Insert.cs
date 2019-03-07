@@ -26,12 +26,14 @@ namespace MiniSQLEngine
             Table tabla = pDatabase.GetTable(name);
             if (tabla == null)
             {
-                return Constants.ErrorMessage;
+                //return Constants.ErrorMessage;
+                return Messages.Error + Messages.TableDoesNotExist;
             }
             else
             {
                 tabla.insert(values, columns);
-                return Constants.InsertMessage;
+                //return Constants.InsertMessage;
+                return Messages.InsertSuccess;
             }
             
         }

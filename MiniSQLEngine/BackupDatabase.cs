@@ -20,7 +20,8 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             //FALTA
-            return Constants.BackupDatabaseMessage;
+            //return Constants.BackupDatabaseMessage;
+            return Messages.BackupDatabaseSuccess;
         }
     } 
 }

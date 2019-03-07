@@ -21,8 +21,16 @@ namespace MiniSQLEngine
 
         public override string Execute(Database pDatabase)
         {
-            Table pTable = pDatabase.GetTable(tableName);
-           return pTable.update(updateInfo, condition);
+            Table tabla = pDatabase.GetTable(tableName);
+            if (tabla == null)
+            {
+                //return Constants.ErrorMessage;
+                return Messages.Error + Messages.TableDoesNotExist;
+            }
+            else
+            {
+                return tabla.update(updateInfo, condition) + Messages.TupleUpdateSuccess;
+            }
             
         }
     }

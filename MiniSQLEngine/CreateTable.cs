@@ -23,7 +23,8 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             pDatabase.CreateTable(name, atributes);
-            return Constants.CreateTableMessage;
+            //return Constants.CreateTableMessage;
+            return Messages.CreateTableSuccess;
         }
     }
 }
