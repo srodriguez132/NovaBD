@@ -256,16 +256,19 @@ namespace MiniSQLEngine
                     {
                         if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
                         {
+                            ret += "{";
                             for (int k = 0; k < at.Length; k++)
                             {
                                 for (int z = 0; z < columns.Length; z++)
                                 {
                                     if (at[k].Equals(columns[z]))
                                     {
-                                        ret += "{" + datas.ElementAt(j)[z] + "}";
-                                    }
+                                        ret +=datas.ElementAt(j)[z] ;
+                                    }                                
                                 }
+                                if(k+1 != at.Length) { ret += ","; }
                             }
+                            ret += "}";
                         }
                     }
                 }
@@ -275,16 +278,19 @@ namespace MiniSQLEngine
                     {
                         if (datas.ElementAt(j)[i] == (string)match.Groups[3].Value)
                         {
+                            ret += "{";
                             for (int k = 0; k < at.Length; k++)
                             {
                                 for (int z = 0; z < columns.Length; z++)
                                 {
                                     if (at[k].Equals(columns[z]))
                                     {
-                                        ret += "{" + datas.ElementAt(j)[z] + "}";
+                                        ret +=  datas.ElementAt(j)[z] ;
                                     }
                                 }
+                                if (k + 1 != at.Length) { ret += ","; }
                             }
+                            ret += "}";
                         }
                     }
                 }
@@ -294,16 +300,19 @@ namespace MiniSQLEngine
                     {
                         if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
                         {
+                            ret += "{";
                             for (int k = 0; k < at.Length; k++)
                             {
                                 for (int z = 0; z < columns.Length; z++)
                                 {
                                     if (at[k].Equals(columns[z]))
                                     {
-                                        ret += "{" + datas.ElementAt(j)[z] + "}";
+                                        ret +=  datas.ElementAt(j)[z] ;
                                     }
                                 }
+                                if (k + 1 != at.Length) { ret +=","; }
                             }
+                            ret += "}";
                         }
                     }
                 }
@@ -319,9 +328,10 @@ namespace MiniSQLEngine
                         {
                             if (at[i] == columns[j])
                             {
-                                ret += datas.ElementAt(k)[j];
+                                ret += datas.ElementAt(k)[j] ;
                             }
                         }
+                        if (i + 1 != at.Length) { ret +=","; }
                     }
                     ret += "}";
                 }               
