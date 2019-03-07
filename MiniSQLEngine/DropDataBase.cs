@@ -17,7 +17,8 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             //pDatabase = new Database(dbName);
-            return Constants.DropDatabaseMessage;
+            //return Constants.DropDatabaseMessage;
+            return Messages.DeleteDatabaseSuccess;
         }
     }
 }

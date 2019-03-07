@@ -20,9 +20,16 @@ namespace MiniSQLEngine
         }
         public override string Execute(Database pDatabase)
         {
-            Table pTable = pDatabase.GetTable(table);
-            return pTable.select(columns, condition);
-           
+            Table tabla = pDatabase.GetTable(table);
+            if (tabla == null)
+            {
+                //return Constants.ErrorMessage;
+                return Messages.Error + Messages.TableDoesNotExist;
+            }
+            else
+            {
+                return tabla.select(columns, condition);
+            }
         }
         
 
