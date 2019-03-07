@@ -17,7 +17,7 @@ namespace MiniSQLEngine
         {
             name = pName;
             string regExp = @"(\w+)(\s)(\w+)";
-            string[] at = pColumns.Split(',');   
+            string[] at = pColumns.Split(',');
             columns = new string[at.Length];
             condition = new string[at.Length];
 
@@ -37,26 +37,27 @@ namespace MiniSQLEngine
 
         public string insert(string pData, string pColumns)
         {
-            string[] at = pColumns.Split(',');           
+            string[] at = pColumns.Split(',');
             string[] at1 = pData.Split(',');
             string[] res = new string[columns.Length];
-            if (pColumns != null)
+            int[] a;
+            if (pColumns != "")
             {
-                int[] a = new int[at.Length];                         
-                    for (int i = 0; i < at.Length; i++)
+                a = new int[at.Length];
+                for (int i = 0; i < at.Length; i++)
+                {
+                    for (int j = 0; j < columns.Length; j++)
                     {
-                        for (int j = 0; j < columns.Length; j++)
+                        if (at[i] == columns[j])
                         {
-                            if (at[i] == columns[j])
-                            {
-                                a[i] = j;
-                            }
+                            a[i] = j;
                         }
-                    }               
-               }
+                    }
+                }
+            }
             else
             {
-                int[] a = new int[columns.Length];
+                a = new int[columns.Length];
                 for (int j = 0; j < columns.Length; j++)
                 {
 
@@ -64,7 +65,8 @@ namespace MiniSQLEngine
 
                 }
             }
-            for (int k = 0; k < a.Length; k++){
+            for (int k = 0; k < a.Length; k++)
+            {
                 res[a[k]] = at1[k];
             }
             datas.Add(res);
@@ -137,10 +139,10 @@ namespace MiniSQLEngine
             string column = match.Groups[1].Value;
             string sign = match.Groups[2].Value;
             string value = match.Groups[3].Value;
-            string[] at = pUpdate.Split(',');         
+            string[] at = pUpdate.Split(',');
             Match match1;
             int i = 0;
-            int[] array = new int[at.Length ];
+            int[] array = new int[at.Length];
             int count = 0;
             Boolean f = false;
             Boolean f1 = false;
@@ -233,50 +235,73 @@ namespace MiniSQLEngine
         }
         public string select(string pColumns, string pCondition)
         {
-            string ret = null;
+
+            string ret = "{" + pColumns + "}";
             string[] at = pColumns.Split(',');
             string[] array = new string[at.Length];
-            string regExp = @"(\w+)(<|=|>)(\w+)";
-            Match match = Regex.Match(pCondition, regExp);
-            Boolean f = false;
-            int i = 0;
-            while (i < columns.Length && f == false)
+            if (pCondition != "")
             {
-                if (columns[i] == (string)match.Groups[1].Value) { f = true; }
-                else { i++; }
-            }
-            if ((string)match.Groups[2].Value == "<")
-            {
-                for (int j = 0; j < datas.Count; j++)
+                string regExp = @"(\w+)(<|=|>)(\w+)";
+                Match match = Regex.Match(pCondition, regExp);
+                Boolean f = false;
+                int i = 0;
+                while (i < columns.Length && f == false)
                 {
-                    if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
+                    if (columns[i] == (string)match.Groups[1].Value) { f = true; }
+                    else { i++; }
+                }
+                if ((string)match.Groups[2].Value == "<")
+                {
+                    for (int j = 0; j < datas.Count; j++)
                     {
-                        for (int k = 0; k < at.Length; k++)
+                        if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
                         {
-                            for (int z = 0; z < columns.Length; z++)
+                            for (int k = 0; k < at.Length; k++)
                             {
-                                if (at[k].Equals(columns[z]))
+                                for (int z = 0; z < columns.Length; z++)
                                 {
-                                    ret += datas.ElementAt(j)[z];
+                                    if (at[k].Equals(columns[z]))
+                                    {
+                                        ret += "{" + datas.ElementAt(j)[z] + "}";
+                                    }
                                 }
                             }
                         }
                     }
                 }
-            }
-            else if ((string)match.Groups[2].Value == "=")
-            {
-                for (int j = 0; j < datas.Count; j++)
+                else if ((string)match.Groups[2].Value == "=")
                 {
-                    if (datas.ElementAt(j)[i] == (string)match.Groups[3].Value)
+                    for (int j = 0; j < datas.Count; j++)
                     {
-                        for (int k = 0; k < at.Length; k++)
+                        if (datas.ElementAt(j)[i] == (string)match.Groups[3].Value)
                         {
-                            for (int z = 0; z < columns.Length; z++)
+                            for (int k = 0; k < at.Length; k++)
                             {
-                                if (at[k].Equals(columns[z]))
+                                for (int z = 0; z < columns.Length; z++)
                                 {
-                                    ret += datas.ElementAt(j)[z];
+                                    if (at[k].Equals(columns[z]))
+                                    {
+                                        ret += "{" + datas.ElementAt(j)[z] + "}";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    for (int j = 0; j < datas.Count; j++)
+                    {
+                        if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
+                        {
+                            for (int k = 0; k < at.Length; k++)
+                            {
+                                for (int z = 0; z < columns.Length; z++)
+                                {
+                                    if (at[k].Equals(columns[z]))
+                                    {
+                                        ret += "{" + datas.ElementAt(j)[z] + "}";
+                                    }
                                 }
                             }
                         }
@@ -285,22 +310,21 @@ namespace MiniSQLEngine
             }
             else
             {
-                for (int j = 0; j < datas.Count; j++)
+                for (int k = 0; k < datas.Count; k++)
                 {
-                    if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
+                    ret += "{";
+                    for (int i = 0; i < at.Length; i++)
                     {
-                        for (int k = 0; k < at.Length; k++)
+                        for (int j = 0; j < columns.Length; j++)
                         {
-                            for (int z = 0; z < columns.Length; z++)
+                            if (at[i] == columns[j])
                             {
-                                if (at[k].Equals(columns[z]))
-                                {
-                                    ret += datas.ElementAt(j)[z];
-                                }
+                                ret += datas.ElementAt(k)[j];
                             }
                         }
                     }
-                }
+                    ret += "}";
+                }               
             }
             return ret;
         }
