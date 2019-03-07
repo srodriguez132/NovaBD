@@ -39,8 +39,18 @@ namespace MiniSQLEngine
         {
             string[] at = pColumns.Split(',');
             string[] at1 = pData.Split(',');
+            string[] at2 = new string[at1.Length];
             string[] res = new string[columns.Length];
             int[] a;
+            string regexp = @"'(.+)'";
+            for(int i=0; i < at1.Length; i++)
+            {
+                Match match = Regex.Match(at1[i], regexp);
+                if (match.Success) { at2[i] = (string)match.Groups[1].Value; }
+                else { at2[i] = at1[i]; }
+              
+
+            }
             if (pColumns != "")
             {
                 a = new int[at.Length];
@@ -67,7 +77,7 @@ namespace MiniSQLEngine
             }
             for (int k = 0; k < a.Length; k++)
             {
-                res[a[k]] = at1[k];
+                res[a[k]] = at2[k];
             }
             datas.Add(res);
             return "Row inserted";
