@@ -14,14 +14,16 @@ namespace DemoBorja
         static void Main(string[] args)
         {
 
-            string path = @"C:\Users\docencia\Downloads\";
+            string path = @".\";
+            Console.WriteLine("Write the name of the file you want to read ");
+            string inputfile = Console.ReadLine();
             using (StreamWriter writer = File.CreateText(path + "output.txt"))
             {
                 int c = 1;
                 Stopwatch stopWatch = new Stopwatch();
                 Database db = new Database("database1");
                 writer.WriteLine("# TEST " + c);
-                string[] lines = System.IO.File.ReadAllLines(@"C:\Users\docencia\Downloads\TesterInput-example.txt");
+                string[] lines = System.IO.File.ReadAllLines(@".\bin\TesterInput-example.txt");
                 for (int i = 0; i < lines.Length; i++)
                 {
                     stopWatch.Start();
