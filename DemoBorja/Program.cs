@@ -16,12 +16,25 @@ namespace DemoBorja
             string path = @"C:\Users\docencia\Downloads\";
             using (StreamWriter writer = File.CreateText(path + "output.txt"))
             {
+                int c = 1;
                 Database db = new Database("database1");
-                string[] lines = System.IO.File.ReadAllLines(@"C:\Users\docencia\Downloads\TesterInput-example.txt");
+                writer.WriteLine("# TEST " + c);
+                string[] lines = System.IO.File.ReadAllLines(@"C:\Users\docencia\Downloads\TesterInput.txt");
                 for (int i = 0; i < lines.Length; i++)
                 {
-                    string res = db.Query(lines[i]);
-                    writer.WriteLine(res);
+                    if (lines[i] == "")
+                    {
+                        c++;
+                        db = new Database("database"+i);
+                        writer.WriteLine("");
+                        writer.WriteLine("# TEST " + c);
+                    }
+                    else
+                    {
+                        string res = db.Query(lines[i]);
+                        writer.WriteLine(res);
+                    }
+                   
                 }
             }
 
