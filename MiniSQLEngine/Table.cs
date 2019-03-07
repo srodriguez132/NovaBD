@@ -264,8 +264,9 @@ namespace MiniSQLEngine
                                     if (at[k].Equals(columns[z]))
                                     {
                                         ret +=datas.ElementAt(j)[z] ;
-                                    }
+                                    }                                
                                 }
+                                if(k+1 != at.Length) { ret += ","; }
                             }
                             ret += "}";
                         }
@@ -287,6 +288,7 @@ namespace MiniSQLEngine
                                         ret +=  datas.ElementAt(j)[z] ;
                                     }
                                 }
+                                if (k + 1 != at.Length) { ret += ","; }
                             }
                             ret += "}";
                         }
@@ -308,6 +310,7 @@ namespace MiniSQLEngine
                                         ret +=  datas.ElementAt(j)[z] ;
                                     }
                                 }
+                                if (k + 1 != at.Length) { ret +=","; }
                             }
                             ret += "}";
                         }
@@ -325,9 +328,10 @@ namespace MiniSQLEngine
                         {
                             if (at[i] == columns[j])
                             {
-                                ret += datas.ElementAt(k)[j] +",";
+                                ret += datas.ElementAt(k)[j] ;
                             }
                         }
+                        if (i + 1 != at.Length) { ret +=","; }
                     }
                     ret += "}";
                 }               

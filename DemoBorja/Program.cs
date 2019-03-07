@@ -19,7 +19,7 @@ namespace DemoBorja
                 int c = 1;
                 Database db = new Database("database1");
                 writer.WriteLine("# TEST " + c);
-                string[] lines = System.IO.File.ReadAllLines(@"C:\Users\docencia\Downloads\TesterInput.txt");
+                string[] lines = System.IO.File.ReadAllLines(@"C:\Users\docencia\Downloads\TesterInput-example.txt");
                 for (int i = 0; i < lines.Length; i++)
                 {
                     if (lines[i] == "")
