@@ -27,7 +27,7 @@ namespace DemoBorja
                     Database db = new Database("database1");
                     writer.WriteLine("# TEST " + c);
 
-                    string[] lines = System.IO.File.ReadAllLines(@".\Inputs\" + inputfile + ".txt");
+                    string[] lines = System.IO.File.ReadAllLines(@"..\Inputs\" + inputfile + ".txt");
                     for (int i = 0; i < lines.Length; i++)
                     {
                         stopWatch.Start();
