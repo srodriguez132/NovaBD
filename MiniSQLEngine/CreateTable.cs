@@ -22,8 +22,17 @@ namespace MiniSQLEngine
 
         public override string Execute(Database pDatabase)
         {
+            if(atributes == "")
+            {
+                return Messages.WrongSyntax;
+            }
             pDatabase.CreateTable(name, atributes);
             //return Constants.CreateTableMessage;
+            if(pDatabase.GetTable(name).getCorrect() == false)
+            {
+                //pDatabase.DeleteTable(name);
+                return Messages.IncorrectDataType;
+            }
             return Messages.CreateTableSuccess;
         }
     }

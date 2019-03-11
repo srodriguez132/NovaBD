@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9F0CA59F-8667-412D-961E-465FE1BC4B20}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>DemoBorja</RootNamespace>
     <AssemblyName>DemoBorja</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

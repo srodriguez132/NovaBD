@@ -22,10 +22,10 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             Table tabla = pDatabase.GetTable(tableName);
-            if (tabla == null)
+            if (tabla == null || tabla.getCorrect() == false)
             {
                 //return Constants.ErrorMessage;
-                return Messages.Error + Messages.TableDoesNotExist;
+                return Messages.TableDoesNotExist;
             }
             else
             {

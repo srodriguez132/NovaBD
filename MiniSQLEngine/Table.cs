@@ -13,6 +13,7 @@ namespace MiniSQLEngine
         string[] columns;
         string[] condition;
         List<string[]> datas;
+        Boolean correct = true;
         public Table(string pName, string pColumns)
         {
             name = pName;
@@ -20,12 +21,25 @@ namespace MiniSQLEngine
             string[] at = pColumns.Split(',');
             columns = new string[at.Length];
             condition = new string[at.Length];
-
-            for (int i = 0; i < at.Length; i++)
+            Boolean wrong = false;
+            int i = 0;
+            while(wrong == false && i<at.Length)
             {
                 Match match = Regex.Match(at[i], regExp);
                 columns[i] = match.Groups[1].Value;
-                condition[i] = match.Groups[3].Value;
+                if (match.Groups[3].Value.Equals("TEXT")|| match.Groups[3].Value.Equals("INT") || match.Groups[3].Value.Equals("DOUBLE"))
+                {
+                    condition[i] = match.Groups[3].Value;
+                    i++;
+                }
+                else
+                {
+                    columns = null;
+                    condition = null;
+                    correct = false;
+                    wrong = true;
+                }
+                
             }
             datas = new List<string[]>();
         }
@@ -33,7 +47,10 @@ namespace MiniSQLEngine
         {
             return this.name;
         }
-
+        public Boolean getCorrect()
+        {
+            return correct;
+        }
 
         public string insert(string pData, string pColumns)
         {
@@ -82,7 +99,7 @@ namespace MiniSQLEngine
             datas.Add(res);
             return "Row inserted";
         }
-        public string delete(string pCondition)
+        public int delete(string pCondition)
         {
             string regExp = @"(\w+)(<|=|>)(\w+)";
             Match match = Regex.Match(pCondition, regExp);
@@ -139,7 +156,7 @@ namespace MiniSQLEngine
                     }
                 }
             }
-            return count + "row(s) have been deleted";
+            return count;
 
         }
         public string update(string pUpdate, string pCondition)
