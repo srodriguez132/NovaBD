@@ -280,10 +280,22 @@ namespace MiniSQLEngine
                 }
                 if ((string)match.Groups[2].Value == "<")
                 {
+
                     for (int j = 0; j < datas.Count; j++)
                     {
                         if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
                         {
+                            if (pColumns.Equals("*"))
+                            {
+                                ret += "{";
+                                for (int k = 0; k < columns.Length - 1; k++)
+                                {
+                                    ret += datas.ElementAt(j)[k] + ",";
+                                }
+                                
+                                ret += datas.ElementAt(j)[columns.Length-1] + "}";
+                            }
+                            else { 
                             ret += "{";
                             for (int k = 0; k < at.Length; k++)
                             {
@@ -297,6 +309,7 @@ namespace MiniSQLEngine
                                 if(k+1 != at.Length) { ret += ","; }
                             }
                             ret += "}";
+                            }
                         }
                     }
                 }
@@ -306,19 +319,32 @@ namespace MiniSQLEngine
                     {
                         if (datas.ElementAt(j)[i] == (string)match.Groups[3].Value)
                         {
-                            ret += "{";
-                            for (int k = 0; k < at.Length; k++)
+                            if (pColumns.Equals("*"))
                             {
-                                for (int z = 0; z < columns.Length; z++)
+                                ret += "{";
+                                for (int k = 0; k < columns.Length - 1; k++)
                                 {
-                                    if (at[k].Equals(columns[z]))
-                                    {
-                                        ret +=  datas.ElementAt(j)[z] ;
-                                    }
+                                    ret += datas.ElementAt(j)[k] + ",";
                                 }
-                                if (k + 1 != at.Length) { ret += ","; }
+
+                                ret += datas.ElementAt(j)[columns.Length - 1] + "}";
                             }
-                            ret += "}";
+                            else
+                            {
+                                ret += "{";
+                                for (int k = 0; k < at.Length; k++)
+                                {
+                                    for (int z = 0; z < columns.Length; z++)
+                                    {
+                                        if (at[k].Equals(columns[z]))
+                                        {
+                                            ret += datas.ElementAt(j)[z];
+                                        }
+                                    }
+                                    if (k + 1 != at.Length) { ret += ","; }
+                                }
+                                ret += "}";
+                            }
                         }
                     }
                 }
@@ -328,19 +354,32 @@ namespace MiniSQLEngine
                     {
                         if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
                         {
-                            ret += "{";
-                            for (int k = 0; k < at.Length; k++)
+                            if (pColumns.Equals("*"))
                             {
-                                for (int z = 0; z < columns.Length; z++)
+                                ret += "{";
+                                for (int k = 0; k < columns.Length - 1; k++)
                                 {
-                                    if (at[k].Equals(columns[z]))
-                                    {
-                                        ret +=  datas.ElementAt(j)[z] ;
-                                    }
+                                    ret += datas.ElementAt(j)[k] + ",";
                                 }
-                                if (k + 1 != at.Length) { ret +=","; }
+
+                                ret += datas.ElementAt(j)[columns.Length - 1] + "}";
                             }
-                            ret += "}";
+                            else
+                            {
+                                ret += "{";
+                                for (int k = 0; k < at.Length; k++)
+                                {
+                                    for (int z = 0; z < columns.Length; z++)
+                                    {
+                                        if (at[k].Equals(columns[z]))
+                                        {
+                                            ret += datas.ElementAt(j)[z];
+                                        }
+                                    }
+                                    if (k + 1 != at.Length) { ret += ","; }
+                                }
+                                ret += "}";
+                            }
                         }
                     }
                 }
@@ -349,19 +388,32 @@ namespace MiniSQLEngine
             {
                 for (int k = 0; k < datas.Count; k++)
                 {
-                    ret += "{";
-                    for (int i = 0; i < at.Length; i++)
+                    if (pColumns.Equals("*"))
                     {
-                        for (int j = 0; j < columns.Length; j++)
+                        ret += "{";
+                        for (int p = 0; p < columns.Length - 1; p++)
                         {
-                            if (at[i] == columns[j])
-                            {
-                                ret += datas.ElementAt(k)[j] ;
-                            }
+                            ret += datas.ElementAt(k)[p] + ",";
                         }
-                        if (i + 1 != at.Length) { ret +=","; }
+
+                        ret += datas.ElementAt(k)[columns.Length - 1] + "}";
                     }
-                    ret += "}";
+                    else
+                    {
+                        ret += "{";
+                        for (int i = 0; i < at.Length; i++)
+                        {
+                            for (int j = 0; j < columns.Length; j++)
+                            {
+                                if (at[i] == columns[j])
+                                {
+                                    ret += datas.ElementAt(k)[j];
+                                }
+                            }
+                            if (i + 1 != at.Length) { ret += ","; }
+                        }
+                        ret += "}";
+                    }
                 }               
             }
             return ret;
