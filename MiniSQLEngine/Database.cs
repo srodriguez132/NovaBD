@@ -31,7 +31,7 @@ namespace MiniSQLEngine
             {
                 if (tables[i].getName().Equals(name))
                 {
-                    tables[i].delete(null);
+                    tables.RemoveAt(i);
 
                 }
             }
