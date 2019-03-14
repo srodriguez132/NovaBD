@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoBorja", "DemoBorja\Demo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniSQLDBConsole", "MiniSQLDBConsole\MiniSQLDBConsole.csproj", "{2DDB6C34-658C-4299-932C-48FA5E8C01BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bundler", "Bundler\Bundler.csproj", "{117A13E0-7E78-4689-9F75-02379B817AC7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +97,10 @@ Global
 		{2DDB6C34-658C-4299-932C-48FA5E8C01BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DDB6C34-658C-4299-932C-48FA5E8C01BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DDB6C34-658C-4299-932C-48FA5E8C01BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{117A13E0-7E78-4689-9F75-02379B817AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117A13E0-7E78-4689-9F75-02379B817AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117A13E0-7E78-4689-9F75-02379B817AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117A13E0-7E78-4689-9F75-02379B817AC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

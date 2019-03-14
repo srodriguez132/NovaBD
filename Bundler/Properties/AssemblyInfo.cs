@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MiniSQLEngine")]
+[assembly: AssemblyTitle("Bundler")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("NovaBD")]
-[assembly: AssemblyProduct("MiniSQLEngine")]
+[assembly: AssemblyProduct("Bundler")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("3153fe8a-0f08-4659-b2f2-d17620d515aa")]
+[assembly: Guid("117a13e0-7e78-4689-9f75-02379b817ac7")]
 
 // Version information for an assembly consists of the following four values:
 //
