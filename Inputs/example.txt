@@ -1,4 +1,5 @@
 CREATE TABLE MyTable (Name TEX, Age INT, Address TEXT);
+CREATE TABLE MyTable (Name TEXT, Age INT, Address TEXT);
 INSER INTO MyTable VALUES ('Eva',18,'Calle Los Herran 16 2 Derecha. 01005 Vitoria-Gasteiz');
 INSERT INTO MyTable VALUES ('Ramon',26,'Larratxo kalea 23 2. Ezk. 20012 Donostia');
 INSERT INTO MyTable VALUES ('Miren',26,'Larratxo kalea 23 2. Ezk. 20012 Donostia');

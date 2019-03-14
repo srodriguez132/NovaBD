@@ -26,14 +26,24 @@ namespace MiniSQLEngine
             {
                 return Messages.WrongSyntax;
             }
-            pDatabase.CreateTable(name, atributes);
-            //return Constants.CreateTableMessage;
-            if(pDatabase.GetTable(name).getCorrect() == false)
+            
+          
+            if(pDatabase.GetTable(name) == null)
             {
-                //pDatabase.DeleteTable(name);
-                return Messages.IncorrectDataType;
+                pDatabase.CreateTable(name, atributes);
+                if (pDatabase.GetTable(name).getCorrect() == false)
+                {
+                    pDatabase.DeleteTable(name);
+
+                    return Messages.IncorrectDataType;
+                }
+                return Messages.CreateTableSuccess;
             }
-            return Messages.CreateTableSuccess;
+            else
+            {
+                return Messages.TableAlreadyExists;
+            }
+            
         }
     }
 }
