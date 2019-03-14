@@ -91,7 +91,7 @@ namespace Portable_Badger
                     {
                         if (System.IO.File.Exists(file))
                         {
-                            archive.CreateEntryFromFile(file, outBaseFolder + file.Substring(inBaseRelPath.Length));
+                            archive.CreateEntryFromFile(file, outBaseFolder + Path.GetFileName(file));
                             numFilesAdded++;
                         }
                         else Console.WriteLine("Couldn't find file: {0}", file);
