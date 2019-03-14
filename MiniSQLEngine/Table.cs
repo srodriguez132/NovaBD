@@ -202,7 +202,7 @@ namespace MiniSQLEngine
                     {
                         k++;
                     }
-                }
+                } 
                 a++;
             }
             if (sign.Equals("="))
