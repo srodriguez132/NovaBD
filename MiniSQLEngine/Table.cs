@@ -175,6 +175,7 @@ namespace MiniSQLEngine
             Boolean f1 = false;
             int a = 0;
             int k = 0;
+            // Busca la posicion de la columna de la condicion de la base de datos
             while (i < columns.Length && f == false)
             {
                 if (columns[i].Equals(column))
@@ -191,7 +192,7 @@ namespace MiniSQLEngine
                 match1 = Regex.Match(at[a], regExp);
                 while (k < columns.Length && f1 == false)
                 {
-                    if (columns[k].Equals(column))
+                    if (columns[k].Equals(match1.Groups[1].Value))
                     {
 
                         array[a] = k;
@@ -215,7 +216,7 @@ namespace MiniSQLEngine
                             for (int x = 0; x < at.Length; x++)
                             {
                                 match1 = Regex.Match(at[x], regExp);
-                                datas.ElementAt(j)[z] = match1.Groups[3].Value;
+                                datas.ElementAt(j)[array[z]] = match1.Groups[3].Value;
                             }
                         }
                         count++;
@@ -233,7 +234,7 @@ namespace MiniSQLEngine
                             for (int x = 0; x < at.Length; x++)
                             {
                                 match1 = Regex.Match(at[x], regExp);
-                                datas.ElementAt(j)[z] = match1.Groups[2].Value;
+                                datas.ElementAt(j)[i] = match1.Groups[2].Value;
                             }
                         }
                         count++;
@@ -251,7 +252,7 @@ namespace MiniSQLEngine
                             for (int x = 0; x < at.Length; x++)
                             {
                                 match1 = Regex.Match(at[x], regExp);
-                                datas.ElementAt(j)[z] = match1.Groups[2].Value;
+                                datas.ElementAt(j)[i] = match1.Groups[2].Value;
                             }
                         }
                         count++;
