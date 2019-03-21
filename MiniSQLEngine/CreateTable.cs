@@ -37,7 +37,13 @@ namespace MiniSQLEngine
 
                     return Messages.IncorrectDataType;
                 }
-                return Messages.CreateTableSuccess;
+                string path = @"..\..\..\DB\" + pDatabase.GetName()+ @"\" + name + ".txt";
+                using (StreamWriter writer = File.CreateText(path))
+                {
+                    writer.WriteLine(name);
+                    writer.WriteLine(atributes);
+                }
+                    return Messages.CreateTableSuccess;
             }
             else
             {

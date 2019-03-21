@@ -51,22 +51,16 @@ namespace MiniSQLEngine
         {
             return correct;
         }
-
         public string insert(string pData, string pColumns)
         {
             string[] at = pColumns.Split(',');
             string[] at1 = pData.Split(',');
             string[] at2 = new string[at1.Length];
             string[] res = new string[columns.Length];
-            int[] a;
-            string regexp = @"'(.+)'";
+            int[] a;                  
             for(int i=0; i < at1.Length; i++)
             {
-                Match match = Regex.Match(at1[i], regexp);
-                if (match.Success) { at2[i] = (string)match.Groups[1].Value; }
-                else { at2[i] = at1[i]; }
-              
-
+                at2[i] = Deletequote(at1[i]);        
             }
             if (pColumns != "")
             {
@@ -167,6 +161,12 @@ namespace MiniSQLEngine
             string sign = match.Groups[2].Value;
             string value = match.Groups[3].Value;
             string[] at = pUpdate.Split(',');
+            string[] at2 = new string[at.Length];
+            string value1 = Deletequote(value);
+            for (int j = 0; j < at.Length; j++)
+            {
+                at2[j] = Deletequote(at[j]);
+            }
             Match match1;
             int i = 0;
             int[] array = new int[at.Length];
@@ -209,7 +209,7 @@ namespace MiniSQLEngine
             {
                 for (int j = 0; j < datas.Count; j++)
                 {
-                    if (datas.ElementAt(j)[i].Equals(value))
+                    if (datas.ElementAt(j)[i].Equals(value1))
                     {
                         for (int z = 0; z < array.Length; z++)
                         {
@@ -227,7 +227,7 @@ namespace MiniSQLEngine
             {
                 for (int j = 0; j < datas.Count; j++)
                 {
-                    if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse(value))
+                    if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse(value1))
                     {
                         for (int z = 0; z < array.Length; z++)
                         {
@@ -245,7 +245,7 @@ namespace MiniSQLEngine
             {
                 for (int j = 0; j < datas.Count; j++)
                 {
-                    if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse(value))
+                    if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse(value1))
                     {
                         for (int z = 0; z < array.Length; z++)
                         {
@@ -259,18 +259,31 @@ namespace MiniSQLEngine
                     }
                 }
             }
-            return count + "row(s) have been updated";
+            return count + " ";
         }
         public string select(string pColumns, string pCondition)
         {
-
-            string ret = "{" + pColumns + "}";
-            string[] at = pColumns.Split(',');
+            string ret;
+            if (!pColumns.Equals("*"))
+            {
+                 ret = "{" + pColumns + "}";
+            }
+            else
+            {
+                 ret = "{";
+                for (int i =0; i < columns.Length-1; i++)
+                {
+                     ret +=  columns[i] + ",";
+                }
+               ret += columns[columns.Length-1] + "}";
+            }
+            string[] at = pColumns.Split(',');           
             string[] array = new string[at.Length];
             if (pCondition != "")
             {
                 string regExp = @"(\w+)(<|=|>)(\w+)";
                 Match match = Regex.Match(pCondition, regExp);
+                string value = Deletequote((string)match.Groups[3].Value);               
                 Boolean f = false;
                 int i = 0;
                 while (i < columns.Length && f == false)
@@ -283,7 +296,7 @@ namespace MiniSQLEngine
 
                     for (int j = 0; j < datas.Count; j++)
                     {
-                        if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
+                        if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse(value))
                         {
                             if (pColumns.Equals("*"))
                             {
@@ -317,7 +330,7 @@ namespace MiniSQLEngine
                 {
                     for (int j = 0; j < datas.Count; j++)
                     {
-                        if (datas.ElementAt(j)[i] == (string)match.Groups[3].Value)
+                        if (datas.ElementAt(j)[i] == value)
                         {
                             if (pColumns.Equals("*"))
                             {
@@ -352,7 +365,7 @@ namespace MiniSQLEngine
                 {
                     for (int j = 0; j < datas.Count; j++)
                     {
-                        if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
+                        if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse(value))
                         {
                             if (pColumns.Equals("*"))
                             {
@@ -418,6 +431,16 @@ namespace MiniSQLEngine
             }
             return ret;
         }
+        private string Deletequote(string quotedWord)
+        {
+            string regexp = @"'(.+)'";
+            Match match = Regex.Match(quotedWord, regexp);
+            if (match.Success) { return (string)match.Groups[1].Value; }
+            else { return quotedWord; }
+           
+        }
     }
+
+    
 }
 

@@ -16,6 +16,8 @@ namespace MiniSQLEngine
         public Database(string pName)
         {
             name = pName;
+            string path = @"..\..\..\DB\" + pName;
+            System.IO.Directory.CreateDirectory(path);
 
         }
 
@@ -107,5 +109,10 @@ namespace MiniSQLEngine
            MiniSQLEngine.MiniSQL q = Parse(phrase);
            return q.Execute(this);            
         }
+        public string GetName()
+        {
+            return name;
+        }
     }
+   
 }

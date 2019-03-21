@@ -28,7 +28,6 @@ namespace Portable_Badger
             files.Add(mainExeRelPath);
             files.Add(inBaseRelPath + @"MiniSQLEngine\bin\Release\MiniSQLEngine.dll");
             //Add any other files you need to add
-            files.Add(inBaseRelPath + @"MiniSQLDBConsole\bin\Release\MiniSQLDBConsole.exe");
             //files.Add(inBaseRelPath + ...);
 
             List<string> dependencyList = new List<string>();
@@ -86,6 +85,7 @@ namespace Portable_Badger
             using (FileStream zipToOpen = new FileStream(outputFilename, FileMode.Create))
             {
                 using (ZipArchive archive = new ZipArchive(zipToOpen, ZipArchiveMode.Update))
+
                 {
                     foreach (string file in files)
                     {
