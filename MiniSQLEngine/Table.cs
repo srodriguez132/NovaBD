@@ -263,8 +263,20 @@ namespace MiniSQLEngine
         }
         public string select(string pColumns, string pCondition)
         {
-
-            string ret = "{" + pColumns + "}";
+            string ret;
+            if (!pColumns.Equals("*"))
+            {
+                 ret = "{" + pColumns + "}";
+            }
+            else
+            {
+                 ret = "{";
+                for (int i =0; i < columns.Length-1; i++)
+                {
+                     ret +=  columns[i] + ",";
+                }
+               ret += columns[columns.Length-1] + "}";
+            }
             string[] at = pColumns.Split(',');
             string[] array = new string[at.Length];
             if (pCondition != "")
