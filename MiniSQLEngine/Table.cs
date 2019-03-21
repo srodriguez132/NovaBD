@@ -259,7 +259,7 @@ namespace MiniSQLEngine
                     }
                 }
             }
-            return count + "row(s) have been updated";
+            return count + " ";
         }
         public string select(string pColumns, string pCondition)
         {
