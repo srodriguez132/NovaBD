@@ -51,20 +51,16 @@ namespace MiniSQLEngine
         {
             return correct;
         }
-
         public string insert(string pData, string pColumns)
         {
             string[] at = pColumns.Split(',');
             string[] at1 = pData.Split(',');
             string[] at2 = new string[at1.Length];
             string[] res = new string[columns.Length];
-            int[] a;
-            string regexp = @"'(.+)'";
+            int[] a;                  
             for(int i=0; i < at1.Length; i++)
             {
-                Match match = Regex.Match(at1[i], regexp);
-                if (match.Success) { at2[i] = (string)match.Groups[1].Value; }
-                else { at2[i] = at1[i]; }            
+                at2[i] = Deletequote(at1[i]);        
             }
             if (pColumns != "")
             {
@@ -166,14 +162,10 @@ namespace MiniSQLEngine
             string value = match.Groups[3].Value;
             string[] at = pUpdate.Split(',');
             string[] at2 = new string[at.Length];
-            string regexp = @"'(.+)'";
-            Match match3 = Regex.Match(value, regexp);
-            string value1 = (string)match3.Groups[1].Value;
+            string value1 = Deletequote(value);
             for (int j = 0; j < at.Length; j++)
             {
-                Match match2 = Regex.Match(at[j], regexp);
-                if (match2.Success) { at2[j] = (string)match2.Groups[1].Value; }
-                else { at2[j] = at[j]; }
+                at2[j] = Deletequote(at[j]);
             }
             Match match1;
             int i = 0;
@@ -285,20 +277,13 @@ namespace MiniSQLEngine
                 }
                ret += columns[columns.Length-1] + "}";
             }
-            string[] at = pColumns.Split(',');
-            string[] at2 = new string[at.Length];
-            string regexp = @"'(.+)'";
-            for (int j = 0; j < at.Length; j++)
-            {
-                Match match2 = Regex.Match(at[j], regexp);
-                if (match2.Success) { at2[j] = (string)match2.Groups[1].Value; }
-                else { at2[j] = at[j]; }
-            }
+            string[] at = pColumns.Split(',');           
             string[] array = new string[at.Length];
             if (pCondition != "")
             {
                 string regExp = @"(\w+)(<|=|>)(\w+)";
                 Match match = Regex.Match(pCondition, regExp);
+                string value = Deletequote((string)match.Groups[3].Value);               
                 Boolean f = false;
                 int i = 0;
                 while (i < columns.Length && f == false)
@@ -311,7 +296,7 @@ namespace MiniSQLEngine
 
                     for (int j = 0; j < datas.Count; j++)
                     {
-                        if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse((string)match.Groups[3].Value))
+                        if (Double.Parse(datas.ElementAt(j)[i]) < Double.Parse(value))
                         {
                             if (pColumns.Equals("*"))
                             {
@@ -345,7 +330,7 @@ namespace MiniSQLEngine
                 {
                     for (int j = 0; j < datas.Count; j++)
                     {
-                        if (datas.ElementAt(j)[i] == (string)match.Groups[3].Value)
+                        if (datas.ElementAt(j)[i] == value)
                         {
                             if (pColumns.Equals("*"))
                             {
@@ -380,7 +365,7 @@ namespace MiniSQLEngine
                 {
                     for (int j = 0; j < datas.Count; j++)
                     {
-                        if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse((string)match.Groups[3].Value))
+                        if (Double.Parse(datas.ElementAt(j)[i]) > Double.Parse(value))
                         {
                             if (pColumns.Equals("*"))
                             {
@@ -445,6 +430,14 @@ namespace MiniSQLEngine
                 }               
             }
             return ret;
+        }
+        private string Deletequote(string quotedWord)
+        {
+            string regexp = @"'(.+)'";
+            Match match = Regex.Match(quotedWord, regexp);
+            if (match.Success) { return (string)match.Groups[1].Value; }
+            else { return quotedWord; }
+           
         }
     }
 }
