@@ -13,12 +13,13 @@ namespace MiniSQLDBConsole
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Write the sentences: ");
+            Console.WriteLine("Write the name of the database: ");
             string input = Console.ReadLine();
+            Database db = new Database(input);
+            Console.WriteLine("Write the sentences: ");
+            input = Console.ReadLine();
             Stopwatch stopWatch = new Stopwatch();
-            Database db = new Database("database");
-
+            
             while (!input.Equals("end"))
             {
                 stopWatch.Start();

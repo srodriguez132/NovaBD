@@ -57,7 +57,7 @@ INSERT INTO Employees (Name,Surname,Salary,Id) VALUES ('Maritxu','Norazoaz',1300
 INSERT INTO Employees (Id,Surname,Name,Salary) VALUES (2,'Langostino','Rodolfo',1200);
 INSERT INTO Employees (Salary,Id,Name,Surname) VALUES (1100,3,'Benito','Kamelas');
 INSERT INTO Employees (Surname,Name,Salary) VALUES ('Langostino','Maria',1200);
-SELECT Salary,Name,Surname WHERE Name='Maritxu'
+SELECT Salary,Name,Surname FROM Employees WHERE Name=Maritxu;
 SELECT Surname WHERE Id=3
 
 CREATE TABLE Employees (Id INT,Name TEXT,Surname TEXT,Salary DOUBLE);
