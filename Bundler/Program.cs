@@ -16,12 +16,12 @@ namespace Portable_Badger
         public static void Main()
         {
             List<string> files = new List<string>();
-            string version;
+            string version = "1.1.0.0";
 
             string mainExe = @"MiniSQLDBConsole\bin\Release\MiniSQLDBConsole.exe";
             string mainExeRelPath = inBaseRelPath + mainExe;
 
-            version = GetVersion(mainExeRelPath);
+           // version = GetVersion(mainExeRelPath);
 
             outBaseFolder = ProjectName + "-" + version + @"/"; //name of the folder created inside the zip file
 
