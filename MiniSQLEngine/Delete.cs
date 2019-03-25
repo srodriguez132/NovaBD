@@ -23,14 +23,14 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
             Table tabla = pDatabase.GetTable(name);
-            if (tabla == null || tabla.getCorrect() == false)
+            if (tabla == null || tabla.GetCorrect() == false)
             {
                 //return Constants.ErrorMessage;
                 return Messages.TableDoesNotExist;
             }
             else
             {
-                if(tabla.delete(condition) == 0)
+                if(tabla.Delete(condition) == 0)
                 {
                     return Messages.ColumnDoesNotExist;
                 }
@@ -38,7 +38,7 @@ namespace MiniSQLEngine
                 { 
                     return Messages.TupleDeleteSuccess;
                 }
-                //return tabla.delete(condition) + Constants.DeleteMessage;
+                //return tabla.Delete(condition) + Constants.DeleteMessage;
             }
         }
     }

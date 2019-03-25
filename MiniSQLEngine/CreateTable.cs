@@ -31,7 +31,7 @@ namespace MiniSQLEngine
             if(pDatabase.GetTable(name) == null)
             {
                 pDatabase.CreateTable(name, atributes);
-                if (pDatabase.GetTable(name).getCorrect() == false)
+                if (pDatabase.GetTable(name).GetCorrect() == false)
                 {
                     pDatabase.DeleteTable(name);
 

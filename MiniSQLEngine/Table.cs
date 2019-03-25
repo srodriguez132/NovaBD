@@ -45,15 +45,15 @@ namespace MiniSQLEngine
             }
             datas = new List<string[]>();
         }
-        public string getName()
+        public string GetName()
         {
             return this.name;
         }
-        public Boolean getCorrect()
+        public Boolean GetCorrect()
         {
             return correct;
         }
-        public string insert(string pData, string pColumns)
+        public string Insert(string pData, string pColumns)
         {
             string[] at = pColumns.Split(',');
             string[] at1 = pData.Split(',');
@@ -62,7 +62,7 @@ namespace MiniSQLEngine
             int[] a;                  
             for(int i=0; i < at1.Length; i++)
             {
-                at2[i] = Deletequote(at1[i]);        
+                at2[i] = DeleteQuote(at1[i]);        
             }
             if (pColumns != "")
             {
@@ -95,7 +95,7 @@ namespace MiniSQLEngine
             datas.Add(res);
             return "Row inserted";
         }
-        public int delete(string pCondition)
+        public int Delete(string pCondition)
         {
             string regExp = @"(\w+)(<|=|>)(\w+)";
             Match match = Regex.Match(pCondition, regExp);
@@ -155,7 +155,7 @@ namespace MiniSQLEngine
             return count;
 
         }
-        public string update(string pUpdate, string pCondition)
+        public string Update(string pUpdate, string pCondition)
         {
             string regExp = @"(\w+)(<|=|>)(\w+)";
             Match match = Regex.Match(pCondition, regExp);
@@ -164,10 +164,10 @@ namespace MiniSQLEngine
             string value = match.Groups[3].Value;
             string[] at = pUpdate.Split(',');
             string[] at2 = new string[at.Length];
-            string value1 = Deletequote(value);
+            string value1 = DeleteQuote(value);
             for (int j = 0; j < at.Length; j++)
             {
-                at2[j] = Deletequote(at[j]);
+                at2[j] = DeleteQuote(at[j]);
             }
             Match match1;
             int i = 0;
@@ -263,7 +263,7 @@ namespace MiniSQLEngine
             }
             return count + " ";
         }
-        public string select(string pColumns, string pCondition)
+        public string Select(string pColumns, string pCondition)
         {
             string ret;
             if (!pColumns.Equals("*"))
@@ -285,7 +285,7 @@ namespace MiniSQLEngine
             {
                 string regExp = @"(\w+)(<|=|>)(\w+)";
                 Match match = Regex.Match(pCondition, regExp);
-                string value = Deletequote((string)match.Groups[3].Value);               
+                string value = DeleteQuote((string)match.Groups[3].Value);               
                 Boolean f = false;
                 int i = 0;
                 while (i < columns.Length && f == false)
@@ -433,7 +433,7 @@ namespace MiniSQLEngine
             }
             return ret;
         }
-        private string Deletequote(string quotedWord)
+        private string DeleteQuote(string quotedWord)
         {
             string regexp = @"'(.+)'";
             Match match = Regex.Match(quotedWord, regexp);

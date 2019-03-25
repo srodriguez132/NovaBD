@@ -31,7 +31,7 @@ namespace MiniSQLEngine
         {
             for (int i = 0; i < tables.Count; i++)
             {
-                if (tables[i].getName().Equals(name))
+                if (tables[i].GetName().Equals(name))
                 {
                     tables.RemoveAt(i);
 
@@ -44,7 +44,7 @@ namespace MiniSQLEngine
             
             for (int i = 0; i < tables.Count; i++)
             {
-                if (tables[i].getName().Equals(pName))
+                if (tables[i].GetName().Equals(pName))
                 {
                  
                     return tables[i];
