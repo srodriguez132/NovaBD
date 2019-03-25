@@ -11,14 +11,18 @@ namespace MiniSQLDBConsole
 {
     class Program
     {
+        private static Database db;
         static void Main(string[] args)
         {
+            
             Console.WriteLine("Write the name of the database: ");
             string input = Console.ReadLine();
-            Database db = new Database(input);
-            Console.WriteLine("Write the sentences: ");
-            input = Console.ReadLine();
-            Stopwatch stopWatch = new Stopwatch();
+            db = new Database(input);
+            try
+            {
+                Console.WriteLine("Write the sentences: ");
+                input = Console.ReadLine();
+                Stopwatch stopWatch = new Stopwatch();
             
             while (!input.Equals("end"))
             {
@@ -30,7 +34,13 @@ namespace MiniSQLDBConsole
                 input = Console.ReadLine();
 
             }
+            }
+            finally
+            {
+                db.Dispose();
+            }
 
         }
+
     }
 }

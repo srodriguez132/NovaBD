@@ -12,11 +12,13 @@ namespace MiniSQLEngine
         string name;
         string[] columns;
         string[] condition;
+        string atributes;
         List<string[]> datas;
         Boolean correct = true;
         public Table(string pName, string pColumns)
         {
             name = pName;
+            atributes = pColumns;
             string regExp = @"(\w+)(\s)(\w+)";
             string[] at = pColumns.Split(',');
             columns = new string[at.Length];
@@ -438,6 +440,14 @@ namespace MiniSQLEngine
             if (match.Success) { return (string)match.Groups[1].Value; }
             else { return quotedWord; }
            
+        }
+        public string GetAtributes()
+        {
+            return atributes;
+        }
+        public List<string[]> GetDatas()
+        {
+            return datas;
         }
     }
 
