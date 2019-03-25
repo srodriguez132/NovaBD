@@ -173,10 +173,10 @@ namespace MiniSQLEngine
             System.IO.Directory.CreateDirectory(path);
             for (int i = 0; i < tables.Count; i++)
             {
-                string pathTable = @"..\..\..\DB\" + name+ @"\" + tables[i].getName() + ".txt";
+                string pathTable = @"..\..\..\DB\" + name+ @"\" + tables[i].GetName() + ".txt";
                 using (StreamWriter writer = File.CreateText(pathTable))
                 {
-                    writer.WriteLine(tables[i].getName());
+                    writer.WriteLine(tables[i].GetName());
                     writer.WriteLine(tables[i].GetAtributes());
                     for (int j = 0; j < tables[i].GetDatas().Count; j++)
                     {
