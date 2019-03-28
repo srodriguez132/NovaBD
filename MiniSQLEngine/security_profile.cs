@@ -41,5 +41,9 @@ namespace MiniSQLEngine
                     }                
                 }                  
         }
+        public string GetName()
+        {
+            return name;
+        }
     }
 }

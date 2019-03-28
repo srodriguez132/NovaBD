@@ -16,22 +16,16 @@ namespace MiniSQLEngine
         {
             name = pName;
             password = pPassword;
-            secporf = pSecprof;
+            secprof = new Security_profile(pSecprof);
         }
 
         public string GetName()
         {
             return name;
-        }
-        
+        }        
         public Security_profile GetSecurity_Profile()
         {
             return secprof;
         }
-
-        public void DefaultSecurityProfile()
-        {
-        }
-
     }
 }

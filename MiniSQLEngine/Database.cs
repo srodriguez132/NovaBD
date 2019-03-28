@@ -80,12 +80,17 @@ namespace MiniSQLEngine
         {
             for (int i = 0; i < users.Count; i++)
             {
-                if (users[i].GetSecurity_Profile().GetName().Equals(pSecprof))
+                if (users[i].GetSecurity_Profile().GetName().Equals(pSecProf))
                 {
                     users.RemoveAt(i);
 
                 }
             }
+        }
+        public void AddUser(string name, string pass, string profile)
+        {
+            User user = new User(name, pass, profile);
+            users.Add(user);
         }
         public MiniSQLEngine.MiniSQL Parse(string query)
         {
