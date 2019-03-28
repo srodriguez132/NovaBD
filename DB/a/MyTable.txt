@@ -1,0 +1,3 @@
+MyTable
+Name TEXT,Age INT,Address TEXT
+Eva,18,Calle Los Herran 16 2 Derecha. 01005 Vitoria-Gasteiz;

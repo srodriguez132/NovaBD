@@ -17,8 +17,16 @@ namespace MiniSQLEngine
 
         public Database(string pName)
         {
-            name = pName;
+            string path = @"..\..\..\DB\" + pName;
 
+            if (!System.IO.Directory.Exists(path))
+            {
+                name = pName;
+            }
+            else
+            {
+                OpenDatabase(pName);
+            }
         }
 
         public void CreateTable(string name, string pColumns)
@@ -187,6 +195,21 @@ namespace MiniSQLEngine
                         }
                             writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ";" + "\r\n");
                     }
+                }
+            }
+        }
+        private void OpenDatabase(string pName)
+        {
+            string path = @"..\..\..\DB\" + pName;
+            System.IO.Directory.CreateDirectory(path);
+            string[] files = System.IO.Directory.GetFiles(path);
+            for (int i = 0; i < files.Length; i++)
+            {
+                string[] lines = System.IO.File.ReadAllLines(files[i]);
+                tables.Add(new Table(lines[0], lines[1]));
+                for(int j = 2;j<lines.Length;j++ )
+                {
+                    tables[i].Insert(lines[2], "");
                 }
             }
         }
