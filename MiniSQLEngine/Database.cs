@@ -137,7 +137,7 @@ namespace MiniSQLEngine
                 match = Regex.Match(query, RegularExpressions.DeleteUser);
                 if (match.Success)
                 {
-                    return new DeleteUser(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    return new DeleteUser(match.Groups[1].Value);
                 }
 
                 return new SyntaxError();

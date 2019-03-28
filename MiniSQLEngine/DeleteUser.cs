@@ -2,15 +2,18 @@
 {
     internal class DeleteUser : MiniSQL
     {
-        private string value1;
-        private string value2;
-        private string value3;
+        public string user;
+      
 
-        public DeleteUser(string value1, string value2, string value3)
+        public DeleteUser(string pUser)
         {
-            this.value1 = value1;
-            this.value2 = value2;
-            this.value3 = value3;
+           user = pUser;
+            
+        }
+
+        public override string Execute(Database pDatabase)
+        {
+            return "";
         }
     }
 }

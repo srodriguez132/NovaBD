@@ -2,15 +2,20 @@
 {
     internal class Revoke : MiniSQL
     {
-        private string value1;
-        private string value2;
-        private string value3;
+        private string privilegeType;
+        private string table;
+        private string securityProfile;
 
-        public Revoke(string value1, string value2, string value3)
+        public Revoke(string pPrivilegeType, string pTable, string pSecurityProfile)
         {
-            this.value1 = value1;
-            this.value2 = value2;
-            this.value3 = value3;
+            privilegeType = pPrivilegeType;
+            table = pTable;
+            securityProfile = pSecurityProfile;
+        }
+
+        public override string Execute(Database pDatabase)
+        {
+            return "";
         }
     }
 }
