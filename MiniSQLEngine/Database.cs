@@ -14,6 +14,7 @@ namespace MiniSQLEngine
         private string name;
         private Boolean disposed = false;
         List<Table> tables = new List<Table>();
+        List<User> users = new List<User>();
 
         public Database(string pName)
         {
@@ -61,6 +62,30 @@ namespace MiniSQLEngine
                
             }
             return null;
+        }
+
+        public void DeleteUser(string pName)
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].GetName().Equals(pName))
+                {
+                    users.RemoveAt(i);
+
+                }
+            }
+        }
+
+        public void DropSecurityProfile(string pSecProf)
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].GetSecurity_Profile().GetName().Equals(pSecprof))
+                {
+                    users.RemoveAt(i);
+
+                }
+            }
         }
         public MiniSQLEngine.MiniSQL Parse(string query)
         {
@@ -178,7 +203,10 @@ namespace MiniSQLEngine
         private void SaveDatabase()
         {
             string path = @"..\..\..\DB\" + name;
-            System.IO.Directory.CreateDirectory(path);
+            if (!System.IO.Directory.Exists(path))
+            {
+                System.IO.Directory.CreateDirectory(path);
+            }
             for (int i = 0; i < tables.Count; i++)
             {
                 string pathTable = @"..\..\..\DB\" + name+ @"\" + tables[i].GetName() + ".txt";
@@ -201,7 +229,7 @@ namespace MiniSQLEngine
         private void OpenDatabase(string pName)
         {
             string path = @"..\..\..\DB\" + pName;
-            System.IO.Directory.CreateDirectory(path);
+            name = pName;
             string[] files = System.IO.Directory.GetFiles(path);
             for (int i = 0; i < files.Length; i++)
             {
