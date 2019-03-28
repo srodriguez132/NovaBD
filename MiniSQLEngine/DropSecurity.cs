@@ -1,12 +1,16 @@
 ﻿namespace MiniSQLEngine
 {
-    internal class DropSecurity : MiniSQL
-    {
-        private string value;
+    public class DropSecurity : MiniSQL
+    {  
+        public string profile;
 
-        public DropSecurity(string value)
+        public DropSecurity(string pProfile)
         {
-            this.value = value;
+            profile = pProfile;
+        }
+        public override string Execute(Database pDatabase)
+        {
+            return "";
         }
     }
 }
