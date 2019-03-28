@@ -25,5 +25,18 @@ namespace MiniSQLEngine
         public const string ColumnDoesNotExist = Error + "Column does not exist";
         public const string IncorrectDataType = Error + "Incorrect data type";
         public const string TableAlreadyExists = Error + "Table already exists";
+
+        public const string SecurityProfileCreated = "Security profile created";
+        public const string SecurityUserCreated = "Security user created";
+        public const string SecurityProfileDeleted = "Security profile deleted";
+        public const string SecurityUserDeleted = "Security user deleted";
+        public const string SecurityPrivilegeGranted = "Security privilege granted";
+        public const string SecurityPrivilegeRevoked = "Security privilege revoked";
+
+        public const string SecurityNotSufficientPrivileges = Error + "Not sufficient privileges";
+        public const string SecurityProfileAlreadyExists = Error + "Security profile already exists";
+        public const string SecurityUserAlreadyExists = Error + "Security user already exists";
+        public const string SecurityProfileDoesNotExist = Error + "Security profile does not exist";
+        public const string SecurityUserDoesNotExist = Error + "Security user does not exist";
     }
 }

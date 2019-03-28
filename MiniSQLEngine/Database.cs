@@ -134,6 +134,37 @@ namespace MiniSQLEngine
                 {
                     return new Update(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
                 }
+                match = Regex.Match(query, RegularExpressions.CreateSecurity);
+                if (match.Success)
+                {
+                    return new CreateSecurity(match.Groups[1].Value);
+                }
+                match = Regex.Match(query, RegularExpressions.DropSecurity);
+                if (match.Success)
+                {
+                    return new DropSecurity(match.Groups[1].Value);
+                }
+                match = Regex.Match(query, RegularExpressions.Grant);
+                if (match.Success)
+                {
+                    return new Grant(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                }
+                match = Regex.Match(query, RegularExpressions.Revoke);
+                if (match.Success)
+                {
+                    return new Revoke(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                }
+                match = Regex.Match(query, RegularExpressions.AddUser);
+                if (match.Success)
+                {
+                    return new AddUser(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                }
+                match = Regex.Match(query, RegularExpressions.DeleteUser);
+                if (match.Success)
+                {
+                    return new DeleteUser(match.Groups[1].Value);
+                }
+
                 return new SyntaxError();
             
         }
