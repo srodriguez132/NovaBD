@@ -48,6 +48,7 @@
     <Compile Include="CreateDataBase.cs" />
     <Compile Include="DropDataBase.cs" />
     <Compile Include="RegularExpressions.cs" />
+    <Compile Include="Security_profile.cs" />
     <Compile Include="SyntaxError.cs" />
     <Compile Include="Table.cs" />
     <Compile Include="CreateTable.cs" />
