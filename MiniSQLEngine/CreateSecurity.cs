@@ -1,12 +1,16 @@
 ﻿namespace MiniSQLEngine
 {
-    internal class CreateSecurity : MiniSQL
+    public class CreateSecurity : MiniSQL
     {
-        private string value;
+        public string profile;
 
-        public CreateSecurity(string value)
+        public CreateSecurity(string pProfile)
         {
-            this.value = value;
+            profile = pProfile;
+        }
+        public override string Execute(Database pDatabase)
+        {
+            return "";
         }
     }
 }
