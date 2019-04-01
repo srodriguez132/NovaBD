@@ -17,6 +17,7 @@ namespace MiniSQLEngine
         private List<User> users;
         private List<Security_profile> profiles;
         private User currentUser;
+        
         public Database(string pName)
         {
             string path = @"..\..\..\DB\" + pName;
@@ -46,6 +47,7 @@ namespace MiniSQLEngine
             }
             return false;
         }
+
         public void CreateTable(string name, string pColumns)
         {
             Table table = new Table(name, pColumns);
@@ -62,8 +64,8 @@ namespace MiniSQLEngine
 
                 }
             }
-
         }
+
         public Table GetTable(string pName)
         {
             
@@ -106,6 +108,7 @@ namespace MiniSQLEngine
                 }
             }
         }
+
         public string AddUser(string name, string pass, string profile)
         {
             Boolean encontrado = false;
@@ -132,10 +135,12 @@ namespace MiniSQLEngine
                 return Messages.SecurityProfileDoesNotExist;
             }
         }
+
         public void setCurrentUser(User pUser)
         {
             currentUser = pUser;
         }
+
         public MiniSQLEngine.MiniSQL Parse(string query)
         {
                 Match match = Regex.Match(query, RegularExpressions.BackupDatabase);
@@ -345,6 +350,8 @@ namespace MiniSQLEngine
             }
             return encontrado;
         }
+
+       
     }
    
 }
