@@ -156,7 +156,14 @@ namespace MiniSQLEngine
                 match = Regex.Match(query, RegularExpressions.Delete);
                 if (match.Success)
                 {
-                    return new Delete(match.Groups[1].Value, match.Groups[2].Value);
+                    if (HasPrivilege(match.Groups[1].Value, "DELETE"))
+                    {
+                       return new Delete(match.Groups[1].Value, match.Groups[2].Value);
+                    }
+                    else
+                    {
+                    return new PrivilegeError();
+                    }
                 }
                 match = Regex.Match(query, RegularExpressions.DropDataBase);
                 if (match.Success)
@@ -171,17 +178,39 @@ namespace MiniSQLEngine
                 match = Regex.Match(query, RegularExpressions.Insert);
                 if (match.Success)
                 {
-                    return new Insert(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    if (HasPrivilege(match.Groups[1].Value, "INSERT"))
+                    {
+                        return new Insert(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    }
+                    else
+                    {
+                        return new PrivilegeError();
+                    }
+
                 }
                 match = Regex.Match(query, RegularExpressions.Select);
                 if (match.Success)
                 {
-                    return new Select(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    if (HasPrivilege(match.Groups[2].Value, "SELECT"))
+                    {
+                        return new Select(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    }
+                    else
+                    {
+                       return new PrivilegeError();
+                    }
                 }
                 match = Regex.Match(query, RegularExpressions.Update);
                 if (match.Success)
                 {
+                    if (HasPrivilege(match.Groups[1].Value, "UPDATE"))
+                    {
                     return new Update(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    }
+                    else
+                    {
+                        return new PrivilegeError();
+                    }
                 }
                 match = Regex.Match(query, RegularExpressions.CreateSecurity);
                 if (match.Success)
@@ -331,6 +360,7 @@ namespace MiniSQLEngine
                     return users.ElementAt(i);
                 }
             }
+            return null;
         }
         private Boolean HasPrivilege(string pTable, string pQuery)
         {

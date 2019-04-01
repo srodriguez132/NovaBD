@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class SyntaxError : MiniSQL
+    class PrivilegeError : MiniSQL
     {
-        public SyntaxError()
+        public PrivilegeError()
         {
         }
         public override string Execute(Database pDatabase)
         {
-            
-            return Messages.WrongSyntax;
+
+            return Messages.SecurityNotSufficientPrivileges;
         }
     }
+}
 }
