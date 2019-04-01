@@ -93,11 +93,13 @@ namespace MiniSQLEngine
 
         public void DropSecurityProfile(string pSecProf)
         {
-            for (int i = 0; i < users.Count; i++)
+            profiles.Remove(pSecProf);
+            for (int i = 0; i < profiles.Count; i++)
             {
-                if (users[i].GetSecurity_Profile().GetName().Equals(pSecProf))
+
+                if (profiles[i].GetSecurity_Profile().GetName().Equals(pSecProf))
                 {
-                    users.RemoveAt(i);
+                    profiles.RemoveAt(i);
 
                 }
             }
@@ -313,6 +315,18 @@ namespace MiniSQLEngine
                     tables[i].Insert(lines[2], "");
                 }
             }
+        }
+
+        public User GetUser(string pUser)
+        {
+            for(int i = 0; i < users.Count; i++)
+            {
+                if (users.ElementAt(i).GetName().Equals(pUser))
+                {
+                    return users.ElementAt(i);
+                }
+            }
+            return null; 
         }
     }
    

@@ -27,5 +27,9 @@ namespace MiniSQLEngine
         {
             return secprof;
         }
+        public void SetSecurityProfile(string pSec)
+        {
+            secprof = new Security_profile(pSec);
+        }
     }
 }
