@@ -2,15 +2,20 @@
 {
     public class CreateSecurity : MiniSQL
     {
-        public string profile;
+        public string profileName;
 
-        public CreateSecurity(string pProfile)
+        public CreateSecurity(string pProfileName)
         {
-            profile = pProfile;
+            profileName = pProfileName;
         }
         public override string Execute(Database pDatabase)
         {
-            return "";
+            if (!pDatabase.SecurityProfileExists(profileName))
+            {
+                Security_profile secProfile = new Security_profile(profileName);
+                return Messages.SecurityProfileCreated;
+            }
+            return Messages.SecurityProfileAlreadyExists;
         }
     }
 }

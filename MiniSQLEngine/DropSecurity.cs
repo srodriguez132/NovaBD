@@ -2,15 +2,20 @@
 {
     public class DropSecurity : MiniSQL
     {  
-        public string profile;
+        public string profileName;
 
-        public DropSecurity(string pProfile)
+        public DropSecurity(string pProfileName)
         {
-            profile = pProfile;
+            profileName = pProfileName;
         }
         public override string Execute(Database pDatabase)
         {
-            return "";
+            if(pDatabase.SecurityProfileExists(profileName))
+            {
+                pDatabase.DropSecurityProfile(profileName);
+                return Messages.SecurityProfileDeleted;
+            }
+            return Messages.SecurityProfileDoesNotExist;
         }
     }
 }
