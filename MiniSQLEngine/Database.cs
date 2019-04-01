@@ -13,7 +13,7 @@ namespace MiniSQLEngine
     {
         private string name;
         private Boolean disposed = false;
-        private List<Table> tables ;
+        private List<Table> tables;
         private List<User> users;
         private List<Security_profile> profiles;
         private User currentUser;
@@ -66,16 +66,16 @@ namespace MiniSQLEngine
         }
         public Table GetTable(string pName)
         {
-            
+
             for (int i = 0; i < tables.Count; i++)
             {
                 if (tables[i].GetName().Equals(pName))
                 {
-                 
+
                     return tables[i];
-                 
+
                 }
-               
+
             }
             return null;
         }
@@ -95,17 +95,15 @@ namespace MiniSQLEngine
 
         public void DropSecurityProfile(string pSecProf)
         {
-            profiles.Remove(pSecProf);
-            for (int i = 0; i < profiles.Count; i++)
+            Security_profile defoult = new Security_profile("default");
+            for (int i = 0; i < users.Count; i++)
             {
-
-                if (profiles[i].GetSecurity_Profile().GetName().Equals(pSecProf))
+                if (users.ElementAt(i).GetSecurity_Profile().GetName() == pSecProf)
                 {
-                    profiles.RemoveAt(i);
-
+                    users.ElementAt(i).SetSecurityProfile(defoult);
                 }
             }
-        }
+        }        
         public string AddUser(string name, string pass, string profile)
         {
             Boolean encontrado = false;
@@ -329,8 +327,9 @@ namespace MiniSQLEngine
                 if (users.ElementAt(i).GetName().Equals(pUser))
                 {
                     return users.ElementAt(i);
-                }
+                }              
             }
+            return null;
         }
         private Boolean HasPrivilege(string pTable, string pQuery)
         {
