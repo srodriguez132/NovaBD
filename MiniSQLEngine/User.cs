@@ -12,11 +12,11 @@ namespace MiniSQLEngine
         private string password;
         private Security_profile secprof;
 
-        public User (string pName, string pPassword, string pSecprof)
+        public User (string pName, string pPassword, Security_profile pSecprof)
         {
             name = pName;
             password = pPassword;
-            secprof = new Security_profile(pSecprof);
+            secprof = pSecprof;
         }
 
         public string GetName()

@@ -13,10 +13,9 @@ namespace MiniSQLEngine
     {
         private string name;
         private Boolean disposed = false;
-        List<Table> tables = new List<Table>();
-        List<User> users = new List<User>();
-        List<Security_profile> profiles = new List<Security_profile>();
-
+        private List<Table> tables ;
+        private List<User> users;
+        private List<Security_profile> profiles;
         public Database(string pName)
         {
             string path = @"..\..\..\DB\" + pName;
@@ -24,6 +23,9 @@ namespace MiniSQLEngine
             if (!System.IO.Directory.Exists(path))
             {
                 name = pName;
+                tables = new List<Table>();
+                users = new List<User>();
+                profiles = new List<Security_profile>();
             }
             else
             {
@@ -90,10 +92,32 @@ namespace MiniSQLEngine
                 }
             }
         }
-        public void AddUser(string name, string pass, string profile)
+        public string AddUser(string name, string pass, string profile)
         {
-            User user = new User(name, pass, profile);
-            users.Add(user);
+            Boolean encontrado = false;
+            int i = 0;
+            while(!encontrado || i < profiles.Count)
+            {
+                if(profiles.ElementAt(i).GetName()== profile)
+                {
+                    encontrado = true;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            if (i != profiles.Count)
+            {
+                User user = new User(name, pass, profiles.ElementAt(i));
+                users.Add(user);
+                return Messages.SecurityUserCreated;
+             }
+            else
+            {
+                return Messages.SecurityProfileDoesNotExist;
+            }
+
         }
         public MiniSQLEngine.MiniSQL Parse(string query)
         {
