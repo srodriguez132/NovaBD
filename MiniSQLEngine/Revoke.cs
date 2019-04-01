@@ -6,9 +6,9 @@ namespace MiniSQLEngine
     {
         private string privilegeType;
         private string table;
-        private Security_profile securityProfile;
+        private string securityProfile;
 
-        public Revoke(string pPrivilegeType, string pTable, Security_profile pSecurityProfile)
+        public Revoke(string pPrivilegeType, string pTable, string pSecurityProfile)
         {
             privilegeType = pPrivilegeType;
             table = pTable;
@@ -19,7 +19,7 @@ namespace MiniSQLEngine
         {
             if(pDatabase.SecurityProfileExists(pDatabase.GetName()))
             {
-                securityProfile.Revoke(privilegeType, table);
+                pDatabase.GetSecurityProfile(securityProfile).Revoke(privilegeType, table);
                 return Messages.SecurityPrivilegeRevoked;
             }
             else

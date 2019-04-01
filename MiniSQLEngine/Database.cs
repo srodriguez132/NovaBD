@@ -40,6 +40,18 @@ namespace MiniSQLEngine
             return profiles;
         }
 
+        public Security_profile GetSecurityProfile(string pName)
+        {
+            for (int i = 0; i <= profiles.Count; i++)
+            {
+                if (profiles.ElementAt(i).GetName().Equals(pName))
+                {
+                    return profiles.ElementAt(i);
+                }
+            }
+            return null;
+        }
+
         public Boolean SecurityProfileExists(string pName)
         {
             for (int i = 0; i <= profiles.Count; i++)
@@ -372,9 +384,9 @@ namespace MiniSQLEngine
         {
             Boolean encontrado = false;
             int i = 0;
-            while (!encontrado || i < currentUser.GetSecurity_Profile().getTable().Count)
+            while (!encontrado || i < currentUser.GetSecurity_Profile().GetTable().Count)
             {
-                if (currentUser.GetSecurity_Profile().getTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().getPrivilege().ElementAt(i) == pQuery)
+                if (currentUser.GetSecurity_Profile().GetTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().GetPrivilege().ElementAt(i) == pQuery)
                 {
                     encontrado = true;
                 }

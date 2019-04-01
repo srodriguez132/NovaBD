@@ -45,11 +45,11 @@ namespace MiniSQLEngine
         {
             return name;
         }
-        public List<string> getTable()
+        public List<string> GetTable()
         {
             return table;
         }
-        public List<string> getPrivilege()
+        public List<string> GetPrivilege()
         {
             return privilege_type;
         }

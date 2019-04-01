@@ -7,29 +7,27 @@ namespace MiniSQLEngine
     {
         private string privilegeType;
         private string table;
-        private Security_profile securityProfile;
+        private string securityProfileName;
 
-        public Grant(string pPrivilegeType, string pTable, Security_profile pSecurityProfile)
+        public Grant(string pPrivilegeType, string pTable, string pSecurityProfileName)
         {
             privilegeType = pPrivilegeType;
             table = pTable;
-            securityProfile = pSecurityProfile;
+            securityProfileName = pSecurityProfileName;
         }
         public override string Execute(Database pDatabase)
         {
-            Boolean encontrado = false;
-            List<Security_profile> profiles = pDatabase.GetSecurity_Profiles();
-            int i = 0;
-            while(!encontrado && i <= pDatabase.GetSecurity_Profiles().Count)
+
+            if (pDatabase.SecurityProfileExists(pDatabase.GetName()))
             {
-                if (profiles[i].Equals(securityProfile))
-                {
-                    profiles[i].Grant(privilegeType, table);
-                    return Messages.SecurityPrivilegeGranted;
-                }
-                i++;
+                pDatabase.GetSecurityProfile(securityProfileName).Grant(privilegeType, table);
+                return Messages.SecurityPrivilegeGranted;
             }
-            return Messages.SecurityProfileDoesNotExist;
+            else
+            {
+                return Messages.SecurityProfileDoesNotExist;
+            }
+
         }
     }
 }
