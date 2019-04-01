@@ -338,18 +338,20 @@ namespace MiniSQLEngine
                         string pathProfile = @"..\..\..\DB\" + name + @"\Security\" + profiles[j].GetName() + ".txt";
                         using (StreamWriter writer1 = File.CreateText(pathProfile))
                         {
+                            writer1.WriteLine(profiles[j].GetName());
                             for (int k = 0; k < profiles[j].getPrivilege().Count; k++)
                             {
-                                writer1.WriteLine(profiles[j].getPrivilege().ElementAt(k) + "," + profiles[j].getTable().ElementAt(k) + ";");
+                                writer1.WriteLine(profiles[j].getPrivilege().ElementAt(k) + "," + profiles[j].getTable().ElementAt(k));
                             }
                         }
                     }
                     string pathUser = @"..\..\..\DB\" + name + @"\Security\Users.txt";
                     using (StreamWriter writer1 = File.CreateText(pathUser))
                     {
+                        writer1.WriteLine("users");
                         for (int k = 0; k < users.Count; k++)
                         {
-                            writer1.WriteLine(users[k].GetName() +","+ users[k].GetPassword() + "," + users[k].GetSecurity_Profile().GetName() + ";");
+                            writer1.WriteLine(users[k].GetName() +","+ users[k].GetPassword() + "," + users[k].GetSecurity_Profile().GetName() );
                         }
                     }
                 }
@@ -358,6 +360,7 @@ namespace MiniSQLEngine
         private void OpenDatabase(string pName)
         {
             string path = @"..\..\..\DB\" + pName;
+            string securityPath = @"..\..\..\DB\" + pName + @"\Security\";
             name = pName;
             string[] files = System.IO.Directory.GetFiles(path);
             for (int i = 0; i < files.Length; i++)
@@ -366,9 +369,42 @@ namespace MiniSQLEngine
                 tables.Add(new Table(lines[0], lines[1]));
                 for(int j = 2;j<lines.Length;j++ )
                 {
-                    tables[i].Insert(lines[2], "");
+                    tables[i].Insert(lines[j], "");
                 }
             }
+            string[] files1 = System.IO.Directory.GetFiles(securityPath);
+            int pos = 0;
+            for (int i = 0; i < files1.Length; i++)
+            {     
+                string[] lines = System.IO.File.ReadAllLines(files1[i]);
+                if(lines[0] != "users")
+                {
+                    profiles.Add(new Security_profile(lines[0]));
+                    for (int j = 1; j < lines.Length; j++)
+                    {
+                        string[] at = lines[j].Split(',');
+                        for(int l=0; l < profiles.Count; l++)
+                        {
+                            if (profiles[l].GetName() == lines[0])
+                            {
+                                profiles[l].Grant(at[0], at[1]);
+                            }
+                        }
+                       
+                    }
+                }
+                else
+                {
+                    pos = i;
+                }               
+            }
+            string [] lines1 = System.IO.File.ReadAllLines(files1[pos]);
+            for (int p = 1; p < lines1.Length; p++)
+            {
+                string[] at = lines1[p].Split(',');
+                AddUser(at[0],at[1],at[2]);
+            }
+
         }
         public User GetUser(string pUser)
         {
