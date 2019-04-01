@@ -38,6 +38,19 @@ namespace MiniSQLEngine
         {
             return profiles;
         }
+
+        public Security_profile GetSecurityProfile(string pName)
+        {
+            for (int i = 0; i <= profiles.Count; i++)
+            {
+                if (profiles.ElementAt(i).GetName().Equals(pName))
+                {
+                    return profiles.ElementAt(i);
+                }
+            }
+            return null;
+        }
+
         public Boolean SecurityProfileExists(string pName)
         {
             for (int i = 0; i <= profiles.Count; i++)
@@ -338,10 +351,9 @@ namespace MiniSQLEngine
                         string pathProfile = @"..\..\..\DB\" + name + @"\Security\" + profiles[j].GetName() + ".txt";
                         using (StreamWriter writer1 = File.CreateText(pathProfile))
                         {
-                            writer1.WriteLine(profiles[j].GetName());
-                            for (int k = 0; k < profiles[j].getPrivilege().Count; k++)
+                            for (int k = 0; k < profiles[j].GetPrivilege().Count; k++)
                             {
-                                writer1.WriteLine(profiles[j].getPrivilege().ElementAt(k) + "," + profiles[j].getTable().ElementAt(k));
+                                writer1.WriteLine(profiles[j].GetPrivilege().ElementAt(k) + "," + profiles[j].GetTable().ElementAt(k) + ";");
                             }
                         }
                     }
@@ -421,9 +433,9 @@ namespace MiniSQLEngine
         {
             Boolean encontrado = false;
             int i = 0;
-            while (!encontrado || i < currentUser.GetSecurity_Profile().getTable().Count)
+            while (!encontrado || i < currentUser.GetSecurity_Profile().GetTable().Count)
             {
-                if (currentUser.GetSecurity_Profile().getTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().getPrivilege().ElementAt(i) == pQuery)
+                if (currentUser.GetSecurity_Profile().GetTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().GetPrivilege().ElementAt(i) == pQuery)
                 {
                     encontrado = true;
                 }
