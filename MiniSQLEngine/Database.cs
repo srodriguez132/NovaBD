@@ -351,9 +351,9 @@ namespace MiniSQLEngine
                         string pathProfile = @"..\..\..\DB\" + name + @"\Security\" + profiles[j].GetName() + ".txt";
                         using (StreamWriter writer1 = File.CreateText(pathProfile))
                         {
-                            for (int k = 0; k < profiles[j].getPrivilege().Count; k++)
+                            for (int k = 0; k < profiles[j].GetPrivilege().Count; k++)
                             {
-                                writer1.WriteLine(profiles[j].getPrivilege().ElementAt(k) + "," + profiles[j].getTable().ElementAt(k) + ";");
+                                writer1.WriteLine(profiles[j].GetPrivilege().ElementAt(k) + "," + profiles[j].GetTable().ElementAt(k) + ";");
                             }
                         }
                     }
