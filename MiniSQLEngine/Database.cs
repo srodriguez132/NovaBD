@@ -87,11 +87,6 @@ namespace MiniSQLEngine
                 }
             }
         }
-        public void AddUser(string name, string pass, string profile)
-        {
-            User user = new User(name, pass, profile);
-            users.Add(user);
-        }
         public MiniSQLEngine.MiniSQL Parse(string query)
         {
                 Match match = Regex.Match(query, RegularExpressions.BackupDatabase);
