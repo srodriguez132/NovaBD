@@ -16,6 +16,7 @@ namespace MiniSQLEngine
         private List<Table> tables ;
         private List<User> users;
         private List<Security_profile> profiles;
+        private User currentUser;
         public Database(string pName)
         {
             string path = @"..\..\..\DB\" + pName;
@@ -26,6 +27,7 @@ namespace MiniSQLEngine
                 tables = new List<Table>();
                 users = new List<User>();
                 profiles = new List<Security_profile>();
+                currentUser = new User(null, null, null);
             }
             else
             {
@@ -115,7 +117,10 @@ namespace MiniSQLEngine
             {
                 return Messages.SecurityProfileDoesNotExist;
             }
-
+        }
+        public void setCurrentUser(User pUser)
+        {
+            currentUser = pUser;
         }
         public MiniSQLEngine.MiniSQL Parse(string query)
         {
@@ -301,6 +306,19 @@ namespace MiniSQLEngine
                     tables[i].Insert(lines[2], "");
                 }
             }
+        }
+        private Boolean HasPrivilege(string pTable, string pQuery)
+        {
+            Boolean encontrado = false;
+            int i = 0;
+            while (!encontrado || i < currentUser.GetSecurity_Profile().getTable().Count)
+            {
+                if (currentUser.GetSecurity_Profile().getTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().getPrivilege().ElementAt(i) == pQuery)
+                {
+                    encontrado = true;
+                }
+            }
+            return encontrado;
         }
     }
    

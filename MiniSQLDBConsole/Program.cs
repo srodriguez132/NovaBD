@@ -12,12 +12,24 @@ namespace MiniSQLDBConsole
     class Program
     {
         private static Database db;
+        private static User user;
         static void Main(string[] args)
         {
             
             Console.WriteLine("Write the name of the database: ");
             string input = Console.ReadLine();
             db = new Database(input);
+            Console.WriteLine("Write the name of the user: ");
+            string inputUser = Console.ReadLine();
+            user = db.GetUser(inputUser);
+            string inputPass= null;
+            while (inputPass == null && user.GetPassword() != inputPass)
+            {
+                Console.WriteLine("Write the password of the user: ");
+                inputPass = Console.ReadLine();
+            }
+            Console.WriteLine("Correct password");
+            db.setCurrentUser(user);
             try
             {
                 Console.WriteLine("Write the sentences: ");
@@ -41,6 +53,6 @@ namespace MiniSQLDBConsole
             }
 
         }
-
+       
     }
 }

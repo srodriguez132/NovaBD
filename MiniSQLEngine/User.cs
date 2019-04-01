@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class User
+  public class User
+
     {
         private string name;
         private string password;
@@ -26,6 +27,10 @@ namespace MiniSQLEngine
         public Security_profile GetSecurity_Profile()
         {
             return secprof;
+        }
+        public string GetPassword()
+        {
+            return password;
         }
     }
 }

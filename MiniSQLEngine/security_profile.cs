@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class Security_profile
+   public class Security_profile
     {
         private string name;
         private List<string> privilege_type;
@@ -44,6 +44,14 @@ namespace MiniSQLEngine
         public string GetName()
         {
             return name;
+        }
+        public List<string> getTable()
+        {
+            return table;
+        }
+        public List<string> getPrivilege()
+        {
+            return privilege_type;
         }
     }
 }
