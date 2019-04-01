@@ -2,18 +2,18 @@
 {
     internal class DeleteUser : MiniSQL
     {
-        public string user;
+        public string name;
       
 
-        public DeleteUser(string pUser)
+        public DeleteUser(string pName)
         {
-           user = pUser;
+           name = pName;
             
         }
 
         public override string Execute(Database pDatabase)
         {
-            return "";
+            return pDatabase.DeleteUser(name);
         }
     }
 }

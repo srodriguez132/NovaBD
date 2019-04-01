@@ -15,8 +15,7 @@
 
         public override string Execute(Database pDatabase)
         {
-
-            return "";
+            return pDatabase.AddUser(user, password, securityProfile);  
         }
     }
 }

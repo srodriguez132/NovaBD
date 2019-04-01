@@ -33,6 +33,17 @@ namespace MiniSQLEngine
             }
         }
 
+        public Boolean SecurityProfileExists(string pName)
+        {
+            for (int i = 0; i <= profiles.Count; i++)
+            {
+                if (profiles.ElementAt(i).GetName().Equals(pName))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public void CreateTable(string name, string pColumns)
         {
             Table table = new Table(name, pColumns);
@@ -67,16 +78,17 @@ namespace MiniSQLEngine
             return null;
         }
 
-        public void DeleteUser(string pName)
+        public string DeleteUser(string pName)
         {
             for (int i = 0; i < users.Count; i++)
             {
                 if (users[i].GetName().Equals(pName))
                 {
                     users.RemoveAt(i);
-
+                    return Messages.SecurityUserDeleted;
                 }
             }
+            return Messages.SecurityUserDoesNotExist;
         }
 
         public void DropSecurityProfile(string pSecProf)
