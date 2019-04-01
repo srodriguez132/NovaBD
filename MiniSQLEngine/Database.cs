@@ -34,6 +34,10 @@ namespace MiniSQLEngine
                 OpenDatabase(pName);
             }
         }
+        public List<Security_profile> GetSecurity_Profiles()
+        {
+            return profiles;
+        }
 
         public Boolean SecurityProfileExists(string pName)
         {
