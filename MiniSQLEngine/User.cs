@@ -32,9 +32,9 @@ namespace MiniSQLEngine
         {
             return password;
         }
-        public void SetSecurityProfile(string pSec)
+        public void SetSecurityProfile(Security_profile pSec)
         {
-            secprof = new Security_profile(pSec);
+            secprof = pSec;
         }
     }
 }
