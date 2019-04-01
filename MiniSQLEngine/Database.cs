@@ -34,6 +34,10 @@ namespace MiniSQLEngine
                 OpenDatabase(pName);
             }
         }
+        public List<Security_profile> GetSecurity_Profiles()
+        {
+            return profiles;
+        }
         public Boolean SecurityProfileExists(string pName)
         {
             for (int i = 0; i <= profiles.Count; i++)
@@ -45,6 +49,7 @@ namespace MiniSQLEngine
             }
             return false;
         }
+
         public void CreateTable(string name, string pColumns)
         {
             Table table = new Table(name, pColumns);
@@ -60,8 +65,8 @@ namespace MiniSQLEngine
 
                 }
             }
-
         }
+
         public Table GetTable(string pName)
         {
 
@@ -126,10 +131,12 @@ namespace MiniSQLEngine
                 return Messages.SecurityProfileDoesNotExist;
             }
         }
+
         public void setCurrentUser(User pUser)
         {
             currentUser = pUser;
         }
+
         public MiniSQLEngine.MiniSQL Parse(string query)
         {
                 Match match = Regex.Match(query, RegularExpressions.BackupDatabase);
@@ -387,6 +394,8 @@ namespace MiniSQLEngine
             }
             return encontrado;
         }
+
+       
     }
    
 }
