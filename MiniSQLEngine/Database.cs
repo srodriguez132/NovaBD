@@ -34,7 +34,6 @@ namespace MiniSQLEngine
                 OpenDatabase(pName);
             }
         }
-
         public Boolean SecurityProfileExists(string pName)
         {
             for (int i = 0; i <= profiles.Count; i++)
@@ -51,7 +50,6 @@ namespace MiniSQLEngine
             Table table = new Table(name, pColumns);
             tables.Add(table);
         }
-
         public void DeleteTable(string name)
         {
             for (int i = 0; i < tables.Count; i++)
@@ -79,7 +77,6 @@ namespace MiniSQLEngine
             }
             return null;
         }
-
         public string DeleteUser(string pName)
         {
             for (int i = 0; i < users.Count; i++)
@@ -92,7 +89,6 @@ namespace MiniSQLEngine
             }
             return Messages.SecurityUserDoesNotExist;
         }
-
         public void DropSecurityProfile(string pSecProf)
         {
             Security_profile defoult = new Security_profile("default");
@@ -253,7 +249,6 @@ namespace MiniSQLEngine
         {
             return name;
         }
-
         public void Dispose()
         {
             // If this function is being called the user wants to release the
@@ -264,7 +259,6 @@ namespace MiniSQLEngine
             // for the Finalizer to do. So lets tell the GC not to call it later.
             GC.SuppressFinalize(this);
         }
-
         protected virtual void Dispose(bool disposing)
         {
             if (!disposed)
@@ -291,7 +285,6 @@ namespace MiniSQLEngine
 
 
         }
-
         private void ReleaseUnmangedResources()
         {
             Console.WriteLine("Releasing Managed Resources");
@@ -300,23 +293,22 @@ namespace MiniSQLEngine
                 this.Dispose();
             }
         }
-
         private void ReleaseManagedResources()
         {
             SaveDatabase();
             Console.WriteLine("Releasing Unmanaged Resources");
         }
-
         private void SaveDatabase()
         {
             string path = @"..\..\..\DB\" + name;
+            string securityPath = @"..\..\..\DB\" + name + @"\Security\";
             if (!System.IO.Directory.Exists(path))
             {
                 System.IO.Directory.CreateDirectory(path);
             }
             for (int i = 0; i < tables.Count; i++)
             {
-                string pathTable = @"..\..\..\DB\" + name+ @"\" + tables[i].GetName() + ".txt";
+                string pathTable = @"..\..\..\DB\" + name + @"\" + tables[i].GetName() + ".txt";
                 using (StreamWriter writer = File.CreateText(pathTable))
                 {
                     writer.WriteLine(tables[i].GetName());
@@ -324,11 +316,34 @@ namespace MiniSQLEngine
                     for (int j = 0; j < tables[i].GetDatas().Count; j++)
                     {
                         int k;
-                        for (k = 0; k < tables[i].GetDatas().ElementAt(j).Length-1; k++)
+                        for (k = 0; k < tables[i].GetDatas().ElementAt(j).Length - 1; k++)
                         {
                             writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ",");
                         }
-                            writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ";" + "\r\n");
+                        writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ";" + "\r\n");
+                    }
+                    if (!System.IO.Directory.Exists(path))
+                    {
+                        System.IO.Directory.CreateDirectory(securityPath);
+                    }
+                    for (int j = 0; j < profiles.Count; j++)
+                    {
+                        string pathProfile = @"..\..\..\DB\" + name + @"\Security\" + profiles[j].GetName() + ".txt";
+                        using (StreamWriter writer1 = File.CreateText(pathProfile))
+                        {
+                            for (int k = 0; k < profiles[j].getPrivilege().Count; k++)
+                            {
+                                writer1.WriteLine(profiles[j].getPrivilege().ElementAt(k) + "," + profiles[j].getTable().ElementAt(k) + ";");
+                            }
+                        }
+                    }
+                    string pathUser = @"..\..\..\DB\" + name + @"\Security\Users.txt";
+                    using (StreamWriter writer1 = File.CreateText(pathUser))
+                    {
+                        for (int k = 0; k < users.Count; k++)
+                        {
+                            writer1.WriteLine(users[k].GetName() +","+ users[k].GetPassword() + "," + users[k].GetSecurity_Profile().GetName() + ";");
+                        }
                     }
                 }
             }
@@ -348,7 +363,6 @@ namespace MiniSQLEngine
                 }
             }
         }
-
         public User GetUser(string pUser)
         {
             for(int i = 0; i < users.Count; i++)
