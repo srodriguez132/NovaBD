@@ -22,14 +22,28 @@ namespace MiniSQLDBConsole
             Console.WriteLine("Write the name of the user: ");
             string inputUser = Console.ReadLine();
             user = db.GetUser(inputUser);
-            string inputPass= null;
-            while (inputPass == null && user.GetPassword() != inputPass)
+            while (user == null)
             {
-                Console.WriteLine("Write the password of the user: ");
-                inputPass = Console.ReadLine();
+                Console.WriteLine("Security user does not exist");
+                Console.WriteLine("Write the name of the user: ");
+                inputUser = Console.ReadLine();
+                user = db.GetUser(inputUser);
             }
-            Console.WriteLine("Correct password");
-            db.setCurrentUser(user);
+                string inputPass = null;
+                while (inputPass == null || user.GetPassword() != inputPass)
+                {
+
+                    Console.WriteLine("Write the password of the user: ");
+                    inputPass = Console.ReadLine();
+                    if (user.GetName() == Constants.adminName && user.GetPassword() == inputPass)
+                    {
+                        break;
+                    }
+                }
+                Console.WriteLine("Correct password");
+                db.setCurrentUser(user);
+            
+      
             try
             {
                 Console.WriteLine("Write the sentences: ");

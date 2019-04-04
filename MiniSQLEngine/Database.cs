@@ -27,11 +27,14 @@ namespace MiniSQLEngine
                 tables = new List<Table>();
                 users = new List<User>();
                 profiles = new List<Security_profile>();
-
+                users.Add(new User("admin", "admin", null));
                 currentUser = new User(null, null, null);
             }
             else
             {
+                tables = new List<Table>();
+                users = new List<User>();
+                profiles = new List<Security_profile>();
                 OpenDatabase(pName);
             }
         }
@@ -54,7 +57,7 @@ namespace MiniSQLEngine
 
         public Boolean SecurityProfileExists(string pName)
         {
-            for (int i = 0; i <= profiles.Count; i++)
+            for (int i = 0; i < profiles.Count; i++)
             {
                 if (profiles.ElementAt(i).GetName().Equals(pName))
                 {
