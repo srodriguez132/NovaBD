@@ -1,6 +1,6 @@
 ﻿namespace MiniSQLEngine
 {
-    internal class AddUser : MiniSQL
+    public class AddUser : MiniSQL
     {
         private string user;
         private string password;

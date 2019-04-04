@@ -233,32 +233,80 @@ namespace MiniSQLEngine
                 match = Regex.Match(query, RegularExpressions.CreateSecurity);
                 if (match.Success)
                 {
+                if (isAdmin())
+                {
                     return new CreateSecurity(match.Groups[1].Value);
+                }
+                else
+                {
+                    return new PrivilegeError();
+                }
+                    
                 }
                 match = Regex.Match(query, RegularExpressions.DropSecurity);
                 if (match.Success)
                 {
+                if (isAdmin())
+                {
                     return new DropSecurity(match.Groups[1].Value);
+                }
+                else
+                {
+                    return new PrivilegeError();
+                }
+                
                 }
                 match = Regex.Match(query, RegularExpressions.Grant);
                 if (match.Success)
                 {
+                if (isAdmin())
+                {
                     return new Grant(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                }
+                else
+                {
+                    return new PrivilegeError();
+                }
+               
                 }
                 match = Regex.Match(query, RegularExpressions.Revoke);
                 if (match.Success)
                 {
+                if (isAdmin())
+                {
                     return new Revoke(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                }
+                else
+                {
+                    return new PrivilegeError();
+                }
+                
                 }
                 match = Regex.Match(query, RegularExpressions.AddUser);
                 if (match.Success)
                 {
+                if (isAdmin())
+                {
                     return new AddUser(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                }
+                else
+                {
+                    return new PrivilegeError();
+                }
+                
                 }
                 match = Regex.Match(query, RegularExpressions.DeleteUser);
                 if (match.Success)
                 {
+                if (isAdmin())
+                {
                     return new DeleteUser(match.Groups[1].Value);
+                }
+                else
+                {
+                    return new PrivilegeError();
+                }
+                
                 }
 
                 return new SyntaxError();
@@ -449,6 +497,17 @@ namespace MiniSQLEngine
                 return encontrado;
             }
             else { return true; }
+        }
+        private Boolean isAdmin()
+        {
+            if(currentUser.GetName().Equals(Constants.adminName))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
        

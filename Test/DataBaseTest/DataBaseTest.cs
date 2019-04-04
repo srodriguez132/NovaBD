@@ -10,7 +10,7 @@ namespace DataBaseTest
         public void parseDeleteTest()
         {
             Database db = new Database("name");
-            MiniSQLEngine.MiniSQL q1 = db.Parse("DELETE FROM table WHERE id = id1;");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("DELETE FROM table WHERE id=id1;");
             Assert.IsInstanceOfType(q1, typeof(Delete));          
         }
         [TestMethod]
@@ -68,6 +68,50 @@ namespace DataBaseTest
             Database db = new Database("name");
             MiniSQLEngine.MiniSQL q1 = db.Parse("SELECT column FROM table;");
             Assert.IsInstanceOfType(q1, typeof(Select));
+        }
+
+        //Security tests
+        [TestMethod]
+        public void addUserTest()
+        {
+            Database db = new Database("name");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("ADD USER(user, password, security_profile);");
+            Assert.IsInstanceOfType(q1, typeof(AddUser));
+        }
+        [TestMethod]
+        public void createSecurityTest()
+        {
+            Database db = new Database("name");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("CREATE SECURITY PROFILE security_profile;");
+            Assert.IsInstanceOfType(q1, typeof(CreateSecurity));
+        }
+        [TestMethod]
+        public void dropSecurityTest()
+        {
+            Database db = new Database("name");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("DROP SECURITY PROFILE security_profile;");
+            Assert.IsInstanceOfType(q1, typeof(DropSecurity));
+        }
+        [TestMethod]
+        public void grantTest()
+        {
+            Database db = new Database("name");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("GRANT privilege_type ON table TO security_profile;");
+            Assert.IsInstanceOfType(q1, typeof(Grant));
+        }
+        [TestMethod]
+        public void revokeTest()
+        {
+            Database db = new Database("name");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("REVOKE privilege_type ON table TO security_profile;");
+            Assert.IsInstanceOfType(q1, typeof(Revoke));
+        }
+        [TestMethod]
+        public void deleteUserTest()
+        {
+            Database db = new Database("name");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("DELETE USER user;");
+            Assert.IsInstanceOfType(q1, typeof(DeleteUser));
         }
     }
 }

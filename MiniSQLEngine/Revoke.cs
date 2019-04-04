@@ -2,7 +2,7 @@
 
 namespace MiniSQLEngine
 {
-    internal class Revoke : MiniSQL
+    public class Revoke : MiniSQL
     {
         private string privilegeType;
         private string table;

@@ -1,6 +1,6 @@
 ﻿namespace MiniSQLEngine
 {
-    internal class DeleteUser : MiniSQL
+    public class DeleteUser : MiniSQL
     {
         public string name;
       
