@@ -1,0 +1,24 @@
+# TEST 1
+Table created (0,0030008s)
+Tuple added (0,0009071s)
+Tuple added (0,0000126s)
+Tuple added (0,0000151s)
+Tuple(s) deleted (0,0003682s)
+{Name,Age}{Eva,18}{Ramon,26}{Miren,26} (0,0108274s)
+TOTAL TIME: 0,0153646s
+
+# TEST 2
+Table created (0,0000204s)
+Tuple added (0,0000259s)
+Tuple added (0,0000089s)
+Tuple added (0,0000114s)
+{Name,Age}{Eva,18} (0,0000426s)
+TOTAL TIME: 0,0001162s
+
+# TEST 3
+Table created (0,0000098s)
+ERROR: ERROR: Table does not exist (0,0000058s)
+Tuple added (0,0000083s)
+Tuple added (0,0000111s)
+{Name,Age} (0,0000108s)
+TOTAL TIME: 0,000055s
