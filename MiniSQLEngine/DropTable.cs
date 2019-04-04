@@ -14,6 +14,7 @@ public class DropTable : MiniSQL
         {      
             pDatabase.DeleteTable(tableName);
             return Constants.DropTableMessage;
+            
     }
     }
 }
