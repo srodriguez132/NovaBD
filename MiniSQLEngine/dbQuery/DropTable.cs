@@ -13,7 +13,7 @@ public class DropTable : MiniSQL
         public override string Execute(Database pDatabase)
         {      
             pDatabase.DeleteTable(tableName);
-            return Constants.DropTableMessage;
+            return Messages.DropTableMessage;
             
     }
     }
