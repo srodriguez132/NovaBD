@@ -13,6 +13,7 @@
             if (!pDatabase.SecurityProfileExists(profileName))
             {
                 Security_profile secProfile = new Security_profile(profileName);
+                pDatabase.GetSecurity_Profiles().Add(secProfile);
                 return Messages.SecurityProfileCreated;
             }
             return Messages.SecurityProfileAlreadyExists;

@@ -34,6 +34,7 @@ namespace MiniSQLEngine
             {
                 tables = new List<Table>();
                 users = new List<User>();
+                users.Add(new User("admin", "admin", null));
                 profiles = new List<Security_profile>();
                 OpenDatabase(pName);
             }
@@ -116,9 +117,23 @@ namespace MiniSQLEngine
             Security_profile defoult = new Security_profile("default");
             for (int i = 0; i < users.Count; i++)
             {
-                if (users.ElementAt(i).GetSecurity_Profile().GetName() == pSecProf)
+                if ( users.ElementAt(i).GetName()!=Constants.adminName && users.ElementAt(i).GetSecurity_Profile().GetName() == pSecProf)
                 {
                     users.ElementAt(i).SetSecurityProfile(defoult);
+                }
+            }
+            int j = 0;
+            Boolean eliminated = false;
+            while(j<profiles.Count && !eliminated)
+            {
+                if(profiles[j].GetName()== pSecProf)
+                {
+                    profiles.RemoveAt(j);
+                    eliminated = true;
+                }
+                else
+                {
+                    j++;
                 }
             }
         }        
@@ -126,9 +141,9 @@ namespace MiniSQLEngine
         {
             Boolean encontrado = false;
             int i = 0;
-            while(!encontrado || i < profiles.Count)
+            while(!encontrado && i < profiles.Count)
             {
-                if(profiles.ElementAt(i).GetName()== profile)
+                if(profiles[i].GetName()== profile)
                 {
                     encontrado = true;
                 }
@@ -139,7 +154,7 @@ namespace MiniSQLEngine
             }
             if (i != profiles.Count)
             {
-                User user = new User(name, pass, profiles.ElementAt(i));
+                User user = new User(name, pass, profiles[i]);
                 users.Add(user);
                 return Messages.SecurityUserCreated;
              }
@@ -394,7 +409,7 @@ namespace MiniSQLEngine
                         }
                         writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ";" + "\r\n");
                     }
-                    if (!System.IO.Directory.Exists(path))
+                    if (!System.IO.Directory.Exists(securityPath))
                     {
                         System.IO.Directory.CreateDirectory(securityPath);
                     }
@@ -403,9 +418,10 @@ namespace MiniSQLEngine
                         string pathProfile = @"..\..\..\DB\" + name + @"\Security\" + profiles[j].GetName() + ".txt";
                         using (StreamWriter writer1 = File.CreateText(pathProfile))
                         {
+                            writer1.WriteLine(profiles[j].GetName());
                             for (int k = 0; k < profiles[j].GetPrivilege().Count; k++)
                             {
-                                writer1.WriteLine(profiles[j].GetPrivilege().ElementAt(k) + "," + profiles[j].GetTable().ElementAt(k) + ";");
+                                writer1.WriteLine(profiles[j].GetPrivilege().ElementAt(k) + "," + profiles[j].GetTable().ElementAt(k));
                             }
                         }
                     }
@@ -415,7 +431,10 @@ namespace MiniSQLEngine
                         writer1.WriteLine("users");
                         for (int k = 0; k < users.Count; k++)
                         {
-                            writer1.WriteLine(users[k].GetName() +","+ users[k].GetPassword() + "," + users[k].GetSecurity_Profile().GetName() );
+                            if (users[k].GetName() != Constants.adminName)
+                            {
+                                writer1.WriteLine(users[k].GetName() + "," + users[k].GetPassword() + "," + users[k].GetSecurity_Profile().GetName());
+                            }                        
                         }
                     }
                 }
@@ -487,11 +506,15 @@ namespace MiniSQLEngine
             {
                 Boolean encontrado = false;
                 int i = 0;
-                while (!encontrado || i < currentUser.GetSecurity_Profile().GetTable().Count)
+                while (!encontrado && i < currentUser.GetSecurity_Profile().GetTable().Count)
                 {
                     if (currentUser.GetSecurity_Profile().GetTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().GetPrivilege().ElementAt(i) == pQuery)
                     {
                         encontrado = true;
+                    }
+                    else
+                    {
+                        i++;
                     }
                 }
                 return encontrado;

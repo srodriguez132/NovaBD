@@ -18,7 +18,7 @@ namespace MiniSQLEngine
         public override string Execute(Database pDatabase)
         {
 
-            if (pDatabase.SecurityProfileExists(pDatabase.GetName()))
+            if (pDatabase.SecurityProfileExists(securityProfileName))
             {
                 pDatabase.GetSecurityProfile(securityProfileName).Grant(privilegeType, table);
                 return Messages.SecurityPrivilegeGranted;
