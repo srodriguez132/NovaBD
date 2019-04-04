@@ -66,6 +66,8 @@ namespace DataBaseTest
         public void parseSelectTest()
         {
             Database db = new Database("name");
+            Security_profile sp = new Security_profile("name");
+            db.CreateTable("table", "column");
             MiniSQLEngine.MiniSQL q1 = db.Parse("SELECT column FROM table;");
             Assert.IsInstanceOfType(q1, typeof(Select));
         }
