@@ -27,6 +27,7 @@ namespace MiniSQLEngine
                 tables = new List<Table>();
                 users = new List<User>();
                 profiles = new List<Security_profile>();
+
                 currentUser = new User(null, null, null);
             }
             else
@@ -431,16 +432,20 @@ namespace MiniSQLEngine
         }
         private Boolean HasPrivilege(string pTable, string pQuery)
         {
-            Boolean encontrado = false;
-            int i = 0;
-            while (!encontrado || i < currentUser.GetSecurity_Profile().GetTable().Count)
+            if (currentUser.GetName() != Constants.adminName)
             {
-                if (currentUser.GetSecurity_Profile().GetTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().GetPrivilege().ElementAt(i) == pQuery)
+                Boolean encontrado = false;
+                int i = 0;
+                while (!encontrado || i < currentUser.GetSecurity_Profile().GetTable().Count)
                 {
-                    encontrado = true;
+                    if (currentUser.GetSecurity_Profile().GetTable().ElementAt(i) == pTable && currentUser.GetSecurity_Profile().GetPrivilege().ElementAt(i) == pQuery)
+                    {
+                        encontrado = true;
+                    }
                 }
+                return encontrado;
             }
-            return encontrado;
+            else { return true; }
         }
 
        
