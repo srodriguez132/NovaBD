@@ -16,7 +16,7 @@ namespace TCPClientExample
             const string argPrefixIp = "ip=";
             const string argPrefixPort = "port=";
 
-            string ip = null;
+            string ip = "127.0.0.1";
             int port = 0;
             foreach (string arg in args)
             {
