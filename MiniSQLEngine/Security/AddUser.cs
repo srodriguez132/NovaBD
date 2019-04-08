@@ -1,4 +1,4 @@
-﻿namespace MiniSQLEngine
+﻿   namespace MiniSQLEngine
 {
     public class AddUser : MiniSQL
     {
