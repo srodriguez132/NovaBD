@@ -1,0 +1,4 @@
+sec
+SELECT,MyTable
+SELECT,MyTable
+DELETE,MyTable

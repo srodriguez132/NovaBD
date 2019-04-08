@@ -52,6 +52,6 @@ namespace MiniSQLEngine
         public List<string> GetPrivilege()
         {
             return privilege_type;
-        }
+        }     
     }
 }

@@ -17,10 +17,17 @@ namespace MiniSQLEngine
         }
         public override string Execute(Database pDatabase)
         {
-
-            if (pDatabase.SecurityProfileExists(pDatabase.GetName()))
+                               
+            if (pDatabase.SecurityProfileExists(securityProfileName))
             {
-                pDatabase.GetSecurityProfile(securityProfileName).Grant(privilegeType, table);
+                for (int j = 0; j<pDatabase.GetSecurityProfile(securityProfileName).GetPrivilege().Count; j++)
+                {
+                    if (pDatabase.GetSecurityProfile(securityProfileName).GetPrivilege()[j] == privilegeType && pDatabase.GetSecurityProfile(securityProfileName).GetTable()[j] == table)
+                    {
+                        return Messages.SecurityProfileAlreadyGranted;
+                    }
+                }
+                    pDatabase.GetSecurityProfile(securityProfileName).Grant(privilegeType, table);
                 return Messages.SecurityPrivilegeGranted;
             }
             else

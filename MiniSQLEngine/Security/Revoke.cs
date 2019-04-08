@@ -17,7 +17,7 @@ namespace MiniSQLEngine
 
         public override string Execute(Database pDatabase)
         {
-            if(pDatabase.SecurityProfileExists(pDatabase.GetName()))
+            if(pDatabase.SecurityProfileExists(securityProfile))
             {
                 pDatabase.GetSecurityProfile(securityProfile).Revoke(privilegeType, table);
                 return Messages.SecurityPrivilegeRevoked;
