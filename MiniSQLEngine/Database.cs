@@ -150,8 +150,6 @@ namespace MiniSQLEngine
             
             if (!exist)
             {
-
-
                 Boolean encontrado = false;
                 int i = 0;
                 while (!encontrado && i < profiles.Count)
