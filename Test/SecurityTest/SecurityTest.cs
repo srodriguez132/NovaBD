@@ -12,7 +12,6 @@ namespace SecurityTest
         {
             Database db = new Database("name");
             db.setCurrentUser(db.GetUser("admin"));
-            db.Parse("CREATE TABLE table (column TEXT);");
             MiniSQLEngine.MiniSQL q1 = db.Parse("ADD USER (user, password, security_profile);");
             Assert.IsInstanceOfType(q1, typeof(AddUser));
         }
@@ -20,8 +19,7 @@ namespace SecurityTest
         public void createSecurityTest()
         {
             Database db = new Database("name");
-            db.setCurrentUser(db.GetUser("admin"));
-            db.Parse("CREATE TABLE table (column TEXT);");
+            db.setCurrentUser(db.GetUser("admin"));      
             MiniSQLEngine.MiniSQL q1 = db.Parse("CREATE SECURITY PROFILE security_profile;");
             Assert.IsInstanceOfType(q1, typeof(CreateSecurity));
         }
@@ -30,7 +28,6 @@ namespace SecurityTest
         {
             Database db = new Database("name");
             db.setCurrentUser(db.GetUser("admin"));
-            db.Parse("CREATE TABLE table (column TEXT);");
             MiniSQLEngine.MiniSQL q1 = db.Parse("DROP SECURITY PROFILE security_profile;");
             Assert.IsInstanceOfType(q1, typeof(DropSecurity));
         }
@@ -39,7 +36,6 @@ namespace SecurityTest
         {
             Database db = new Database("name");
             db.setCurrentUser(db.GetUser("admin"));
-            db.Parse("CREATE TABLE table (column TEXT);");
             MiniSQLEngine.MiniSQL q1 = db.Parse("GRANT privilege_type ON table TO security_profile;");
             Assert.IsInstanceOfType(q1, typeof(Grant));
         }
@@ -48,7 +44,6 @@ namespace SecurityTest
         {
             Database db = new Database("name");
             db.setCurrentUser(db.GetUser("admin"));
-            db.Parse("CREATE TABLE table (column TEXT);");
             MiniSQLEngine.MiniSQL q1 = db.Parse("REVOKE privilege_type ON table TO security_profile;");
             Assert.IsInstanceOfType(q1, typeof(Revoke));
         }
@@ -56,9 +51,8 @@ namespace SecurityTest
         public void deleteUserTest()
         {
             Database db = new Database("name");
-            db.setCurrentUser(db.GetUser("admin"));
-            db.Parse("CREATE TABLE table (column TEXT);");
-            MiniSQLEngine.MiniSQL q1 = db.Parse("DELETE USER user;");
+            db.setCurrentUser(db.GetUser("admin"));         
+            MiniSQLEngine.MiniSQL q1 = db.Parse("DELETE USER admin;");
             Assert.IsInstanceOfType(q1, typeof(DeleteUser));
         }
     }
