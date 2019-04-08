@@ -13,6 +13,10 @@
 
         public override string Execute(Database pDatabase)
         {
+            if (name.Equals("admin"))
+            {
+                return Messages.SecurityCantDeleteAdmin;
+            }
             return pDatabase.DeleteUser(name);
         }
     }
