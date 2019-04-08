@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bundler", "Bundler\Bundler.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecurityTest", "Test\SecurityTest\SecurityTest.csproj", "{520B6BF2-4039-4A69-987B-F0DB7818DE01}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniSQLServer", "MiniSQLServer\MiniSQLServer.csproj", "{809CDBAD-744D-4B9D-8017-B6D74125BEC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniSQLClient", "MiniSQLClient\MiniSQLClient.csproj", "{C38D4560-7165-4610-8020-0BC36337F408}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,14 @@ Global
 		{520B6BF2-4039-4A69-987B-F0DB7818DE01}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{520B6BF2-4039-4A69-987B-F0DB7818DE01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{520B6BF2-4039-4A69-987B-F0DB7818DE01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{809CDBAD-744D-4B9D-8017-B6D74125BEC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{809CDBAD-744D-4B9D-8017-B6D74125BEC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{809CDBAD-744D-4B9D-8017-B6D74125BEC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{809CDBAD-744D-4B9D-8017-B6D74125BEC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C38D4560-7165-4610-8020-0BC36337F408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C38D4560-7165-4610-8020-0BC36337F408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C38D4560-7165-4610-8020-0BC36337F408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C38D4560-7165-4610-8020-0BC36337F408}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
