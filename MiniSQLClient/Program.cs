@@ -49,5 +49,7 @@ namespace TCPClientExample
                 networkStream.Write(endMessage, 0, endMessage.Length);
             }
         }
+
+
     }
 }
