@@ -40,5 +40,6 @@ namespace MiniSQLEngine
         public const string SecurityProfileDoesNotExist = Error + "Security profile does not exist";
         public const string SecurityUserDoesNotExist = Error + "Security user does not exist";
         public const string SecurityCantDeleteAdmin = Error + "Admin can´t be deleted";
+        public const string SecurityProfileAlreadyGranted = Error + "Privilege already exists";
     }
 }
