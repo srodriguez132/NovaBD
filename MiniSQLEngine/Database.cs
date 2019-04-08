@@ -138,29 +138,47 @@ namespace MiniSQLEngine
             }
         }        
         public string AddUser(string name, string pass, string profile)
-        {
-            Boolean encontrado = false;
-            int i = 0;
-            while(!encontrado && i < profiles.Count)
+        {            
+            Boolean exist = false;
+            for (int j =0;j<users.Count;j++)
             {
-                if(profiles[i].GetName()== profile)
+                if (users[j].GetName() == name)
                 {
-                    encontrado = true;
+                    exist = true;
+                }
+            }
+            
+            if (!exist)
+            {
+
+
+                Boolean encontrado = false;
+                int i = 0;
+                while (!encontrado && i < profiles.Count)
+                {
+                    if (profiles[i].GetName() == profile)
+                    {
+                        encontrado = true;
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+                if (i != profiles.Count)
+                {
+                    User user = new User(name, pass, profiles[i]);
+                    users.Add(user);
+                    return Messages.SecurityUserCreated;
                 }
                 else
                 {
-                    i++;
+                    return Messages.SecurityProfileDoesNotExist;
                 }
             }
-            if (i != profiles.Count)
-            {
-                User user = new User(name, pass, profiles[i]);
-                users.Add(user);
-                return Messages.SecurityUserCreated;
-             }
             else
             {
-                return Messages.SecurityProfileDoesNotExist;
+                return Messages.SecurityUserAlreadyExists;
             }
         }
 
