@@ -17,7 +17,7 @@ namespace MiniSQLEngine
         }
         public override string Execute(Database pDatabase)
         {
-                               
+
             if (pDatabase.SecurityProfileExists(securityProfileName))
             {
                 for (int j = 0; j<pDatabase.GetSecurityProfile(securityProfileName).GetPrivilege().Count; j++)
