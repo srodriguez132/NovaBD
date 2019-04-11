@@ -12,7 +12,7 @@ namespace SecurityQueryTest
         [TestMethod]
         public void AddUserQueryTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
             
             string q1 = "ADD USER (user, password, security_profile);";
@@ -29,7 +29,7 @@ namespace SecurityQueryTest
         [TestMethod]
         public void CreateSecurityQueryTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
 
             string q1 = "CREATE SECURITY PROFILE security_profile;";
@@ -42,7 +42,7 @@ namespace SecurityQueryTest
         [TestMethod]
         public void DeleteUserQueryTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
 
             string q1 = "DELETE USER admin;";
@@ -55,7 +55,7 @@ namespace SecurityQueryTest
         [TestMethod]
         public void DropSecurityQueryTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
 
             string q1 = "DROP SECURITY PROFILE security_profile;";
@@ -68,7 +68,7 @@ namespace SecurityQueryTest
         [TestMethod]
         public void GrantQueryTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
 
             string q1 = "GRANT privilege_type ON table TO security_profile;";
@@ -85,7 +85,7 @@ namespace SecurityQueryTest
         [TestMethod]
         public void RevokeQueryTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
 
             string q1 = "REVOKE privilege_type ON table TO security_profile;";
