@@ -34,7 +34,7 @@ namespace DbQueryTest
 
             //Third sentence
             Match match3 = Regex.Match(q3, RegularExpressions.Select);
-            string columnq3 = match3.Groups[1].Value;         
+            string columnq3 = match3.Groups[1].Value;
             string tableq3 = match3.Groups[2].Value;
 
             Assert.AreEqual(columnq3, "column1, column2");
@@ -53,8 +53,59 @@ namespace DbQueryTest
         [TestMethod]
         public void DeleteTest()
         {
-            Database db = new Database("name");
-           
+            string d1 = "DELETE FROM MyTable WHERE column=value;";
+
+            Match match = Regex.Match(d1, RegularExpressions.Delete);
+            string table = match.Groups[1].Value;
+            string where = match.Groups[2].Value;
+
+
+
+            Assert.AreEqual(table, "MyTable");
+            Assert.AreEqual(where, "column=value");
+        }
+
+        [TestMethod]
+        public void CreateDatabaseTest()
+        {
+            string c = "CREATE DATABASE dbname;";
+
+            Match match = Regex.Match(c, RegularExpressions.CreateDataBase);
+            string dbname = match.Groups[1].Value;
+
+            Assert.AreEqual(dbname, "dbname");
+        }
+        [TestMethod]
+        public void InsertTest()
+        {
+            string i = "INSERT INTO Mytable (column1,column2) VALUES (value1,value2);";
+
+            Match match = Regex.Match(i, RegularExpressions.Insert);
+            string table = match.Groups[1].Value;
+            string column = match.Groups[2].Value;
+            string value = match.Groups[3].Value;
+
+            Assert.AreEqual(table, "Mytable");
+            Assert.AreEqual(column, "column1,column2");
+            Assert.AreEqual(value, "value1,value2");
 
         }
+        [TestMethod]
+        public void UpdateTest()
+        {
+            string u = "UPDATE Mytable SET column1=value2 WHERE column1=value1;";
+
+            Match match = Regex.Match(u, RegularExpressions.Update);
+            string table = match.Groups[1].Value;
+            string set = match.Groups[2].Value;
+            string where = match.Groups[3].Value;
+
+            Assert.AreEqual(table, "Mytable");
+            Assert.AreEqual(set, "column1=value2");
+            Assert.AreEqual(where, "column1=value1");
+
+        }
+
+
+    }
 }
