@@ -17,10 +17,9 @@ namespace MiniSQLEngine
         private List<User> users;
         private List<Security_profile> profiles;
         private User currentUser;
-        public Database(string pName)
+        public Database(string pName,string pUser, string pPass)
         {
             string path = @"..\..\..\DB\" + pName;
-
             if (!System.IO.Directory.Exists(path))
             {
                 name = pName;
@@ -28,7 +27,10 @@ namespace MiniSQLEngine
                 users = new List<User>();
                 profiles = new List<Security_profile>();
                 users.Add(new User("admin", "admin", null));
-                currentUser = new User(null, null, null);
+                if (UserExist(pUser, pPass))
+                {
+                    currentUser = GetUser(pUser);
+                }
             }
             else
             {
@@ -37,6 +39,10 @@ namespace MiniSQLEngine
                 users.Add(new User("admin", "admin", null));
                 profiles = new List<Security_profile>();
                 OpenDatabase(pName);
+                if (UserExist(pUser, pPass))
+                {
+                    currentUser = GetUser(pUser);
+                }
             }
         }
         public List<Security_profile> GetSecurity_Profiles()
@@ -548,8 +554,20 @@ namespace MiniSQLEngine
                 return false;
             }
         }
-
-       
+        private Boolean UserExist(string pName,string pPass)
+        {
+            Boolean exist = false;
+            int i = 0;
+            while(!exist && i < users.Count)
+            {
+                if (pName == users[i].GetName() && pPass == users[i].GetPassword())
+                {
+                    exist = true;
+                }
+                else { i++; }
+            }
+            return exist;
+        }
     }
    
 }

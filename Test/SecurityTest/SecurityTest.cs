@@ -10,7 +10,7 @@ namespace SecurityTest
         [TestMethod]
         public void addUserTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
             MiniSQLEngine.MiniSQL q1 = db.Parse("ADD USER (user, password, security_profile);");
             Assert.IsInstanceOfType(q1, typeof(AddUser));
@@ -18,7 +18,7 @@ namespace SecurityTest
         [TestMethod]
         public void createSecurityTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));      
             MiniSQLEngine.MiniSQL q1 = db.Parse("CREATE SECURITY PROFILE security_profile;");
             Assert.IsInstanceOfType(q1, typeof(CreateSecurity));
@@ -26,7 +26,7 @@ namespace SecurityTest
         [TestMethod]
         public void dropSecurityTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
             MiniSQLEngine.MiniSQL q1 = db.Parse("DROP SECURITY PROFILE security_profile;");
             Assert.IsInstanceOfType(q1, typeof(DropSecurity));
@@ -34,7 +34,7 @@ namespace SecurityTest
         [TestMethod]
         public void grantTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
             MiniSQLEngine.MiniSQL q1 = db.Parse("GRANT privilege_type ON table TO security_profile;");
             Assert.IsInstanceOfType(q1, typeof(Grant));
@@ -42,7 +42,7 @@ namespace SecurityTest
         [TestMethod]
         public void revokeTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
             MiniSQLEngine.MiniSQL q1 = db.Parse("REVOKE privilege_type ON table TO security_profile;");
             Assert.IsInstanceOfType(q1, typeof(Revoke));
@@ -50,7 +50,7 @@ namespace SecurityTest
         [TestMethod]
         public void deleteUserTest()
         {
-            Database db = new Database("name");
+            Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));         
             MiniSQLEngine.MiniSQL q1 = db.Parse("DELETE USER admin;");
             Assert.IsInstanceOfType(q1, typeof(DeleteUser));
