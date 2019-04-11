@@ -28,8 +28,8 @@ namespace DemoBorja
                 {
                     int c = 1;
                     Stopwatch stopWatch = new Stopwatch();
-                    //Database db = new Database("database1");
-                    //writer.WriteLine("# TEST " + c);
+                //    Database db = new Database("database1");
+                 //   writer.WriteLine("# TEST " + c);
 
                     string[] lines = System.IO.File.ReadAllLines(@"..\..\..\Inputs\" + inputfile + ".txt");
                     for (int i = 0; i < lines.Length; i++)

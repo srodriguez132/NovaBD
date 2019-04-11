@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class RegularExpressions
+    public class RegularExpressions
     {
         public const string BackupDatabase = @"BACKUP DATABASE\s+(\w+)\s+TO DISK = ('\w+');";
         public const string CreateDataBase = @"CREATE\s+DATABASE\s+(\w+);";
