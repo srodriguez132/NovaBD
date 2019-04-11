@@ -16,7 +16,7 @@ namespace MiniSQLEngine
         public const string DropTable = @"DROP\s+TABLE\s+(\w+);";
         public const string Insert = @"INSERT\s+INTO\s+(\w+)(?:|\s+\(([\w=,]+)\))\s+VALUES\s+\((.+)\);";
         public const string Select = @"SELECT\s+(.*)\s+FROM\s+(\w+)(?:|\s+WHERE\s+(\w+[<|=|>]\w+));";
-        public const string Update = @"UPDATE\s+(\w+)\s+SET\s+(.+)WHERE\s+(.+);";
+        public const string Update = @"UPDATE\s+(\w+)\s+SET\s+(.+)\s+WHERE\s+(.+);";
         public const string CreateSecurity = @"CREATE\s+SECURITY\s+PROFILE\s+(\w+);";
         public const string DropSecurity = @"DROP\s+SECURITY\s+PROFILE\s+(\w+);";
         public const string Grant = @"GRANT\s+(\w+)\s+ON\s+(\w+)\s+TO\s+(\w+);";
