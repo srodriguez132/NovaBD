@@ -15,7 +15,7 @@ namespace MiniSQLEngine
         }
         public override string Execute(Database pDatabase)
         {
-            pDatabase = new Database(dbName);
+            pDatabase = new Database(dbName, "user", "pass");
 
             //return Constants.CreateDatabaseMessage;
             return Messages.CreateDatabaseSuccess;
