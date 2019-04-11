@@ -24,8 +24,8 @@ namespace DemoBorja
                 {
                     int c = 1;
                     Stopwatch stopWatch = new Stopwatch();
-                    Database db = new Database("database1");
-                    writer.WriteLine("# TEST " + c);
+                //    Database db = new Database("database1");
+                 //   writer.WriteLine("# TEST " + c);
 
                     string[] lines = System.IO.File.ReadAllLines(@"..\..\..\Inputs\" + inputfile + ".txt");
                     for (int i = 0; i < lines.Length; i++)
@@ -38,7 +38,8 @@ namespace DemoBorja
                             stopWatch = new Stopwatch();
                             stopWatch.Start();
                             c++;
-                            db = new Database("database" + i);
+                           // db.Dispose();
+                           // db = new Database("database" + i);
                             writer.WriteLine("");
                             writer.WriteLine("# TEST " + c);
                         }
@@ -46,7 +47,7 @@ namespace DemoBorja
                         {
                             Stopwatch stopWatch1 = new Stopwatch();
                             stopWatch1.Start();
-                            string res = db.Query(lines[i]);
+                       //     string res = db.Query(lines[i]);
                             stopWatch1.Stop();
                             writer.WriteLine(res + " (" + Convert.ToDecimal(stopWatch1.Elapsed.TotalSeconds) + "s)");
                         }
