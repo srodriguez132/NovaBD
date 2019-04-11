@@ -48,7 +48,50 @@ namespace MiniSQLClient
             string Columns = @"<Columns>(\.+)</Columns>";
             string Rows = @"<Rows>(\.+)</Rows>";
             string Column = @"<Column>(\w+)</Column>";
-            Match match = Regex.Match(query,Success);
+            string Row = @"<Row>(\.+)</Row>";
+            string Value = @"<Value>(\w+)</Value>";
+            string Close = @"<Colse/>";
+            Match match = Regex.Match(query, Success);
+            if (match.Success)
+            {
+                return "";
+            }
+            match = Regex.Match(query, Error);
+            if (match.Success)
+            {
+                return (string)match.Groups[1].Value;
+            }
+            match = Regex.Match(query, Answer);
+            if (match.Success)
+            {
+                match = Regex.Match(query, Columns);
+                if (match.Success)
+                {
+                    match = Regex.Match(query, Column);
+                    if (match.Success)
+                    {
+                        return (string)match.Groups[1].Value; 
+                    }
+                }
+                match = Regex.Match(query, Rows);
+                if (match.Success)
+                {
+                    match = Regex.Match(query, Row);
+                    if (match.Success)
+                    {
+                        match = Regex.Match(query, Value);
+                        if (match.Success)
+                        {
+                            return (string)match.Groups[1].Value;
+                        }
+                    }
+                }
+            }                               
+            match = Regex.Match(query, Close);
+            if (match.Success)
+            {
+                return "";
+            }
             return null;
         }
     }

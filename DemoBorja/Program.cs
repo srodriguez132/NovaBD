@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using MiniSQLEngine;
@@ -18,6 +19,9 @@ namespace DemoBorja
             string path = @".\";
             Console.WriteLine("Write the name of the file you want to read ");
             string inputfile = Console.ReadLine();
+            string res = null;
+            Database db = null;
+            string pathDatabases = @"..\..\..\DB\";
             try
             {
                 using (StreamWriter writer = File.CreateText(path + "output.txt"))
@@ -36,10 +40,10 @@ namespace DemoBorja
                             stopWatch.Stop();
                             writer.WriteLine("TOTAL TIME: " + Convert.ToDecimal(stopWatch.Elapsed.TotalSeconds) + "s");
                             stopWatch = new Stopwatch();
+                            db.Dispose();
                             stopWatch.Start();
                             c++;
-                           // db.Dispose();
-                           // db = new Database("database" + i);
+                            //db = new Database("database" + i);
                             writer.WriteLine("");
                             writer.WriteLine("# TEST " + c);
                         }
@@ -47,7 +51,43 @@ namespace DemoBorja
                         {
                             Stopwatch stopWatch1 = new Stopwatch();
                             stopWatch1.Start();
-                       //     string res = db.Query(lines[i]);
+                            Match match = Regex.Match(lines[i], @"(\w+),(\w+),(\w+)");
+                            if (match.Success)
+                            {
+                                string[] databases = System.IO.Directory.GetDirectories(pathDatabases);
+                                int j = 0;
+                                Boolean f = false;
+                                while(j < databases.Length && f == false)
+                                {
+                                    //Checks if database exists
+                                    if (databases[j].Equals(match.Groups[1].Value))
+                                    {
+                                        if(match.Groups[2].Value.Equals("admin") && match.Groups[3].Value.Equals("admin"))
+                                        {
+                                            db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                            
+                                        }
+                                        else
+                                        {
+                                            writer.WriteLine("ERROR: Incorrect login ");
+                                        }
+                                        f = true;
+                                    }
+                                    else
+                                    {
+                                        j++;
+                                    }
+                                }
+                                if(f == false)
+                                {
+                                    db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                }
+                                
+                            }
+                            else
+                            {
+                                res = db.Query(lines[i]);
+                            }
                             stopWatch1.Stop();
                             writer.WriteLine(res + " (" + Convert.ToDecimal(stopWatch1.Elapsed.TotalSeconds) + "s)");
                         }
