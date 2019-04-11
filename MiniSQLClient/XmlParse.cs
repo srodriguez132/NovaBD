@@ -49,7 +49,7 @@ namespace MiniSQLClient
             string Rows = @"<Rows>(\.+)</Rows>";
             string Column = @"<Column>(\w+)</Column>";
             Match match = Regex.Match(query,Success);
-
+            return null;
         }
     }
 }
