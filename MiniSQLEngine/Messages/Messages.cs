@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace MiniSQLEngine
 {
-    class Messages
+    public class Messages
     {
         public const string CreateDatabaseSuccess = "Database created";
+        public const string OpenDatabaseSuccess = "Database opened";
         public const string DeleteDatabaseSuccess = "Database deleted";
         public const string BackupDatabaseSuccess = "Database backed up";
 
@@ -34,6 +35,7 @@ namespace MiniSQLEngine
         public const string SecurityPrivilegeGranted = "Security privilege granted";
         public const string SecurityPrivilegeRevoked = "Security privilege revoked";
 
+        public const string SecurityIncorrectLogin = Error + "Incorrect login";
         public const string SecurityNotSufficientPrivileges = Error + "Not sufficient privileges";
         public const string SecurityProfileAlreadyExists = Error + "Security profile already exists";
         public const string SecurityUserAlreadyExists = Error + "Security user already exists";
