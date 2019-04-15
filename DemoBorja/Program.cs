@@ -29,7 +29,7 @@ namespace DemoBorja
                     int c = 1;
                     Stopwatch stopWatch = new Stopwatch();
                 //    Database db = new Database("database1");
-                 //   writer.WriteLine("# TEST " + c);
+                    writer.WriteLine("# TEST " + c);
 
                     string[] lines = System.IO.File.ReadAllLines(@"..\..\..\Inputs\" + inputfile + ".txt");
                     for (int i = 0; i < lines.Length; i++)
@@ -60,16 +60,26 @@ namespace DemoBorja
                                 while(j < databases.Length && f == false)
                                 {
                                     //Checks if database exists
-                                    if (databases[j].Equals(match.Groups[1].Value))
+                                    if (databases[j].Equals(pathDatabases + match.Groups[1].Value))
                                     {
                                         if(match.Groups[2].Value.Equals("admin") && match.Groups[3].Value.Equals("admin"))
                                         {
-                                            db = new Database(match.Groups[1].Value.ToString(), match.Groups[2].Value.ToString(), match.Groups[3].Value.ToString());
-                                            
+                                            db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                            writer.WriteLine(MiniSQLEngine.Messages.OpenDatabaseSuccess);
+
                                         }
                                         else
                                         {
-                                            writer.WriteLine("ERROR: Incorrect login ");
+                                            db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                            if (db.GetUser(match.Groups[2].Value).GetName() == match.Groups[2].Value && db.GetUser(match.Groups[2].Value).GetPassword()== match.Groups[3].Value)
+                                            {
+                                                writer.WriteLine(MiniSQLEngine.Messages.OpenDatabaseSuccess);
+                                            }
+                                            else
+                                            {
+                                                writer.WriteLine(MiniSQLEngine.Messages.SecurityIncorrectLogin);
+                                                db = null;
+                                            }                                      
                                         }
                                         f = true;
                                     }
@@ -80,7 +90,16 @@ namespace DemoBorja
                                 }
                                 if(f == false)
                                 {
-                                    db = new Database(match.Groups[1].Value.ToString(), match.Groups[2].Value.ToString(), match.Groups[3].Value.ToString());
+                                    if (match.Groups[2].Value.Equals("admin") && match.Groups[3].Value.Equals("admin"))
+                                    {
+                                        db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                        writer.WriteLine(MiniSQLEngine.Messages.CreateDatabaseSuccess);
+
+                                    }
+                                    else
+                                    {
+                                        writer.WriteLine(MiniSQLEngine.Messages.SecurityIncorrectLogin);
+                                    }
                                 }
                                 
                             }

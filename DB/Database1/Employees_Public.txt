@@ -1,0 +1,5 @@
+Employees_Public
+Name TEXT,Role TEXT
+Eva,Programming manager;
+Ramon,Programmer;
+Miren,Sales;
