@@ -64,7 +64,7 @@ namespace DemoBorja
                                     {
                                         if(match.Groups[2].Value.Equals("admin") && match.Groups[3].Value.Equals("admin"))
                                         {
-                                            db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                            db = new Database(match.Groups[1].Value.ToString(), match.Groups[2].Value.ToString(), match.Groups[3].Value.ToString());
                                             
                                         }
                                         else
@@ -80,7 +80,7 @@ namespace DemoBorja
                                 }
                                 if(f == false)
                                 {
-                                    db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                    db = new Database(match.Groups[1].Value.ToString(), match.Groups[2].Value.ToString(), match.Groups[3].Value.ToString());
                                 }
                                 
                             }
