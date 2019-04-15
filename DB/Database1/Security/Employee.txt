@@ -1,2 +1,2 @@
 Employee
-SELECT,Employees_Public
+SELECT,EmployeesPublic

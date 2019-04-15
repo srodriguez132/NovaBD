@@ -1,1 +1,3 @@
 users
+Eva,1234,Employee
+Ramon,abcd,Employee

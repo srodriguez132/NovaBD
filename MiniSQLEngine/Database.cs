@@ -395,8 +395,7 @@ namespace MiniSQLEngine
 
         }
         private void ReleaseUnmangedResources()
-        {
-            Console.WriteLine("Releasing Managed Resources");
+        {        
             if (this != null)
             {
                 this.Dispose();
@@ -405,7 +404,6 @@ namespace MiniSQLEngine
         private void ReleaseManagedResources()
         {
             SaveDatabase();
-            Console.WriteLine("Releasing Unmanaged Resources");
         }
         private void SaveDatabase()
         {
@@ -429,7 +427,7 @@ namespace MiniSQLEngine
                         {
                             writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ",");
                         }
-                        writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ";" + "\r\n");
+                        writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + "\r\n");
                     }
                     if (!System.IO.Directory.Exists(securityPath))
                     {

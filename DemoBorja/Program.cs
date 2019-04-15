@@ -21,7 +21,7 @@ namespace DemoBorja
             string inputfile = Console.ReadLine();
             string res = null;
             Database db = null;
-            string pathDatabases = @"..\..\..\DB\";
+            CreateDataBase create = null;            
             try
             {
                 using (StreamWriter writer = File.CreateText(path + "output.txt"))
@@ -40,7 +40,10 @@ namespace DemoBorja
                             stopWatch.Stop();
                             writer.WriteLine("TOTAL TIME: " + Convert.ToDecimal(stopWatch.Elapsed.TotalSeconds) + "s");
                             stopWatch = new Stopwatch();
-                            db.Dispose();
+                            if (db != null)
+                            {
+                                db.Dispose();
+                            }
                             stopWatch.Start();
                             c++;
                             //db = new Database("database" + i);
@@ -54,54 +57,9 @@ namespace DemoBorja
                             Match match = Regex.Match(lines[i], @"(\w+),(\w+),(\w+)");
                             if (match.Success)
                             {
-                                string[] databases = System.IO.Directory.GetDirectories(pathDatabases);
-                                int j = 0;
-                                Boolean f = false;
-                                while(j < databases.Length && f == false)
-                                {
-                                    //Checks if database exists
-                                    if (databases[j].Equals(pathDatabases + match.Groups[1].Value))
-                                    {
-                                        if(match.Groups[2].Value.Equals("admin") && match.Groups[3].Value.Equals("admin"))
-                                        {
-                                            db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
-                                            writer.WriteLine(MiniSQLEngine.Messages.OpenDatabaseSuccess);
-
-                                        }
-                                        else
-                                        {
-                                            db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
-                                            if (db.GetUser(match.Groups[2].Value).GetName() == match.Groups[2].Value && db.GetUser(match.Groups[2].Value).GetPassword()== match.Groups[3].Value)
-                                            {
-                                                writer.WriteLine(MiniSQLEngine.Messages.OpenDatabaseSuccess);
-                                            }
-                                            else
-                                            {
-                                                writer.WriteLine(MiniSQLEngine.Messages.SecurityIncorrectLogin);
-                                                db = null;
-                                            }                                      
-                                        }
-                                        f = true;
-                                    }
-                                    else
-                                    {
-                                        j++;
-                                    }
-                                }
-                                if(f == false)
-                                {
-                                    if (match.Groups[2].Value.Equals("admin") && match.Groups[3].Value.Equals("admin"))
-                                    {
-                                        db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
-                                        writer.WriteLine(MiniSQLEngine.Messages.CreateDatabaseSuccess);
-
-                                    }
-                                    else
-                                    {
-                                        writer.WriteLine(MiniSQLEngine.Messages.SecurityIncorrectLogin);
-                                    }
-                                }
-                                
+                                create = new CreateDataBase(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                res = create.Execute(db);
+                                db = create.getDatabase();
                             }
                             else
                             {
