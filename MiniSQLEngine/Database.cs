@@ -198,11 +198,11 @@ namespace MiniSQLEngine
                 {
                     return new BackupDatabase(match.Groups[1].Value, match.Groups[2].Value);
                 }
-                match = Regex.Match(query, RegularExpressions.CreateDataBase);
-                if (match.Success)
-                {
-                    return new CreateDataBase(match.Groups[1].Value);
-                }
+           //     match = Regex.Match(query, RegularExpressions.CreateDataBase);
+       //         if (match.Success)
+           //     {
+           //         return new CreateDataBase(match.Groups[1].Value, match.Groups[1].Value, match.Groups[1].Value);
+           //     }
                 match = Regex.Match(query, RegularExpressions.CreateTable);
                 if (match.Success)
                 {
@@ -395,8 +395,7 @@ namespace MiniSQLEngine
 
         }
         private void ReleaseUnmangedResources()
-        {
-            Console.WriteLine("Releasing Managed Resources");
+        {        
             if (this != null)
             {
                 this.Dispose();
@@ -405,7 +404,6 @@ namespace MiniSQLEngine
         private void ReleaseManagedResources()
         {
             SaveDatabase();
-            Console.WriteLine("Releasing Unmanaged Resources");
         }
         private void SaveDatabase()
         {
@@ -429,7 +427,7 @@ namespace MiniSQLEngine
                         {
                             writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ",");
                         }
-                        writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + ";" + "\r\n");
+                        writer.Write(tables[i].GetDatas().ElementAt(j).ElementAt(k) + "\r\n");
                     }
                     if (!System.IO.Directory.Exists(securityPath))
                     {

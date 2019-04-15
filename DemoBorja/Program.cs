@@ -21,7 +21,7 @@ namespace DemoBorja
             string inputfile = Console.ReadLine();
             string res = null;
             Database db = null;
-            string pathDatabases = @"..\..\..\DB\";
+            CreateDataBase create = null;            
             try
             {
                 using (StreamWriter writer = File.CreateText(path + "output.txt"))
@@ -29,7 +29,7 @@ namespace DemoBorja
                     int c = 1;
                     Stopwatch stopWatch = new Stopwatch();
                 //    Database db = new Database("database1");
-                 //   writer.WriteLine("# TEST " + c);
+                    writer.WriteLine("# TEST " + c);
 
                     string[] lines = System.IO.File.ReadAllLines(@"..\..\..\Inputs\" + inputfile + ".txt");
                     for (int i = 0; i < lines.Length; i++)
@@ -40,7 +40,10 @@ namespace DemoBorja
                             stopWatch.Stop();
                             writer.WriteLine("TOTAL TIME: " + Convert.ToDecimal(stopWatch.Elapsed.TotalSeconds) + "s");
                             stopWatch = new Stopwatch();
-                            db.Dispose();
+                            if (db != null)
+                            {
+                                db.Dispose();
+                            }
                             stopWatch.Start();
                             c++;
                             //db = new Database("database" + i);
@@ -54,35 +57,9 @@ namespace DemoBorja
                             Match match = Regex.Match(lines[i], @"(\w+),(\w+),(\w+)");
                             if (match.Success)
                             {
-                                string[] databases = System.IO.Directory.GetDirectories(pathDatabases);
-                                int j = 0;
-                                Boolean f = false;
-                                while(j < databases.Length && f == false)
-                                {
-                                    //Checks if database exists
-                                    if (databases[j].Equals(match.Groups[1].Value))
-                                    {
-                                        if(match.Groups[2].Value.Equals("admin") && match.Groups[3].Value.Equals("admin"))
-                                        {
-                                            db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
-                                            
-                                        }
-                                        else
-                                        {
-                                            writer.WriteLine("ERROR: Incorrect login ");
-                                        }
-                                        f = true;
-                                    }
-                                    else
-                                    {
-                                        j++;
-                                    }
-                                }
-                                if(f == false)
-                                {
-                                    db = new Database(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
-                                }
-                                
+                                create = new CreateDataBase(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                                res = create.Execute(db);
+                                db = create.getDatabase();
                             }
                             else
                             {
