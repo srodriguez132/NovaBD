@@ -58,6 +58,9 @@ namespace DbQueryTest
             Assert.AreEqual(columnq4, "column");
             Assert.AreEqual(tableq4, "MyTable");
             Assert.AreEqual(whereq4, "column=value");
+
+
+            
         }
         [TestMethod]
         public void DeleteTest()

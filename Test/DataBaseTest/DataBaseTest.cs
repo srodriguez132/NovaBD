@@ -5,7 +5,7 @@ namespace DataBaseTest
 {
     [TestClass]
     public class DataBaseTest
-    {
+    {   
         [TestMethod]
         public void parseDeleteTest()
         {
