@@ -21,7 +21,7 @@ namespace MiniSQLEngine
         public const string DropSecurity = @"DROP\s+SECURITY\s+PROFILE\s+(\w+);";
         public const string Grant = @"GRANT\s+(\w+)\s+ON\s+(\w+)\s+TO\s+(\w+);";
         public const string Revoke = @"REVOKE\s+(\w+)\s+ON\s+(\w+)\s+TO\s+(\w+);";
-        public const string AddUser = @"ADD\s+USER\s+\((\w+),\s+(\w+),\s+(\w+)\);";
+        public const string AddUser = @"ADD\s+USER\s+\('(\w+)','(\w+)',(\w+)\);";
         public const string DeleteUser = @"DELETE\s+USER\s+(\w+);";
     }
 }
