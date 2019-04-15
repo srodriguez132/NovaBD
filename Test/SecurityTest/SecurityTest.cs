@@ -12,7 +12,7 @@ namespace SecurityTest
         {
             Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
-            MiniSQLEngine.MiniSQL q1 = db.Parse("ADD USER (user, password, security_profile);");
+            MiniSQLEngine.MiniSQL q1 = db.Parse("ADD USER ('user','password',security_profile);");
             Assert.IsInstanceOfType(q1, typeof(AddUser));
         }
         [TestMethod]

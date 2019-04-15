@@ -15,7 +15,7 @@ namespace SecurityQueryTest
             Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
             
-            string q1 = "ADD USER (user, password, security_profile);";
+            string q1 = "ADD USER ('user','password',security_profile);";
 
             Match match = Regex.Match(q1, RegularExpressions.AddUser);
             string u = match.Groups[1].Value;

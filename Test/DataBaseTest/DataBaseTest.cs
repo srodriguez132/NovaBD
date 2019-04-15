@@ -15,13 +15,13 @@ namespace DataBaseTest
             MiniSQLEngine.MiniSQL q1 = db.Parse("DELETE FROM table WHERE id=id1;");
             Assert.IsInstanceOfType(q1, typeof(Delete));          
         }
-        [TestMethod]
-        public void parseCreateDatabaseTest()
-        {
-            Database db = new Database("name", "user", "pass");
-            MiniSQLEngine.MiniSQL q1 = db.Parse("CREATE DATABASE database;");
-            Assert.IsInstanceOfType(q1, typeof(CreateDataBase));
-        }
+ //       [TestMethod]
+//        public void parseCreateDatabaseTest()
+ //       {
+  //          Database db = new Database("name", "user", "pass");
+   //         MiniSQLEngine.MiniSQL q1 = db.Parse("CREATE DATABASE database;");
+    //        Assert.IsInstanceOfType(q1, typeof(CreateDataBase));
+     //   }
         [TestMethod]
         public void parseCreateTableTest()
         {
