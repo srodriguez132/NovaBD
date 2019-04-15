@@ -14,6 +14,7 @@ namespace DbQueryTest
             Database db = new Database("name", "user", "pass");
             db.setCurrentUser(db.GetUser("admin"));
             db.CreateTable("MyTable", "column");
+            //INSERT
 
             string q1 = "SELECT * FROM MyTable;";
             string q2 = "SELECT column FROM MyTable;";
@@ -28,8 +29,9 @@ namespace DbQueryTest
             Assert.AreEqual(columnq1, "*");
             Assert.AreEqual(tableq1, "MyTable");
 
-            string result = Table.Select(columnq1, tableq1); 
-            Assert.AreEqual(result, )
+            //test the result of the select, necesary??
+            //string result = Table.Select(columnq1, tableq1);
+            //Assert.AreEqual(result, );
 
             //Second sentence
             Match match2 = Regex.Match(q2, RegularExpressions.Select);
@@ -65,8 +67,6 @@ namespace DbQueryTest
             Match match = Regex.Match(d1, RegularExpressions.Delete);
             string table = match.Groups[1].Value;
             string where = match.Groups[2].Value;
-
-
 
             Assert.AreEqual(table, "MyTable");
             Assert.AreEqual(where, "column=value");
@@ -112,7 +112,5 @@ namespace DbQueryTest
             Assert.AreEqual(where, "column1=value1");
 
         }
-
-
     }
 }
