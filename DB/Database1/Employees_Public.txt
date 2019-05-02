@@ -1,0 +1,5 @@
+Employees_Public
+Name TEXT,Role TEXT
+Ramon,Human Resources
+Miren,Sales
+Maite,Human Resources

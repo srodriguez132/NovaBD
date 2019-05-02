@@ -34,7 +34,7 @@ namespace MiniSQLEngine
                 }        
                 for (int i = 0; i < indexes.Count; i++)
                 {
-                    if (indexes.ElementAt(i) == table.IndexOf(pTable))
+                    if (table.ElementAt(indexes.ElementAt(i)) == pTable)
                     {
                     privilege_type.RemoveAt(indexes.ElementAt(i));
                     table.RemoveAt(indexes.ElementAt(i));

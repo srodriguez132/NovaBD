@@ -97,11 +97,11 @@ namespace MiniSQLEngine
         }
         public int Delete(string pCondition)
         {
-            string regExp = @"(\w+)(<|=|>)(\w+)";
+            string regExp = @"(\w+)(<|=|>)(.+)";
             Match match = Regex.Match(pCondition, regExp);
             string column = match.Groups[1].Value;
             string sign = match.Groups[2].Value;
-            string value = match.Groups[3].Value;
+            string value = DeleteQuote(match.Groups[3].Value);
             int i = 0;
             int count = 0;
             Boolean f = false;
@@ -157,7 +157,7 @@ namespace MiniSQLEngine
         }
         public string Update(string pUpdate, string pCondition)
         {
-            string regExp = @"(\w+)(<|=|>)(\w+)";
+            string regExp = @"(\w+)(<|=|>)('.+'|\d+)";
             Match match = Regex.Match(pCondition, regExp);
             string column = match.Groups[1].Value;
             string sign = match.Groups[2].Value;
@@ -165,11 +165,12 @@ namespace MiniSQLEngine
             string[] at = pUpdate.Split(',');
             string[] at2 = new string[at.Length];
             string value1 = DeleteQuote(value);
+            Match match1;
             for (int j = 0; j < at.Length; j++)
             {
-                at2[j] = DeleteQuote(at[j]);
-            }
-            Match match1;
+                 match1 = Regex.Match(at[j], regExp);
+                at2[j] = DeleteQuote(match1.Groups[3].Value);
+            }           
             int i = 0;
             int[] array = new int[at.Length];
             int count = 0;
@@ -217,8 +218,8 @@ namespace MiniSQLEngine
                         {
                             for (int x = 0; x < at.Length; x++)
                             {
-                                match1 = Regex.Match(at[x], regExp);
-                                datas.ElementAt(j)[array[z]] = match1.Groups[3].Value;
+                                // match1 = Regex.Match(at[x], regExp);
+                                datas.ElementAt(j)[array[z]] = at2[x];
                             }
                         }
                         count++;
@@ -235,8 +236,8 @@ namespace MiniSQLEngine
                         {
                             for (int x = 0; x < at.Length; x++)
                             {
-                                match1 = Regex.Match(at[x], regExp);
-                                datas.ElementAt(j)[i] = match1.Groups[2].Value;
+                               // match1 = Regex.Match(at[x], regExp);
+                                datas.ElementAt(j)[i] = at2[x];
                             }
                         }
                         count++;
@@ -253,8 +254,8 @@ namespace MiniSQLEngine
                         {
                             for (int x = 0; x < at.Length; x++)
                             {
-                                match1 = Regex.Match(at[x], regExp);
-                                datas.ElementAt(j)[i] = match1.Groups[2].Value;
+                              //  match1 = Regex.Match(at[x], regExp);
+                                datas.ElementAt(j)[i] = at2[x];
                             }
                         }
                         count++;
@@ -283,7 +284,7 @@ namespace MiniSQLEngine
             string[] array = new string[at.Length];
             if (pCondition != "")
             {
-                string regExp = @"(\w+)(<|=|>)(\w+)";
+                string regExp = @"(\w+)(<|=|>)('.+'|\d+)";
                 Match match = Regex.Match(pCondition, regExp);
                 string value = DeleteQuote((string)match.Groups[3].Value);               
                 Boolean f = false;
