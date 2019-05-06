@@ -27,6 +27,8 @@ namespace MiniSQLEngine
                 users = new List<User>();
                 profiles = new List<Security_profile>();
                 users.Add(new User("admin", "admin", null));
+                Security_profile defoult = new Security_profile("default");
+                profiles.Add(defoult);
                 if (UserExist(pUser, pPass))
                 {
                     currentUser = GetUser(pUser);
@@ -38,6 +40,8 @@ namespace MiniSQLEngine
                 users = new List<User>();
                 users.Add(new User("admin", "admin", null));
                 profiles = new List<Security_profile>();
+                Security_profile defoult = new Security_profile("default");
+                profiles.Add(defoult);
                 OpenDatabase(pName);
                 if (UserExist(pUser, pPass))
                 {

@@ -29,7 +29,7 @@ namespace MiniSQLEngine
         public const string TableAlreadyExists = Error + "Table already exists";
 
         public const string SecurityProfileCreated = "Security profile created";
-        public const string SecurityUserCreated = "Security user created";
+        public const string SecurityUserCreated = "User added to security profile";
         public const string SecurityProfileDeleted = "Security profile deleted";
         public const string SecurityUserDeleted = "Security user deleted";
         public const string SecurityPrivilegeGranted = "Security privilege granted";
