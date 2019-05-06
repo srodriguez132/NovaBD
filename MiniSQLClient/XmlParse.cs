@@ -25,7 +25,7 @@ namespace MiniSQLClient
         {
             openDatabase += " User=" + "\"" + userName + "\"";
         }
-        public void AddPasssword(string passName)
+        public void AddPassword(string passName)
         {
             openDatabase += " Password=" + "\"" + passName + "\"/>";
         }
@@ -52,7 +52,7 @@ namespace MiniSQLClient
             string Column = @"<Column>(\w+)</Column>";
             string Row = @"<Row>(\.+)</Row>";
             string Value = @"<Value>(\w+)</Value>";
-            string Close = @"<Colse/>";
+            string Close = @"<Close/>";
             Match match = Regex.Match(query, Success);
             if (match.Success)
             {

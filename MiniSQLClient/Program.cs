@@ -6,18 +6,21 @@ using System.Threading.Tasks;
 using System.Net.Sockets;
 using System.Net;
 using System.Threading;
+using MiniSQLEngine;
+using MiniSQLServer;
 
-namespace TCPClientExample
+namespace TCPClient
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Thread.Sleep(2000);
             const string argPrefixIp = "ip=";
             const string argPrefixPort = "port=";
 
             string ip = "127.0.0.1";
-            int port = 0;
+            int port = 2400;
             foreach (string arg in args)
             {
                 if (arg.StartsWith(argPrefixIp)) ip = arg.Substring(argPrefixIp.Length);
@@ -32,13 +35,46 @@ namespace TCPClientExample
             using (TcpClient client = new TcpClient(ip, port))
             {
                 NetworkStream networkStream = client.GetStream();
-
-                byte[] outputBuffer = Encoding.ASCII.GetBytes("Do you want to marry me????");
                 byte[] inputBuffer = new byte[1024];
                 byte[] endMessage = Encoding.ASCII.GetBytes("END");
+                byte[] outputBuffer;
+                MiniSQLClient.XmlParse xmlParse = new MiniSQLClient.XmlParse();
+                Console.WriteLine("Write the name of the database: ");
+                string dbname = Console.ReadLine();
+                xmlParse = new MiniSQLClient.XmlParse();
+                xmlParse.AddDatabase(dbname);
+                Console.WriteLine("Write the name of the user: ");
+                string inputUser = Console.ReadLine();
+                xmlParse.AddUserName(inputUser);
+                Console.WriteLine("Write the password of the user: ");
+                string inputPass = Console.ReadLine();
+                xmlParse.AddPassword(inputPass);
+                string outputdb = xmlParse.GetOpenDatabase();
 
-                for (int i = 0; i < 5; i++)
+                outputBuffer = Encoding.ASCII.GetBytes(outputdb);
+
+                while (Encoding.ASCII.GetString(inputBuffer, 0, networkStream.Read(inputBuffer, 0, 1024)) != "<Success/>")
                 {
+
+                    Console.WriteLine("Write the name of the database: ");
+                    dbname = Console.ReadLine();
+                    xmlParse = new MiniSQLClient.XmlParse();
+                    xmlParse.AddDatabase(dbname);
+                    Console.WriteLine("Write the name of the user: ");
+                    inputUser = Console.ReadLine();
+                    xmlParse.AddUserName(inputUser);
+                    Console.WriteLine("Write the password of the user: ");
+                    inputPass = Console.ReadLine();
+                    xmlParse.AddPassword(inputPass);
+                    outputdb = xmlParse.GetOpenDatabase();
+
+                    outputBuffer = Encoding.ASCII.GetBytes(outputdb);
+                }
+                
+                while(Console.ReadLine() != "END")
+                {
+                    xmlParse.AddQuery(Console.ReadLine());
+                    outputBuffer = Encoding.ASCII.GetBytes(xmlParse.GetQuery());
                     networkStream.Write(outputBuffer, 0, outputBuffer.Length);
 
                     int readBytes = networkStream.Read(inputBuffer, 0, 1024);
