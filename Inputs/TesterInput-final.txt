@@ -79,7 +79,7 @@ INSERT INTO Employees_Public (Role,Name) VALUES ('Programmer','Patxi');
 UPDATE Employees_Public SET Role='Programmer' WHERE Name='Ramon';
 
 Database1,admin,admin
-DELETE DROP SECURITY PROFILE Employee;
+DROP SECURITY PROFILE Employee;
 
 Database1,Ramon,abcd
 SELECT * FROM Employees_Public;
