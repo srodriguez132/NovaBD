@@ -15,7 +15,7 @@ namespace TCPServerExample
         {
             const string argPrefixPort = "port=";
 
-            int port = 0;
+            int port = 2400;
             foreach (string arg in args)
             {
                 if (arg.StartsWith(argPrefixPort)) port = int.Parse(arg.Substring(argPrefixPort.Length));

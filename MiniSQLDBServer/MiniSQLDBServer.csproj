@@ -4,13 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C38D4560-7165-4610-8020-0BC36337F408}</ProjectGuid>
+    <ProjectGuid>{6C05BBD6-8864-40E6-BB52-43E7B8063170}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>MiniSQLClient</RootNamespace>
-    <AssemblyName>MiniSQLClient</AssemblyName>
+    <RootNamespace>MiniSQLDBServer</RootNamespace>
+    <AssemblyName>MiniSQLDBServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,14 +45,17 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XmlParse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MiniSQLClient\MiniSQLClient.csproj">
+      <Project>{c38d4560-7165-4610-8020-0bc36337f408}</Project>
+      <Name>MiniSQLClient</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MiniSQLEngine\MiniSQLEngine.csproj">
-      <Project>{3153FE8A-0F08-4659-B2F2-D17620D515AA}</Project>
+      <Project>{3153fe8a-0f08-4659-b2f2-d17620d515aa}</Project>
       <Name>MiniSQLEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\MiniSQLServer\MiniSQLServer.csproj">

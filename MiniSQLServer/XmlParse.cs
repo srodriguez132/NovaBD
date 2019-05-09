@@ -40,18 +40,46 @@ namespace MiniSQLServer
         }
         public string AddAnswer(string pData)
         {
-            string res = "<Answer>\n<Columns>\n";
+            string res = "<Answer>\n";
             string regExp = "{([^}]*)}";
             Match match = Regex.Match(pData, regExp);
-            string[] columns = match.Groups[1].Value.Split(',');
-            for(int i = 0; i < columns.Length; i++)
+            string regExpError = "ERROR:(.*)";
+            Match match1 = Regex.Match(pData, regExpError);
+            if (match.Success)
             {
-                res += "<Column>" + columns[i] + "</Columns>";
-            }
-            if(match.Length > 1)
-            {
+                res += "<Columns>\n";
+                string[] columns = match.Groups[1].Value.Split(',');
+                for (int i = 0; i < columns.Length; i++)
+                {
+                    res += "<Column>" + columns[i] + "</Column>\n";
+                }
+                res += "</Columns>\n";
+                if (match.Length >= 2)
+                {
+                    res += "<Rows>\n";
 
+                    for (int j = 2; j < match.Length; j++)
+                    {
+                        string[] rows = match.Groups[j].Value.Split(',');
+                        for (int i = 0; i < columns.Length; i++)
+                        {
+                            res += "<Row>" + columns[i] + "</Row>\n";
+                        }
+                    }
+                    res += "</Rows>\n";
+                }
             }
+
+        
+            else if(match1.Success)
+            {
+                res += "<Error>" + match1.Groups[1].Value + "</Error>\n";
+            }
+            else
+            {
+                res += pData;
+            }
+            res += "</Answer>";
             return res;
         }
     }
