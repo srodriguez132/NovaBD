@@ -16,7 +16,7 @@ namespace MiniSQLServer
         }
         public string[] GetData(string pData)
         {
-            string regExp = "<Open Database = \"(\\w+)\" User = \"(\\w+)\" Password = \"(\\w+)\"/>";
+            string regExp = "<Open Database =\"(\\w+)\" User=\"(\\w+)\" Password=\"(\\w+)\"/>";
             Match match = Regex.Match(pData, regExp);
             string[] data = new string[3];
             data[0] = match.Groups[1].Value;
@@ -40,40 +40,12 @@ namespace MiniSQLServer
         }
         public string AddAnswer(string pData)
         {
-            string res = "<Answer>\n";
-            string regExp = "{([^}]*)}";
-            Match match = Regex.Match(pData, regExp);
+            string res = "<Answer>";        
             string regExpError = "ERROR:(.*)";
-            Match match1 = Regex.Match(pData, regExpError);
-            if (match.Success)
+            Match match = Regex.Match(pData, regExpError);      
+            if(match.Success)
             {
-                res += "<Columns>\n";
-                string[] columns = match.Groups[1].Value.Split(',');
-                for (int i = 0; i < columns.Length; i++)
-                {
-                    res += "<Column>" + columns[i] + "</Column>\n";
-                }
-                res += "</Columns>\n";
-                if (match.Length >= 2)
-                {
-                    res += "<Rows>\n";
-
-                    for (int j = 2; j < match.Length; j++)
-                    {
-                        string[] rows = match.Groups[j].Value.Split(',');
-                        for (int i = 0; i < columns.Length; i++)
-                        {
-                            res += "<Row>" + columns[i] + "</Row>\n";
-                        }
-                    }
-                    res += "</Rows>\n";
-                }
-            }
-
-        
-            else if(match1.Success)
-            {
-                res += "<Error>" + match1.Groups[1].Value + "</Error>\n";
+                res += "<Error>" + match.Groups[1].Value + "</Error>";
             }
             else
             {

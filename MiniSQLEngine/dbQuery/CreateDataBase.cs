@@ -52,6 +52,7 @@ namespace MiniSQLEngine
                         }
                     }                  
                 }
+                j++;
             }
 
             if (name =="admin" && pass=="admin")

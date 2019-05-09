@@ -55,8 +55,7 @@ namespace TCPClient
                 networkStream.Write(outputBuffer, 0, outputBuffer.Length);
                 int readBytes = networkStream.Read(inputBuffer, 0, 1024);
                 Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
-
-                while (Encoding.ASCII.GetString(inputBuffer, 0, networkStream.Read(inputBuffer, 0, 1024)) != "<Success/>")
+                while (Encoding.ASCII.GetString(inputBuffer, 0, readBytes) != "<Success/>")
                 {
 
                     Console.WriteLine("Write the name of the database: ");
@@ -76,10 +75,20 @@ namespace TCPClient
                     readBytes = networkStream.Read(inputBuffer, 0, 1024);
                     Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
                 }
-                
-                while(Console.ReadLine() != "END")
+
+                Console.WriteLine("Write the query: ");
+                xmlParse.AddQuery(Console.ReadLine());
+                outputBuffer = Encoding.ASCII.GetBytes(xmlParse.GetQuery());
+                networkStream.Write(outputBuffer, 0, outputBuffer.Length);
+
+                readBytes = networkStream.Read(inputBuffer, 0, 1024);
+                Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
+                Console.WriteLine("Write the query: ");
+                string input = Console.ReadLine();
+                while (input != "END")
                 {
-                    xmlParse.AddQuery(Console.ReadLine());
+                    xmlParse = new MiniSQLClient.XmlParse();
+                    xmlParse.AddQuery(input);
                     outputBuffer = Encoding.ASCII.GetBytes(xmlParse.GetQuery());
                     networkStream.Write(outputBuffer, 0, outputBuffer.Length);
 
@@ -87,6 +96,8 @@ namespace TCPClient
                     Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
 
                     Thread.Sleep(2000);
+                    Console.WriteLine("Write the query: ");
+                    input = Console.ReadLine();
                 }
                 networkStream.Write(endMessage, 0, endMessage.Length);
             }

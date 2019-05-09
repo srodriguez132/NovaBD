@@ -45,13 +45,8 @@ namespace MiniSQLClient
         {
             string res = "";
             string Success = @"<Success/>";
-            string Error = @"<Error>(\w+)</Error>";
-            string Answer = @"<Answer>(\.+)</Answer>";
-            string Columns = @"<Columns>(\.+)</Columns>";
-            string Rows = @"<Rows>(\.+)</Rows>";
-            string Column = @"<Column>(\w+)</Column>";
-            string Row = @"<Row>(\.+)</Row>";
-            string Value = @"<Value>(\w+)</Value>";
+            string Error = @"<Error>(\w+)</Error>\n";
+            string Answer = @"<Answer>(.+)</Answer>";          
             string Close = @"<Close/>";
             Match match = Regex.Match(query, Success);
             if (match.Success)
@@ -66,36 +61,13 @@ namespace MiniSQLClient
             match = Regex.Match(query, Answer);
             if (match.Success)
             {
-                match = Regex.Match(query, Columns);
+                match = Regex.Match(query, Error);
                 if (match.Success)
                 {
-                    string[] at = match.Groups[1].Value.Split('\n');
-                    res = "{";
-                    for (int i = 0; i < at.Length - 1; i++)
-                    {
-                        match = Regex.Match(at[i], Column);
-                        res += match.Groups[1].Value + ",";
-                    }
-                    match = Regex.Match(at[at.Length], Column);
-                    res += match.Groups[1].Value + "}";
+                    return (string)match.Groups[1].Value;
                 }
-                match = Regex.Match(query, Rows);
-                if (match.Success)
-                {
-                    match = Regex.Match(query, Row);
-                    if (match.Success)
-                    {
-                        string[] at = match.Groups[1].Value.Split('\n');
-                        res += "{";
-                        for (int i = 0; i < at.Length - 1; i++)
-                        {
-                            match = Regex.Match(at[i], Value);
-                            res += match.Groups[1].Value + ",";
-                        }
-                        match = Regex.Match(at[at.Length], Value);
-                        res += match.Groups[1].Value + "}";
-                    }
-                }
+                match = Regex.Match(query, Answer);
+                res += match.Groups[1].Value;               
                 return res;
             }                               
             match = Regex.Match(query, Close);
