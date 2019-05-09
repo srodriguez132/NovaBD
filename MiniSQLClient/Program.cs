@@ -52,7 +52,7 @@ namespace TCPClient
                 string outputdb = xmlParse.GetOpenDatabase();
 
                 outputBuffer = Encoding.ASCII.GetBytes(outputdb);
-
+                networkStream.Write(outputBuffer, 0, outputBuffer.Length);
                 while (Encoding.ASCII.GetString(inputBuffer, 0, networkStream.Read(inputBuffer, 0, 1024)) != "<Success/>")
                 {
 
@@ -69,6 +69,7 @@ namespace TCPClient
                     outputdb = xmlParse.GetOpenDatabase();
 
                     outputBuffer = Encoding.ASCII.GetBytes(outputdb);
+                    networkStream.Write(outputBuffer, 0, outputBuffer.Length);
                 }
                 
                 while(Console.ReadLine() != "END")

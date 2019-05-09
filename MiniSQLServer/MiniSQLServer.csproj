@@ -49,5 +49,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MiniSQLEngine\MiniSQLEngine.csproj">
+      <Project>{3153FE8A-0F08-4659-B2F2-D17620D515AA}</Project>
+      <Name>MiniSQLEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,11 +23,11 @@ namespace MiniSQLServer
             data[2] = match.Groups[3].Value;
             return data;
         }
-        public string GetSuccess()
+        public string SetSuccess()
         {
             return "<Success/>";
         }
-        public string GetError(string pError)
+        public string SetError(string pError)
         {
             return "<Error>" + pError + "</Error>";
         }
