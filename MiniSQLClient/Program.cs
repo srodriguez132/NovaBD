@@ -52,6 +52,9 @@ namespace TCPClient
                 string outputdb = xmlParse.GetOpenDatabase();
 
                 outputBuffer = Encoding.ASCII.GetBytes(outputdb);
+                networkStream.Write(outputBuffer, 0, outputBuffer.Length);
+                int readBytes = networkStream.Read(inputBuffer, 0, 1024);
+                Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
 
                 while (Encoding.ASCII.GetString(inputBuffer, 0, networkStream.Read(inputBuffer, 0, 1024)) != "<Success/>")
                 {
@@ -69,6 +72,9 @@ namespace TCPClient
                     outputdb = xmlParse.GetOpenDatabase();
 
                     outputBuffer = Encoding.ASCII.GetBytes(outputdb);
+                    networkStream.Write(outputBuffer, 0, outputBuffer.Length);
+                    readBytes = networkStream.Read(inputBuffer, 0, 1024);
+                    Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
                 }
                 
                 while(Console.ReadLine() != "END")
@@ -77,8 +83,8 @@ namespace TCPClient
                     outputBuffer = Encoding.ASCII.GetBytes(xmlParse.GetQuery());
                     networkStream.Write(outputBuffer, 0, outputBuffer.Length);
 
-                    int readBytes = networkStream.Read(inputBuffer, 0, 1024);
-                    Console.WriteLine("Response received: " + Encoding.ASCII.GetString(inputBuffer, 0, readBytes));
+                    readBytes = networkStream.Read(inputBuffer, 0, 1024);
+                    Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
 
                     Thread.Sleep(2000);
                 }
