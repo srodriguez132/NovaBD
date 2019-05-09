@@ -411,7 +411,6 @@ namespace MiniSQLEngine
                         {
                             ret += datas.ElementAt(k)[p] + ",";
                         }
-
                         ret += datas.ElementAt(k)[columns.Length - 1] + "}";
                     }
                     else
@@ -439,8 +438,7 @@ namespace MiniSQLEngine
             string regexp = @"'(.+)'";
             Match match = Regex.Match(quotedWord, regexp);
             if (match.Success) { return (string)match.Groups[1].Value; }
-            else { return quotedWord; }
-           
+            else { return quotedWord; }   
         }
         public string GetAtributes()
         {
