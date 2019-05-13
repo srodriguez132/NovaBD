@@ -29,15 +29,16 @@ namespace MiniSQLEngine
                 //Checks if database exists
                 if (databases[j].Equals(pathDatabases + dbName))
                 {
+
                     if (name == "admin" && pass == "admin")
                     {                                        
                         return Messages.OpenDatabaseSuccess;
                     }
                     else
                     {
-                        if (pDatabase.GetUser(name) != null)
+                        if (db.GetUser(name) != null)
                         {
-                            if (pDatabase.GetUser(name).GetName() == name && pDatabase.GetUser(name).GetPassword() == pass)
+                            if (db.GetUser(name).GetName() == name && db.GetUser(name).GetPassword() == pass)
                             {
                                 return MiniSQLEngine.Messages.OpenDatabaseSuccess;
                             }

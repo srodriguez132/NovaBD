@@ -1,3 +1,2 @@
 Employee
 SELECT,Employees_Public
-DELETE,Employees_Public
