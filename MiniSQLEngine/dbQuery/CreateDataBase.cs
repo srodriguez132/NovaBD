@@ -35,6 +35,15 @@ namespace MiniSQLEngine
                     }
                     else
                     {
+
+
+
+
+
+
+
+
+
                         if (pDatabase.GetUser(name) != null)
                         {
                             if (pDatabase.GetUser(name).GetName() == name && pDatabase.GetUser(name).GetPassword() == pass)
