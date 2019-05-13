@@ -103,6 +103,7 @@ namespace TCPServerExample
                         request = Encoding.ASCII.GetString(inputBuffer, 0, size);
                     }
                     client.Close();
+                    Console.WriteLine("Client closed");
                     db.Dispose();
                 });
                 childSocketThread.Start();
