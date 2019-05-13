@@ -20,7 +20,10 @@ namespace TCPClient
             const string argPrefixPort = "port=";
 
             string ip = "127.0.0.1";
-            int port = 2400;
+            //port 2400
+            int port;
+            Console.WriteLine("Write the port: ");
+            port = int.Parse(Console.ReadLine());
             foreach (string arg in args)
             {
                 if (arg.StartsWith(argPrefixIp)) ip = arg.Substring(argPrefixIp.Length);
