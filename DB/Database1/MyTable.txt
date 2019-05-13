@@ -1,0 +1,2 @@
+MyTable
+Name TEXT,Age INT,Address TEXT
