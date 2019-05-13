@@ -19,7 +19,7 @@ namespace TCPClient
             const string argPrefixIp = "ip=";
             const string argPrefixPort = "port=";
 
-            string ip = "127.0.0.1";
+            string ip = "158.227.216.203";
             //port 2400
             int port;
             Console.WriteLine("Write the port: ");
