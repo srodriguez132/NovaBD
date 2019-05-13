@@ -45,7 +45,7 @@ namespace MiniSQLClient
         {
             string res = "";
             string Success = @"<Success/>";
-            string Error = @"<Error>(\w+)</Error>\n";
+            string Error = @"<Error>(.+)</Error>";
             string Answer = @"<Answer>(.+)</Answer>";          
             string Close = @"<Close/>";
             Match match = Regex.Match(query, Success);
@@ -61,10 +61,10 @@ namespace MiniSQLClient
             match = Regex.Match(query, Answer);
             if (match.Success)
             {
-                match = Regex.Match(query, Error);
-                if (match.Success)
+               Match match1 = Regex.Match(match.Groups[1].Value, Error);
+                if (match1.Success)
                 {
-                    return (string)match.Groups[1].Value;
+                    return (string)match1.Groups[1].Value;
                 }
                 match = Regex.Match(query, Answer);
                 res += match.Groups[1].Value;               

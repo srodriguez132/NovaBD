@@ -80,13 +80,12 @@ namespace TCPClient
                 }
 
                 Console.WriteLine("Write the query: ");
-                xmlParse.AddQuery(Console.ReadLine());
-                outputBuffer = Encoding.ASCII.GetBytes(xmlParse.GetQuery());
-                networkStream.Write(outputBuffer, 0, outputBuffer.Length);
-
-                readBytes = networkStream.Read(inputBuffer, 0, 1024);
-                Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
-                Console.WriteLine("Write the query: ");
+             //   xmlParse.AddQuery(Console.ReadLine());
+               // outputBuffer = Encoding.ASCII.GetBytes(xmlParse.GetQuery());
+                //networkStream.Write(outputBuffer, 0, outputBuffer.Length);
+                //readBytes = networkStream.Read(inputBuffer, 0, 1024);
+                //Console.WriteLine("Response received: " + xmlParse.Parse(Encoding.ASCII.GetString(inputBuffer, 0, readBytes)));
+                //Console.WriteLine("Write the query: ");
                 string input = Console.ReadLine();
                 while (input != "END")
                 {

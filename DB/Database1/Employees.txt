@@ -1,0 +1,2 @@
+Employees
+Id INT,Name TEXT,Surname TEXT,Salary DOUBLE
