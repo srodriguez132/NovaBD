@@ -47,9 +47,7 @@ namespace TCPServerExample
                     byte[] inputBuffer = new byte[1024];
 
                 try
-                {
-
-              
+                {             
                     NetworkStream networkStream = client.GetStream();
                     string regExp = "<Open Database=\"(\\w+)\" User=\"(\\w+)\" Password=\"(\\w+)\"/>";
                     //Read message from the client

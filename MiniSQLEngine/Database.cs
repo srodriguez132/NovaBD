@@ -539,8 +539,7 @@ namespace MiniSQLEngine
                     else
                     {
                         i++;
-                    }
-                }
+                    }                 }
                 return encontrado;
             }
             else { return true; }
