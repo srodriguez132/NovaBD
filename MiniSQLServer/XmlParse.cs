@@ -16,7 +16,7 @@ namespace MiniSQLServer
         }
         public string[] GetData(string pData)
         {
-            string regExp = "<Open Database =\"(\\w+)\" User=\"(\\w+)\" Password=\"(\\w+)\"/>";
+            string regExp = "<Open Database=\"(\\w+)\" User=\"(\\w+)\" Password=\"(\\w+)\"/>";
             Match match = Regex.Match(pData, regExp);
             string[] data = new string[3];
             data[0] = match.Groups[1].Value;
@@ -41,16 +41,7 @@ namespace MiniSQLServer
         public string AddAnswer(string pData)
         {
             string res = "<Answer>";        
-            string regExpError = "ERROR:(.*)";
-            Match match = Regex.Match(pData, regExpError);      
-            if(match.Success)
-            {
-                res += "<Error>" + match.Groups[1].Value + "</Error>";
-            }
-            else
-            {
-                res += pData;
-            }
+                res += pData;          
             res += "</Answer>";
             return res;
         }

@@ -14,7 +14,7 @@ namespace MiniSQLClient
         string query;
         public XmlParse()
         {
-            openDatabase = "<Open Database =";
+            openDatabase = "<Open Database=";
             query = "<Query>";
         }
         public void AddDatabase(string name)
