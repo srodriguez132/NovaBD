@@ -10,7 +10,7 @@ namespace Portable_Badger
 {
     class Program
     {
-        public const string ProjectName = "MiniSQLEngine"; 
+        public const string ProjectName = "MiniSQLServer"; 
         public static string inBaseRelPath = @"..\..\..\"; //root folder of the solution used for relative paths
         public static string outBaseFolder;
         public static void Main()
@@ -18,7 +18,7 @@ namespace Portable_Badger
             List<string> files = new List<string>();
             string version;
 
-            string mainExe = @"MiniSQLDBConsole\bin\Release\MiniSQLDBConsole.exe";
+            string mainExe = @"MiniSQLServer\bin\Release\MiniSQLServer.exe";
             string mainExeRelPath = inBaseRelPath + mainExe;
 
             version = GetVersion(mainExeRelPath);
